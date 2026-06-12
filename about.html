@@ -102,16 +102,59 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* -- Bidirectional Scroll Reveal -- */
         .reveal-element {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(32px);
+            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
         }
-
         .reveal-element.revealed {
             opacity: 1;
             transform: translateY(0);
+        }
+        /* Scroll-UP exit (reverse) */
+        .reveal-element.exit-up {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        /* Left/Right variants */
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-36px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-left.revealed  { opacity: 1; transform: translateX(0); }
+        .reveal-left.exit-up   { opacity: 0; transform: translateX(-20px); }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(36px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-right.revealed  { opacity: 1; transform: translateX(0); }
+        .reveal-right.exit-up   { opacity: 0; transform: translateX(20px); }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.88);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-scale.revealed  { opacity: 1; transform: scale(1); }
+        .reveal-scale.exit-up   { opacity: 0; transform: scale(0.95); }
+
+        /* Mobile safety — never stay invisible if JS is slow */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-element, .reveal-left, .reveal-right, .reveal-scale {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
         }
 
         .tech-grid {
@@ -169,7 +212,15 @@
                 transform: translateY(0);
             }
         }
-    </style>
+            /* -- Mobile Safety: reveal immediately if viewport is small or JS is slow -- */
+        @media (max-width: 640px) {
+            .reveal-element,
+            .reveal-left,
+            .reveal-right,
+            .reveal-scale {
+                transition-duration: 0.55s;
+            }
+        }</style>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -265,7 +316,7 @@
     </script>
 </head>
 
-<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-background overflow-x-hidden">
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-background overflow-x-clip">
     <!-- Top Navigation Bar -->
     <nav class="fixed top-0 left-0 w-full z-50 px-4">
         <div class="liquid-glass liquid-nav flex justify-between items-center px-5 md:px-8 py-3 relative">
@@ -923,24 +974,30 @@
                 });
             }
 
-            // Scroll Reveal Entrance Animations
-            const revealOptions = {
-                threshold: 0.05,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const revealObserver = new IntersectionObserver((entries, observer) => {
+            // -- Bidirectional Scroll Reveal --
+            const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
+                    const el = entry.target;
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                        observer.unobserve(entry.target);
+                        el.classList.remove('exit-up');
+                        el.classList.add('revealed');
+                    } else {
+                        // Only reverse-animate if element is ABOVE the viewport (scrolling up)
+                        if (entry.boundingClientRect.top < 0) {
+                            el.classList.add('exit-up');
+                            el.classList.remove('revealed');
+                        } else {
+                            // Coming into view from below — reset to initial hidden state
+                            el.classList.remove('revealed', 'exit-up');
+                        }
                     }
                 });
-            }, revealOptions);
+            }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
 
-            document.querySelectorAll('.reveal-element').forEach(el => {
-                revealObserver.observe(el);
-            });
+            const allRevealEls = document.querySelectorAll(
+                '.reveal-element, .reveal-left, .reveal-right, .reveal-scale'
+            );
+            allRevealEls.forEach(el => revealObserver.observe(el));
 
             // Initialize sliders and tabbed timeline components
             initHWWSlider();
@@ -1222,6 +1279,16 @@
             currentTestiIndex = (currentTestiIndex + 1) % testimonials.length;
             renderTesti();
         }
+        // -- Mobile Safety Fallback --
+    // If observer never fires (slow mobile/iOS quirk), force reveal after delay
+    setTimeout(() => {
+        document.querySelectorAll('.reveal-element:not(.revealed), .reveal-left:not(.revealed), .reveal-right:not(.revealed), .reveal-scale:not(.revealed)').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('revealed');
+            }
+        });
+    }, 400);
     </script>
 </body>
 

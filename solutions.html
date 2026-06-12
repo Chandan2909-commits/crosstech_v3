@@ -213,7 +213,15 @@
         .glow-green {
             background: radial-gradient(circle, #10b981 0%, transparent 70%);
         }
-    </style>
+            /* -- Mobile Safety: reveal immediately if viewport is small or JS is slow -- */
+        @media (max-width: 640px) {
+            .reveal-element,
+            .reveal-left,
+            .reveal-right,
+            .reveal-scale {
+                transition-duration: 0.55s;
+            }
+        }</style>
 </head>
 <body class="font-body-md text-on-background selection:bg-primary selection:text-on-primary">
 <!-- Top Navigation Bar -->
@@ -618,23 +626,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Scroll Reveal Entrance Animations
-    const revealOptions = {
-        threshold: 0.05,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
+    // -- Bidirectional Scroll Reveal --
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            const el = entry.target;
             if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                observer.unobserve(entry.target);
+                el.classList.remove('exit-up');
+                el.classList.add('revealed');
+            } else {
+                if (entry.boundingClientRect.top < 0) {
+                    el.classList.add('exit-up');
+                    el.classList.remove('revealed');
+                } else {
+                    el.classList.remove('revealed', 'exit-up');
+                }
             }
         });
-    }, revealOptions);
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
 
-    document.querySelectorAll('.reveal-element').forEach(el => {
-        revealObserver.observe(el);
-    });
+    document.querySelectorAll('.reveal-element, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
 
     // Web Apps Portfolio elements
     const exploreWebappsBtn = document.getElementById('explore-webapps');
@@ -688,5 +698,15 @@ document.addEventListener('DOMContentLoaded', () => {
         backChatbotsBtn.addEventListener('click', () => hidePortfolio(chatbotsPortfolio));
     }
 });
-</script>
+    // -- Mobile Safety Fallback --
+    // If observer never fires (slow mobile/iOS quirk), force reveal after delay
+    setTimeout(() => {
+        document.querySelectorAll('.reveal-element:not(.revealed), .reveal-left:not(.revealed), .reveal-right:not(.revealed), .reveal-scale:not(.revealed)').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('revealed');
+            }
+        });
+    }, 400);
+    </script>
 </body></html>

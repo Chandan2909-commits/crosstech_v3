@@ -354,7 +354,15 @@
             z-index: -1;
         }
         .stat-card:hover::after { opacity: 1; }
-    </style>
+            /* -- Mobile Safety: reveal immediately if viewport is small or JS is slow -- */
+        @media (max-width: 640px) {
+            .reveal-element,
+            .reveal-left,
+            .reveal-right,
+            .reveal-scale {
+                transition-duration: 0.55s;
+            }
+        }</style>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -405,7 +413,7 @@
     </script>
 </head>
 
-<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-background overflow-x-hidden">
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-background overflow-x-clip">
 
     <!-- ======= TOP NAVIGATION ======= -->
     <nav class="fixed top-0 left-0 w-full z-50 px-4">
@@ -1102,12 +1110,25 @@
         });
     }
 
-    // ===== SCROLL REVEAL =====
-    const revealObserver = new IntersectionObserver((entries, obs) => {
+    // ===== BIDIRECTIONAL SCROLL REVEAL =====
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) { entry.target.classList.add('revealed'); obs.unobserve(entry.target); }
+            const el = entry.target;
+            if (entry.isIntersecting) {
+                el.classList.remove('exit-up');
+                el.classList.add('revealed');
+            } else {
+                if (entry.boundingClientRect.top < 0) {
+                    // Scrolled past above — animate out upward
+                    el.classList.add('exit-up');
+                    el.classList.remove('revealed');
+                } else {
+                    // Approaching from below — reset to initial hidden state
+                    el.classList.remove('revealed', 'exit-up');
+                }
+            }
         });
-    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
 
     document.querySelectorAll('.reveal-element, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
 
@@ -1311,6 +1332,16 @@
             card.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1)';
         });
     });
+        // -- Mobile Safety Fallback --
+    // If observer never fires (slow mobile/iOS quirk), force reveal after delay
+    setTimeout(() => {
+        document.querySelectorAll('.reveal-element:not(.revealed), .reveal-left:not(.revealed), .reveal-right:not(.revealed), .reveal-scale:not(.revealed)').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('revealed');
+            }
+        });
+    }, 400);
     </script>
 </body>
 </html>

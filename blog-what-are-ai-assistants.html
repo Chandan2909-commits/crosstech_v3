@@ -77,7 +77,15 @@
             opacity: 1;
             transform: translateY(0);
         }
-    </style>
+            /* -- Mobile Safety: reveal immediately if viewport is small or JS is slow -- */
+        @media (max-width: 640px) {
+            .reveal-element,
+            .reveal-left,
+            .reveal-right,
+            .reveal-scale {
+                transition-duration: 0.55s;
+            }
+        }</style>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -172,7 +180,7 @@
         }
     </script>
 </head>
-<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-background overflow-x-hidden">
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-background overflow-x-clip">
 <!-- Top Navigation Bar -->
 <nav class="fixed top-0 left-0 w-full z-50 px-4">
     <div class="liquid-glass liquid-nav flex justify-between items-center px-5 md:px-8 py-3 relative">
@@ -343,24 +351,36 @@
         }
 
         // Scroll Reveal Entrance Animations
-        const revealOptions = {
-            threshold: 0.05,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    observer.unobserve(entry.target);
+    // -- Bidirectional Scroll Reveal --
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const el = entry.target;
+            if (entry.isIntersecting) {
+                el.classList.remove('exit-up');
+                el.classList.add('revealed');
+            } else {
+                if (entry.boundingClientRect.top < 0) {
+                    el.classList.add('exit-up');
+                    el.classList.remove('revealed');
+                } else {
+                    el.classList.remove('revealed', 'exit-up');
                 }
-            });
-        }, revealOptions);
-
-        document.querySelectorAll('.reveal-element').forEach(el => {
-            revealObserver.observe(el);
+            }
         });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+    document.querySelectorAll('.reveal-element, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
     });
-</script>
+    // -- Mobile Safety Fallback --
+    // If observer never fires (slow mobile/iOS quirk), force reveal after delay
+    setTimeout(() => {
+        document.querySelectorAll('.reveal-element:not(.revealed), .reveal-left:not(.revealed), .reveal-right:not(.revealed), .reveal-scale:not(.revealed)').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('revealed');
+            }
+        });
+    }, 400);
+    </script>
 </body>
 </html>
