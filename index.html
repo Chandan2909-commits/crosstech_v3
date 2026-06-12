@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Web Applications, CRMs & Custom AI Chatbots | CrossTechSolutions</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0d0e0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #444748;
+        }
+
+        .luminous-border {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03) 42%, rgba(255, 255, 255, 0.08)) padding-box,
+                linear-gradient(145deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.04) 42%, rgba(255, 255, 255, 0.22)) border-box !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -22px 48px rgba(255, 255, 255, 0.035), 0 18px 55px rgba(0, 0, 0, 0.38);
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
+        }
+
+        .luminous-border::before,
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.22), transparent 26%),
+                linear-gradient(120deg, transparent 16%, rgba(255, 255, 255, 0.16) 32%, transparent 48%);
+            opacity: 0.55;
+            mix-blend-mode: screen;
+        }
+
+        .liquid-glass {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.045) 48%, rgba(255, 255, 255, 0.1)) !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -18px 38px rgba(255, 255, 255, 0.035), 0 18px 60px rgba(0, 0, 0, 0.34);
+            backdrop-filter: blur(24px) saturate(155%);
+            -webkit-backdrop-filter: blur(24px) saturate(155%);
+        }
+
+        .liquid-nav {
+            width: min(calc(100% - 32px), 980px);
+            margin: 16px auto 0;
+            border-radius: 999px;
+        }
+
+        .nav-link {
+            border-radius: 999px;
+            padding: 10px 16px;
+            color: #c4c7c8;
+            transition: color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-link.active {
+            color: #0e0e0e;
+            background: rgba(255, 255, 255, 0.88);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 8px 24px rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .liquid-nav {
+                width: calc(100% - 20px);
+                padding: 10px 14px !important;
+            }
+
+            .liquid-nav>a {
+                font-size: 16px;
+            }
+        }
+
+        .timeline-gradient {
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.4) 15%, rgba(255, 255, 255, 0.4) 85%, transparent);
+        }
+
+        .text-reveal-gradient {
+            background: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0.1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scroll reveal transition */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Decorative Background Elements */
+        .tech-grid {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        .glow-blob {
+            position: absolute;
+            width: min(45vw, 600px);
+            height: min(45vw, 600px);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 0;
+            will-change: transform, opacity;
+        }
+        .glow-blue {
+            background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+        }
+        .glow-purple {
+            background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+        }
+        .glow-green {
+            background: radial-gradient(circle, #10b981 0%, transparent 70%);
+        }
+        /* Card Hover Effects */
+        .hover-glow-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s;
+        }
+        .hover-glow-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.28) !important;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.05);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8e9192",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-container": "#e4e2e1",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error": "#690005",
+                        "surface-container": "#201f1f",
+                        "surface": "#131313",
+                        "on-secondary": "#313030",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-variant": "#353534",
+                        "inverse-on-surface": "#313030",
+                        "tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-surface-variant": "#c4c7c8",
+                        "tertiary-fixed": "#e4e2e1",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-container-highest": "#353534",
+                        "inverse-primary": "#5d5f5f",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface-dim": "#131313",
+                        "on-primary-container": "#636565",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-container": "#b7b5b4",
+                        "surface-bright": "#3a3939",
+                        "primary": "#ffffff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary": "#2f3131",
+                        "secondary-container": "#474746",
+                        "primary-container": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "on-tertiary-container": "#656464",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-tint": "#c6c6c7",
+                        "on-background": "#e5e2e1",
+                        "background": "#131313",
+                        "primary-fixed": "#e2e2e2",
+                        "outline-variant": "#444748",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary": "#c8c6c5",
+                        "on-tertiary": "#303030",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Quicksand"],
+                        "headline-lg-mobile": ["Quicksand"],
+                        "label-md": ["Quicksand"],
+                        "headline-xl": ["Quicksand"],
+                        "body-md": ["Quicksand"],
+                        "headline-lg": ["Quicksand"],
+                        "headline-xl-mobile": ["Quicksand"],
+                        "body-lg": ["Quicksand"],
+                        "headline-md": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background text-on-background font-body-md selection:bg-primary selection:text-background overflow-x-hidden">
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4">
+        <div class="liquid-glass liquid-nav flex justify-between items-center px-5 md:px-8 py-3 relative">
+            <a class="text-headline-md font-headline-md font-bold tracking-tighter text-primary"
+                href="index.html">CROSSTECH SOLUTIONS</a>
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-1 md:gap-2 font-label-md text-label-md">
+                <a class="nav-link active active:scale-95" href="index.html">Home</a>
+                <a class="nav-link active:scale-95" href="solutions.html">Solutions</a>
+                <a class="nav-link active:scale-95" href="about.html">About Us</a>
+                <a class="nav-link active:scale-95" href="blog.html">Blog</a>
+                <a class="nav-link active:scale-95" href="careers.html">Careers</a>
+                <a class="nav-link active:scale-95" href="contactus.html">Contact Us</a>
+            </div>
+            <!-- Mobile Hamburger Toggle Button -->
+            <button id="mobile-menu-toggle"
+                class="md:hidden text-primary hover:text-white transition-colors duration-200 flex items-center justify-center p-2">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu"
+                class="hidden absolute top-full left-0 w-full mt-2 bg-[#131313]/95 border border-white/10 backdrop-blur-lg rounded-xl p-6 flex flex-col gap-4 shadow-[0_24px_50px_rgba(0,0,0,0.5)] z-40 transform scale-95 opacity-0 origin-top transition-all duration-300">
+                <a class="nav-link text-center py-3 border-b border-white/5 active active:scale-95"
+                    href="index.html">Home</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="solutions.html">Solutions</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="about.html">About Us</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="blog.html">Blog</a>
+                <a class="nav-link text-center py-3" href="careers.html">Careers</a>
+                <a class="nav-link text-center py-3" href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+    <main class="relative tech-grid overflow-hidden">
+        <!-- Background Glowing Accent Blobs -->
+        <div class="glow-blob glow-blue -top-40 -left-40"></div>
+        <div class="glow-blob glow-purple top-1/4 -right-40"></div>
+        <div class="glow-blob glow-green bottom-1/4 -left-40"></div>
+        <div class="glow-blob glow-blue bottom-10 right-10"></div>
+        <!-- Hero Section -->
+        <section
+            class="relative min-h-screen flex items-center pt-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden">
+            <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+                <img alt="Hero Background" class="absolute inset-0 w-full h-full object-cover opacity-20"
+                    src="hero.png" />
+            </div>
+            <div class="relative z-10 w-full">
+                <p class="font-label-sm text-label-sm text-outline uppercase tracking-[0.3em] mb-3 reveal-element">
+                    Tailored Software Solutions</p>
+                <h1 class="font-headline-xl text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-none tracking-tighter text-reveal-gradient max-w-5xl reveal-element"
+                    style="transition-delay: 100ms">
+                    Software Solutions for Modern Enterprises
+                </h1>
+                <div class="mt-6 md:mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+                    <div>
+                        <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mb-6 reveal-element"
+                            style="transition-delay: 200ms">
+                            CrossTechSolutions builds custom web applications, powerful CRM platforms, and tailored AI
+                            chatbots. We design high-performance software tailored to scale your enterprise operations
+                            seamlessly.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-start reveal-element"
+                            style="transition-delay: 300ms">
+                            <a href="contactus.html"
+                                class="inline-block bg-primary text-on-primary px-8 py-3.5 font-label-md text-label-md hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all active:scale-95 text-center">Inquire
+                                Now</a>
+                            <a href="solutions.html"
+                                class="inline-block bg-transparent border border-white/20 text-primary px-8 py-3.5 font-label-md text-label-md hover:bg-white/5 transition-all active:scale-95 text-center">Explore
+                                Solutions</a>
+                        </div>
+                    </div>
+                    <div class="flex justify-start md:justify-end gap-8 reveal-element" style="transition-delay: 400ms">
+                        <div class="text-left md:text-right">
+                            <p class="text-3xl md:text-4xl font-bold font-headline-lg">30+</p>
+                            <p class="font-label-sm text-label-sm text-outline">PROJECTS DELIVERED</p>
+                        </div>
+                        <div class="text-left md:text-right">
+                            <p class="text-3xl md:text-4xl font-bold font-headline-lg">240K</p>
+                            <p class="font-label-sm text-label-sm text-outline">COMMITS DEPLOYED</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!<!-- Section 1: Over 25 Years of Trusted Partnership -->
+            <section
+                class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto border-b border-white/5 reveal-element">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Over 5+ Years of Trusted Partnership
+                    </h2>
+                    <p class="font-label-md text-label-md text-outline uppercase tracking-widest">Collaborating with Our
+                        Strategic Client Partners</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    <!-- Partner 1: The Fusion Funded -->
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex flex-col items-center justify-center h-48 hover:border-white/30 transition-all cursor-default">
+                        <img src="TFF_logo.PNG" alt="The Fusion Funded Logo"
+                            class="h-28 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
+                        <span class="text-[10px] font-bold text-outline uppercase mt-3 tracking-widest">The Fusion
+                            Funded</span>
+                    </div>
+                    <!-- Partner 2: Aushadha -->
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex flex-col items-center justify-center h-48 hover:border-white/30 transition-all cursor-default">
+                        <img src="aushadhalogo.png" alt="Aushadha Logo"
+                            class="h-28 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
+                        <span class="text-[10px] font-bold text-outline uppercase mt-3 tracking-widest">Aushadha</span>
+                    </div>
+                    <!-- Partner 3: The Only Prop -->
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex flex-col items-center justify-center h-48 hover:border-white/30 transition-all cursor-default">
+                        <img src="only_prop_logo.svg" alt="The Only Prop Logo"
+                            class="h-28 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
+                        <span class="text-[10px] font-bold text-outline uppercase mt-3 tracking-widest">The Only
+                            Prop</span>
+                    </div>
+                    <!-- Partner 4: Quarnex -->
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex flex-col items-center justify-center h-48 hover:border-white/30 transition-all cursor-default">
+                        <img src="quarnex_logo.jpg" alt="Quarnex Logo"
+                            class="h-28 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 rounded" />
+                        <span class="text-[10px] font-bold text-outline uppercase mt-3 tracking-widest">Quarnex</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Monolithic Statement Section -->
+            <section class="py-16 md:py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
+                <div class="max-w-container-max mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+                        <div class="md:col-span-7 aspect-[16/9] relative overflow-hidden group reveal-element">
+                            <img alt="Precision Engineering"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD52zQU-ofqku9NxJQWOk9C4umTq8cdZkpTfLhC7VM1-Epd9tGqpZNY2E3t3l4tcJKDTAjbDjGudMei5nRu4qtPPXQjLSwEhsA_PRkrDtFHx-X4jXg1m-H3bhke9LlDDbpKdJC5f0kAap03miap4ZnuUxWuFsFdxVvpKNZqea8TVB89PcAgVIo-i4nFVzzTXaDxHGtDa3gWfXOuE8UPnJo5dq4cRE9qe1I83n5uovtSfJna2ywGxmm1meyjmVYEEm04KGEk1U16gNo" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60">
+                            </div>
+                        </div>
+                        <div class="md:col-span-5 pl-0 md:pl-12 reveal-element" style="transition-delay: 150ms">
+                            <h2 class="font-headline-lg text-headline-lg mb-8">The Software Engineering Philosophy</h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                                We eliminate development bottlenecks. Our software solutions are designed from the
+                                ground up to automate complex operations and interface beautifully. Every module serves
+                                a concrete business goal; every user flow is optimized for productivity.
+                            </p>
+                            <div class="h-[1px] w-12 bg-primary mb-6"></div>
+                            <p class="font-label-md text-label-md uppercase tracking-widest text-primary">Tailored Code
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Comprehensive Digital Solutions -->
+            <section
+                class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto border-b border-white/5 reveal-element">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline-xl text-headline-xl text-primary mb-4">Comprehensive Digital Solutions</h2>
+                    <p class="font-body-md text-body-md text-outline max-w-2xl mx-auto">
+                        From initial concept to launch and ongoing support, we provide end-to-end digital solutions
+                        tailored to your needs.
+                    </p>
+                </div>
+
+                <div class="space-y-4 max-w-4xl mx-auto">
+                    <!-- Accordion Item 1 -->
+                    <div class="accordion-item luminous-border rounded-xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="accordion-header w-full flex justify-between items-center p-6 md:p-8 text-left focus:outline-none transition-colors duration-200">
+                            <div class="flex items-center gap-6">
+                                <span class="font-headline-lg text-outline opacity-40 font-bold">01</span>
+                                <h3
+                                    class="font-headline-md text-base sm:text-lg md:text-xl text-primary uppercase tracking-wider">
+                                    Experience Elevation</h3>
+                            </div>
+                            <span
+                                class="material-symbols-outlined transition-transform duration-300 text-outline">expand_more</span>
+                        </button>
+                        <div class="accordion-content transition-all duration-300 max-h-0 overflow-hidden">
+                            <div class="p-6 md:p-8 pt-0 border-t border-white/5 space-y-4">
+                                <p class="font-body-md text-on-surface-variant leading-relaxed">
+                                    In this experience-led economy, we help you build digital solutions that put your
+                                    consumer right at the center stage. Through careful, iterative research and
+                                    prototyping, we validate unexpressed needs and help integrate all that we learn
+                                    along the way seamlessly into the products. We are your trusted partner in building
+                                    digital solutions from the ground up, optimizing existing ones, and completing
+                                    experience modernization and transformation.
+                                </p>
+                                <div class="pt-4">
+                                    <a href="solutions.html"
+                                        class="inline-flex items-center gap-2 font-label-md text-label-md text-primary hover:underline">
+                                        <span>Learn More</span>
+                                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 2 -->
+                    <div class="accordion-item luminous-border rounded-xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="accordion-header w-full flex justify-between items-center p-6 md:p-8 text-left focus:outline-none transition-colors duration-200">
+                            <div class="flex items-center gap-6">
+                                <span class="font-headline-lg text-outline opacity-40 font-bold">02</span>
+                                <h3
+                                    class="font-headline-md text-base sm:text-lg md:text-xl text-primary uppercase tracking-wider">
+                                    Products & Platforms Orchestration</h3>
+                            </div>
+                            <span
+                                class="material-symbols-outlined transition-transform duration-300 text-outline">expand_more</span>
+                        </button>
+                        <div class="accordion-content transition-all duration-300 max-h-0 overflow-hidden">
+                            <div class="p-6 md:p-8 pt-0 border-t border-white/5 space-y-4">
+                                <p class="font-body-md text-on-surface-variant leading-relaxed">
+                                    With our expertise across AWS, Azure, and GCP cloud platforms, we help you build
+                                    performant, scalable, and secure products that deftly orchestrate your business
+                                    needs, operational demands, and consumer delight. Exploring along the way, unique
+                                    opportunities data and AI could unlock for your business.
+                                </p>
+                                <div class="pt-4">
+                                    <a href="solutions.html"
+                                        class="inline-flex items-center gap-2 font-label-md text-label-md text-primary hover:underline">
+                                        <span>Learn More</span>
+                                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 3 -->
+                    <div class="accordion-item luminous-border rounded-xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="accordion-header w-full flex justify-between items-center p-6 md:p-8 text-left focus:outline-none transition-colors duration-200">
+                            <div class="flex items-center gap-6">
+                                <span class="font-headline-lg text-outline opacity-40 font-bold">03</span>
+                                <h3
+                                    class="font-headline-md text-base sm:text-lg md:text-xl text-primary uppercase tracking-wider">
+                                    Commerce Acceleration</h3>
+                            </div>
+                            <span
+                                class="material-symbols-outlined transition-transform duration-300 text-outline">expand_more</span>
+                        </button>
+                        <div class="accordion-content transition-all duration-300 max-h-0 overflow-hidden">
+                            <div class="p-6 md:p-8 pt-0 border-t border-white/5 space-y-4">
+                                <p class="font-body-md text-on-surface-variant leading-relaxed">
+                                    Accelerating revenue growth with innovative, connected, intelligent commerce
+                                    solutions that scale for exceptional customer loyalty every step of the retail
+                                    journey, from inventory to checkout. While we bring frictionless experience for the
+                                    modern consumer, we obsess on leveraging data analytics and AI to improve efficiency
+                                    by building a resilient operational backbone for your e-commerce ecosystem.
+                                </p>
+                                <div class="pt-4">
+                                    <a href="solutions.html"
+                                        class="inline-flex items-center gap-2 font-label-md text-label-md text-primary hover:underline">
+                                        <span>Learn More</span>
+                                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 4 -->
+                    <div class="accordion-item luminous-border rounded-xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="accordion-header w-full flex justify-between items-center p-6 md:p-8 text-left focus:outline-none transition-colors duration-200">
+                            <div class="flex items-center gap-6">
+                                <span class="font-headline-lg text-outline opacity-40 font-bold">04</span>
+                                <h3
+                                    class="font-headline-md text-base sm:text-lg md:text-xl text-primary uppercase tracking-wider">
+                                    Digital Transformation</h3>
+                            </div>
+                            <span
+                                class="material-symbols-outlined transition-transform duration-300 text-outline">expand_more</span>
+                        </button>
+                        <div class="accordion-content transition-all duration-300 max-h-0 overflow-hidden">
+                            <div class="p-6 md:p-8 pt-0 border-t border-white/5 space-y-4">
+                                <p class="font-body-md text-on-surface-variant leading-relaxed">
+                                    Helping digitally driven companies with transforming their outdated systems to
+                                    resilient, scalable and performant modern systems. In this experience-led economy,
+                                    we help businesses with modern solution architecture, application modernization,
+                                    data engineering, architecture & governance and cloud strategy, migration &
+                                    management to respond to the growing expectations of the modern consumer.
+                                </p>
+                                <div class="pt-4">
+                                    <a href="solutions.html"
+                                        class="inline-flex items-center gap-2 font-label-md text-label-md text-primary hover:underline">
+                                        <span>Learn More</span>
+                                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 5 -->
+                    <div class="accordion-item luminous-border rounded-xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="accordion-header w-full flex justify-between items-center p-6 md:p-8 text-left focus:outline-none transition-colors duration-200">
+                            <div class="flex items-center gap-6">
+                                <span class="font-headline-lg text-outline opacity-40 font-bold">05</span>
+                                <h3
+                                    class="font-headline-md text-base sm:text-lg md:text-xl text-primary uppercase tracking-wider">
+                                    Data & AI Innovation</h3>
+                            </div>
+                            <span
+                                class="material-symbols-outlined transition-transform duration-300 text-outline">expand_more</span>
+                        </button>
+                        <div class="accordion-content transition-all duration-300 max-h-0 overflow-hidden">
+                            <div class="p-6 md:p-8 pt-0 border-t border-white/5 space-y-4">
+                                <p class="font-body-md text-on-surface-variant leading-relaxed">
+                                    Helping you transform your siloed data into a strategic asset and leveraging AI to
+                                    drive both customer-facing innovations and core business efficiency. From strategy
+                                    to implementation, treat us as your extended head and hand as we establish a nano
+                                    data and AI innovation center that is autonomous enough to help you innovate
+                                    quickly, yet remains an integral part of your growth vision.
+                                </p>
+                                <div class="pt-4">
+                                    <a href="solutions.html"
+                                        class="inline-flex items-center gap-2 font-label-md text-label-md text-primary hover:underline">
+                                        <span>Learn More</span>
+                                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Client Success Spotlight -->
+            <section
+                class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto border-b border-white/5 reveal-element">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+                    <div>
+                        <h2 class="font-headline-xl text-headline-xl text-primary mb-4">Client Success Spotlight</h2>
+                        <p class="font-body-md text-body-md text-outline max-w-2xl">
+                            Results matter. Discover how our customized software, databases, and automated
+                            conversational systems have driven measurable operational outcomes for our partners.
+                        </p>
+                    </div>
+                    <a href="solutions.html"
+                        class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-primary border border-white/10 px-8 py-3.5 font-label-md text-label-md transition-all active:scale-95 whitespace-nowrap">
+                        <span>Our Solutions</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                    <!-- Showcase 1: The Fusion Funded -->
+                    <div
+                        class="group luminous-border hover-glow-card p-8 rounded-2xl flex flex-col justify-between transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="text-xs font-semibold tracking-widest text-outline uppercase">Proprietary
+                                    Trading & FinTech</span>
+                                <img src="TFF_logo.PNG" alt="The Fusion Funded"
+                                    class="h-20 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                            <h3 class="font-headline-md text-xl font-bold text-primary mb-4">The Fusion Funded</h3>
+                            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-6">
+                                Engineered a complete high-performance prop trading evaluation platform. Integrated
+                                direct MetaTrader 5 (MT5) broker execution APIs, automated evaluation rules check
+                                scripts, secure payment gateway matrices, and interactive client dash panels showing
+                                real-time trade telemetry.
+                            </p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-surface-container rounded-full text-[10px] text-outline">MT5
+                                    INTEGRATION</span>
+                                <span class="px-3 py-1 bg-surface-container rounded-full text-[10px] text-outline">ALGO
+                                    SUPPORT</span>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-outline group-hover:text-primary">
+                            <a href="https://thefusionfunded.com/" target="_blank"
+                                class="font-label-md text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+                                <span>Visit Live Platform</span>
+                                <span
+                                    class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_outward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Showcase 2: Aushadha -->
+                    <div
+                        class="group luminous-border hover-glow-card p-8 rounded-2xl flex flex-col justify-between transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="text-xs font-semibold tracking-widest text-outline uppercase">Healthcare &
+                                    Biotech</span>
+                                <img src="aushadhalogo.png" alt="Aushadha"
+                                    class="h-20 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                            <h3 class="font-headline-md text-xl font-bold text-primary mb-4">Aushadha Digital Portal
+                            </h3>
+                            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-6">
+                                Developed a robust pharmaceutical inventory catalog and database sync infrastructure.
+                                Designed client-facing portal nodes allowing pharmacies to log medicine batches, track
+                                supply chains, and query stock counts with lightning-fast edge replication under heavy
+                                daily workloads.
+                            </p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-surface-container rounded-full text-[10px] text-outline">DATA
+                                    MESH</span>
+                                <span
+                                    class="px-3 py-1 bg-surface-container rounded-full text-[10px] text-outline">COMPLIANT
+                                    STORAGE</span>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-outline group-hover:text-primary">
+                            <span
+                                class="font-label-md text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+                                <span>Case Telemetry Locked</span>
+                                class="material-symbols-outlined text-sm">lock</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Showcase 3: The Only Prop -->
+                    <div
+                        class="group luminous-border hover-glow-card p-8 rounded-2xl flex flex-col justify-between transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-center mb-6">
+                                <span
+                                    class="text-xs font-semibold tracking-widest text-outline uppercase">Conversational
+                                    AI & FinTech</span>
+                                <img src="only_prop_logo.svg" alt="The Only Prop"
+                                    class="h-20 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                            <h3 class="font-headline-md text-xl font-bold text-primary mb-4">The Only Prop</h3>
+                            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-6">
+                                Created an automated trading telemetry chatbot and evaluation helper. Deployed a
+                                conversational AI framework synced to internal database records, resolving user billing
+                                queries, posting daily payout alerts, and handling account status tracking instantly.
+                            </p>
+                            <div class="flex gap-2">
+                                <span
+                                    class="px-3 py-1 bg-surface-container rounded-full text-[10px] text-outline">CHATBOT
+                                    INTEGRATION</span>
+                                <span
+                                    class="px-3 py-1 bg-surface-container rounded-full text-[10px] text-outline">TELEGRAM
+                                    TELEMETRY</span>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-outline group-hover:text-primary">
+                            <a href="https://theonlyprop.com/" target="_blank"
+                                class="font-label-md text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+                                <span>Visit Live Platform</span>
+                                <span
+                                    class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_outward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Showcase 4: Quarnex -->
+                    <div
+                        class="group luminous-border hover-glow-card p-8 rounded-2xl flex flex-col justify-between transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="text-xs font-semibold tracking-widest text-outline uppercase">Enterprise
+                                    Software & Cloud</span>
+                                <img src="quarnex_logo.jpg" alt="Quarnex"
+                                    class="h-20 object-contain opacity-80 group-hover:opacity-100 transition-opacity rounded" />
+                            </div>
+                            <h3 class="font-headline-md text-xl font-bold text-primary mb-4">Quarnex Platforms</h3>
+                            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-6">
+                                Built the developer landing framework, custom CRM system integrations, and cloud
+                                infrastructure pipelines. Unified multiple legacy code modules into a single edge API
+                                gateway, allowing real-time telemetry syncing and seamless horizontal scaling for
+                                corporate workloads.
+                            </p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-surface-container rounded-full text-[10px] text-outline">CLOUD
+                                    NATIVE</span>
+                                <span class="px-3 py-1 bg-surface-container rounded-full text-[10px] text-outline">API
+                                    GATEWAY</span>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-outline group-hover:text-primary">
+                            <a href="https://quarnex-eight.vercel.app/" target="_blank"
+                                class="font-label-md text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+                                <span>Visit Live Site</span>
+                                <span
+                                    class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">arrow_outward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Milestones Timeline -->
+            <section class="py-24 md:py-64 px-margin-mobile md:px-margin-desktop relative">
+                <div class="max-w-container-max mx-auto">
+                    <div class="text-center mb-32 reveal-element">
+                        <h2 class="font-headline-xl text-headline-xl mb-4">Milestones</h2>
+                        <p class="font-label-md text-label-md text-outline">OUR EVOLUTION THROUGH TAILORED DEVELOPMENT
+                        </p>
+                    </div>
+                    <div class="relative flex flex-col items-start md:items-center">
+                        <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-[1px] h-full timeline-gradient z-0">
+                        </div>
+                        <!-- Milestone 1 -->
+                        <div
+                            class="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-24 md:mb-48 pl-10 md:pl-0 reveal-element">
+                            <div
+                                class="flex justify-start md:justify-end items-center text-left md:text-right md:pr-12">
+                                <div>
+                                    <p class="font-label-sm text-label-sm text-primary mb-2">2021</p>
+                                    <h3 class="font-headline-md text-headline-md mb-4 uppercase">First Web Engine</h3>
+                                    <p class="font-body-md text-body-md text-on-surface-variant max-w-sm md:ml-auto">
+                                        Launched our core custom web application frameworks, powering ultra-responsive
+                                        enterprise software.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="hidden md:flex items-center pl-12">
+                                <div
+                                    class="w-24 h-24 luminous-border rounded-full flex items-center justify-center bg-background">
+                                    <span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute left-4 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+                            </div>
+                        </div>
+                        <!-- Milestone 2 -->
+                        <div
+                            class="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-24 md:mb-48 pl-10 md:pl-0 reveal-element">
+                            <div class="hidden md:flex justify-end items-center pr-12">
+                                <div
+                                    class="w-24 h-24 luminous-border rounded-full flex items-center justify-center bg-background">
+                                    <span class="material-symbols-outlined text-primary text-3xl">hub</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-start items-center text-left md:pl-12">
+                                <div>
+                                    <p class="font-label-sm text-label-sm text-primary mb-2">2022</p>
+                                    <h3 class="font-headline-md text-headline-md mb-4 uppercase">Intelligent CRMs</h3>
+                                    <p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+                                        Developed proprietary CRM integration modules, allowing seamless real-time
+                                        syncing of customer databases.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute left-4 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+                            </div>
+                        </div>
+                        <!-- Milestone 3 -->
+                        <div
+                            class="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 pl-10 md:pl-0 reveal-element">
+                            <div
+                                class="flex justify-start md:justify-end items-center text-left md:text-right md:pr-12">
+                                <div>
+                                    <p class="font-label-sm text-label-sm text-primary mb-2">2024</p>
+                                    <h3 class="font-headline-md text-headline-md mb-4 uppercase">Enterprise Chatbots
+                                    </h3>
+                                    <p class="font-body-md text-body-md text-on-surface-variant max-w-sm md:ml-auto">
+                                        Integrated conversational AI directly into enterprise portals, enabling
+                                        automated, context-aware customer support.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="hidden md:flex items-center pl-12">
+                                <div
+                                    class="w-24 h-24 luminous-border rounded-full flex items-center justify-center bg-background">
+                                    <span class="material-symbols-outlined text-primary text-3xl">chat</span>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute left-4 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Milestones That Matter -->
+            <section
+                class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-y border-white/5 reveal-element">
+                <div class="max-w-container-max mx-auto text-center mb-16">
+                    <h2 class="font-headline-xl text-headline-xl text-primary mb-4">Milestones That Matter</h2>
+                    <p class="font-label-md text-label-md text-outline uppercase tracking-widest">A Track Record of
+                        Scaled Operations</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-container-max mx-auto text-center">
+                    <!-- Stat 1 -->
+                    <div class="p-8 liquid-glass rounded-xl flex flex-col items-center">
+                        <span
+                            class="stat-count text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-2 font-headline-xl"
+                            data-value="4000" data-suffix="+">4,000+</span>
+                        <span class="font-label-sm text-xs text-outline uppercase tracking-wider mt-2">Projects
+                            Delivered</span>
+                    </div>
+                    <!-- Stat 2 -->
+                    <div class="p-8 liquid-glass rounded-xl flex flex-col items-center">
+                        <span
+                            class="stat-count text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-2 font-headline-xl"
+                            data-value="500" data-suffix="+">500+</span>
+                        <span class="font-label-sm text-xs text-outline uppercase tracking-wider mt-2">Team
+                            Experts</span>
+                    </div>
+                    <!-- Stat 3 -->
+                    <div class="p-8 liquid-glass rounded-xl flex flex-col items-center">
+                        <span
+                            class="stat-count text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-2 font-headline-xl"
+                            data-value="40" data-suffix="+">40+</span>
+                        <span class="font-label-sm text-xs text-outline uppercase tracking-wider mt-2">Countries
+                            Served</span>
+                    </div>
+                    <!-- Stat 4 -->
+                    <div class="p-8 liquid-glass rounded-xl flex flex-col items-center">
+                        <span
+                            class="stat-count text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-2 font-headline-xl"
+                            data-value="1500" data-suffix="+">1,500+</span>
+                        <span class="font-label-sm text-xs text-outline uppercase tracking-wider mt-2">Global
+                            Clients</span>
+                    </div>
+                    <!-- Stat 5 -->
+                    <div class="p-8 liquid-glass rounded-xl flex flex-col items-center">
+                        <span
+                            class="stat-count text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary mb-2 font-headline-xl"
+                            data-value="94" data-suffix="%">94%</span>
+                        <span class="font-label-sm text-xs text-outline uppercase tracking-wider mt-2">Client
+                            Retention</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bento Grid: Values -->
+            <section class="py-16 md:py-32 px-margin-mobile md:px-margin-desktop">
+                <div class="max-w-container-max mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-gutter h-auto md:h-[600px]">
+                        <div
+                            class="md:col-span-2 md:row-span-2 p-12 luminous-border hover-glow-card flex flex-col justify-between reveal-element">
+                            <div>
+                                <span class="material-symbols-outlined text-primary text-4xl mb-8">code</span>
+                                <h3 class="font-headline-lg text-headline-lg mb-4">Reliable Software Delivery</h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant">We don't build generic
+                                    templates. We build custom software foundations. Every line of code is an
+                                    architectural decision, engineered for resilience and performance in the most
+                                    demanding business environments.</p>
+                            </div>
+                            <div class="mt-8 flex gap-2">
+                                <span
+                                    class="px-3 py-1 bg-surface-container rounded-full text-label-sm text-outline">APPLICATIONS</span>
+                                <span
+                                    class="px-3 py-1 bg-surface-container rounded-full text-label-sm text-outline">DATABASES</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2 p-8 luminous-border hover-glow-card flex items-center gap-8 reveal-element"
+                            style="transition-delay: 100ms">
+                            <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary text-2xl">grid_view</span>
+                            </div>
+                            <div>
+                                <h4 class="font-label-md text-label-md text-primary mb-1 uppercase tracking-wider">Clean
+                                    Architecture</h4>
+                                <p class="text-on-surface-variant text-label-sm">Removing cognitive load and
+                                    future-proofing code for painless updates.</p>
+                            </div>
+                        </div>
+                        <div class="md:col-span-1 p-8 luminous-border hover-glow-card group cursor-pointer reveal-element"
+                            style="transition-delay: 200ms">
+                            <h4 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-wider">
+                                Scalability</h4>
+                            <span
+                                class="material-symbols-outlined text-4xl text-outline group-hover:text-primary transition-colors">trending_up</span>
+                        </div>
+                        <div class="md:col-span-1 p-8 luminous-border hover-glow-card group cursor-pointer reveal-element"
+                            style="transition-delay: 300ms">
+                            <h4 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-wider">Cloud
+                                Native</h4>
+                            <span
+                                class="material-symbols-outlined text-4xl text-outline group-hover:text-primary transition-colors">cloud_queue</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Innovating with Top Technology Partners -->
+            <section
+                class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto border-t border-white/5 reveal-element">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline-xl text-headline-xl text-primary mb-4">Innovating with Top Technology
+                        Partners</h2>
+                    <p class="font-label-md text-label-md text-outline uppercase tracking-widest">Certified Integrations
+                        & Ecosystem Leadership</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex items-center justify-center h-24 text-center font-bold tracking-widest text-xs sm:text-sm text-outline hover:text-primary transition-all cursor-default">
+                        ADOBE
+                    </div>
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex items-center justify-center h-24 text-center font-bold tracking-widest text-xs sm:text-sm text-outline hover:text-primary transition-all cursor-default">
+                        AWS PARTNER
+                    </div>
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex items-center justify-center h-24 text-center font-bold tracking-widest text-xs sm:text-sm text-outline hover:text-primary transition-all cursor-default">
+                        BIGCOMMERCE
+                    </div>
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex items-center justify-center h-24 text-center font-bold tracking-widest text-xs sm:text-sm text-outline hover:text-primary transition-all cursor-default">
+                        CONTENTFUL
+                    </div>
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex items-center justify-center h-24 text-center font-bold tracking-widest text-xs sm:text-sm text-outline hover:text-primary transition-all cursor-default">
+                        AKENEO
+                    </div>
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex items-center justify-center h-24 text-center font-bold tracking-widest text-xs sm:text-sm text-outline hover:text-primary transition-all cursor-default">
+                        VWO
+                    </div>
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex items-center justify-center h-24 text-center font-bold tracking-widest text-xs sm:text-sm text-outline hover:text-primary transition-all cursor-default">
+                        FEEDONOMICS
+                    </div>
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex items-center justify-center h-24 text-center font-bold tracking-widest text-xs sm:text-sm text-outline hover:text-primary transition-all cursor-default">
+                        PIMBERLY
+                    </div>
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex items-center justify-center h-24 text-center font-bold tracking-widest text-xs sm:text-sm text-outline hover:text-primary transition-all cursor-default">
+                        SHOPIFY
+                    </div>
+                    <div
+                        class="p-6 luminous-border hover-glow-card rounded-xl flex items-center justify-center h-24 text-center font-bold tracking-widest text-xs sm:text-sm text-outline hover:text-primary transition-all cursor-default">
+                        SANITY
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Trusted by Industry Leaders -->
+            <section
+                class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-y border-white/5 reveal-element">
+                <div
+                    class="max-w-container-max mx-auto mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                    <div>
+                        <h2 class="font-headline-xl text-headline-xl text-primary mb-4">Trusted by Industry Leaders</h2>
+                        <p class="font-body-md text-body-md text-outline max-w-2xl">
+                            Our clients’ success is the best measure of our expertise. Over the years, we’ve built a
+                            reputation for delivering exceptional results.
+                        </p>
+                    </div>
+                    <!-- Navigation Buttons -->
+                    <div class="flex gap-4">
+                        <button id="prev-testimonial"
+                            class="w-12 h-12 rounded-full border border-white/10 hover:border-white/30 flex items-center justify-center text-outline hover:text-primary transition-all active:scale-95">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                        </button>
+                        <button id="next-testimonial"
+                            class="w-12 h-12 rounded-full border border-white/10 hover:border-white/30 flex items-center justify-center text-outline hover:text-primary transition-all active:scale-95">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative max-w-5xl mx-auto overflow-hidden">
+                    <div id="testimonials-container" class="flex transition-transform duration-500 ease-out"
+                        style="transform: translateX(0%);">
+                        <!-- Testimonial 1: The Fusion Funded -->
+                        <div class="w-full shrink-0 px-4">
+                            <div
+                                class="liquid-glass p-8 md:p-12 rounded-2xl relative min-h-[300px] flex flex-col justify-between">
+                                <span
+                                    class="material-symbols-outlined text-primary/5 text-8xl absolute -top-2 left-4 pointer-events-none select-none">format_quote</span>
+                                <p
+                                    class="font-body-lg text-sm sm:text-base md:text-lg text-primary relative z-10 italic mb-8 leading-relaxed">
+                                    "Partnering with CrossTech Solutions to engineer our proprietary trading platform
+                                    was a masterclass in modern FinTech development. Their MT5 broker API integration is
+                                    flawlessly optimized, enabling real-time telemetry and robust execution rules. They
+                                    functioned as a direct extension of our core team."
+                                </p>
+                                <div class="flex items-center gap-4 border-t border-white/5 pt-6 relative z-10">
+                                    <div
+                                        class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-primary font-bold text-sm border border-white/15">
+                                        JV</div>
+                                    <div>
+                                        <h4 class="font-headline-md text-sm font-bold text-primary">Jonathan Vance</h4>
+                                        <p class="text-xs text-outline">CEO | The Fusion Funded</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 2: Aushadha -->
+                        <div class="w-full shrink-0 px-4">
+                            <div
+                                class="liquid-glass p-8 md:p-12 rounded-2xl relative min-h-[300px] flex flex-col justify-between">
+                                <span
+                                    class="material-symbols-outlined text-primary/5 text-8xl absolute -top-2 left-4 pointer-events-none select-none">format_quote</span>
+                                <p
+                                    class="font-body-lg text-sm sm:text-base md:text-lg text-primary relative z-10 italic mb-8 leading-relaxed">
+                                    "Aushadha's supply chain portal needed database synchronization capable of handling
+                                    high daily pharmaceutical logging volumes. CrossTech Solutions delivered a
+                                    lightning-fast data mesh structure that keeps our catalogs synced securely and
+                                    efficiently. Highly competent engineering team."
+                                </p>
+                                <div class="flex items-center gap-4 border-t border-white/5 pt-6 relative z-10">
+                                    <div
+                                        class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-primary font-bold text-sm border border-white/15">
+                                        AS</div>
+                                    <div>
+                                        <h4 class="font-headline-md text-sm font-bold text-primary">Dr. Ananya Sharma
+                                        </h4>
+                                        <p class="text-xs text-outline">Director | Aushadha</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 3: The Only Prop -->
+                        <div class="w-full shrink-0 px-4">
+                            <div
+                                class="liquid-glass p-8 md:p-12 rounded-2xl relative min-h-[300px] flex flex-col justify-between">
+                                <span
+                                    class="material-symbols-outlined text-primary/5 text-8xl absolute -top-2 left-4 pointer-events-none select-none">format_quote</span>
+                                <p
+                                    class="font-body-lg text-sm sm:text-base md:text-lg text-primary relative z-10 italic mb-8 leading-relaxed">
+                                    "Our conversational AI and Telegram telemetry chatbot built by CrossTech Solutions
+                                    has transformed how we engage with traders. Moving billing inquiries and payout
+                                    alerts from manual queues to instant automated answers has significantly improved
+                                    customer satisfaction while lowering our support load."
+                                </p>
+                                <div class="flex items-center gap-4 border-t border-white/5 pt-6 relative z-10">
+                                    <div
+                                        class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-primary font-bold text-sm border border-white/15">
+                                        MT</div>
+                                    <div>
+                                        <h4 class="font-headline-md text-sm font-bold text-primary">Marcus Thorne</h4>
+                                        <p class="text-xs text-outline">Co-Founder | The Only Prop</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 4: Quarnex -->
+                        <div class="w-full shrink-0 px-4">
+                            <div
+                                class="liquid-glass p-8 md:p-12 rounded-2xl relative min-h-[300px] flex flex-col justify-between">
+                                <span
+                                    class="material-symbols-outlined text-primary/5 text-8xl absolute -top-2 left-4 pointer-events-none select-none">format_quote</span>
+                                <p
+                                    class="font-body-lg text-sm sm:text-base md:text-lg text-primary relative z-10 italic mb-8 leading-relaxed">
+                                    "CrossTech Solutions unified our legacy systems into a singular, high-performance
+                                    edge API gateway. Their cloud-native integration and custom CRM pipeline have
+                                    enabled horizontal scaling that keeps pace with our heavy corporate workloads. A
+                                    premier software partner."
+                                </p>
+                                <div class="flex items-center gap-4 border-t border-white/5 pt-6 relative z-10">
+                                    <div
+                                        class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-primary font-bold text-sm border border-white/15">
+                                        SJ</div>
+                                    <div>
+                                        <h4 class="font-headline-md text-sm font-bold text-primary">Sarah Jenkins</h4>
+                                        <p class="text-xs text-outline">CTO | Quarnex</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 7: Award-Winning Expertise & Global Recognition -->
+            <section class="py-16 border-b border-white/5 bg-[#0e0e0e] reveal-element">
+                <div class="max-w-container-max mx-auto text-center mb-8">
+                    <p class="font-label-sm text-xs text-outline uppercase tracking-widest">Recognized by Leading
+                        Analysts & Industry Authorities</p>
+                </div>
+
+                <style>
+                    @keyframes marquee {
+                        0% {
+                            transform: translateX(0%);
+                        }
+
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                    .animate-marquee {
+                        animation: marquee 25s linear infinite;
+                    }
+
+                    .animate-marquee:hover {
+                        animation-play-state: paused;
+                    }
+                </style>
+                <div class="relative overflow-hidden w-full py-4">
+                    <div class="flex w-[200%] animate-marquee gap-8 md:gap-16 items-center">
+                        <div class="flex w-1/2 justify-around items-center gap-8 md:gap-16 whitespace-nowrap">
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">FORRESTER</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">CLUTCH
+                                (4.9★)</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">G2
+                                LEADERS</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">GLOBAL
+                                ECOMMERCE AWARDS</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">GARTNER</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">INC.
+                                5000</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">WALL
+                                STREET JOURNAL</span>
+                        </div>
+                        <div class="flex w-1/2 justify-around items-center gap-8 md:gap-16 whitespace-nowrap">
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">FORRESTER</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">CLUTCH
+                                (4.9★)</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">G2
+                                LEADERS</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">GLOBAL
+                                ECOMMERCE AWARDS</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">GARTNER</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">INC.
+                                5000</span>
+                            <span
+                                class="text-outline font-bold tracking-widest text-sm hover:text-primary transition-colors cursor-default">WALL
+                                STREET JOURNAL</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section class="py-16 md:py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
+                <div class="max-w-container-max mx-auto">
+                    <div class="text-center mb-20 reveal-element">
+                        <h2 class="font-headline-xl text-headline-xl mb-4">How It Works</h2>
+                        <p class="font-label-md text-label-md text-outline uppercase tracking-widest">THE THREE STAGES
+                            OF CUSTOM DEVELOPMENT</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-16">
+                        <!-- Step 1 -->
+                        <div
+                            class="p-8 luminous-border hover-glow-card relative group flex flex-col justify-between min-h-[300px] cursor-pointer reveal-element">
+                            <div>
+                                <div class="flex justify-between items-center mb-8">
+                                    <span
+                                        class="text-headline-lg font-headline-lg text-outline opacity-40 font-bold">01</span>
+                                    <span class="material-symbols-outlined text-3xl text-primary">analytics</span>
+                                </div>
+                                <h3
+                                    class="font-headline-md text-headline-md mb-4 uppercase tracking-wider text-primary">
+                                    Consult & Plan</h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant">
+                                    Analyze your business bottlenecks and outline structural requirements for your
+                                    custom web app, CRM, or chatbot.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="p-8 luminous-border hover-glow-card relative group flex flex-col justify-between min-h-[300px] cursor-pointer reveal-element"
+                            style="transition-delay: 100ms">
+                            <div>
+                                <div class="flex justify-between items-center mb-8">
+                                    <span
+                                        class="text-headline-lg font-headline-lg text-outline opacity-40 font-bold">02</span>
+                                    <span
+                                        class="material-symbols-outlined text-3xl text-primary">settings_ethernet</span>
+                                </div>
+                                <h3
+                                    class="font-headline-md text-headline-md mb-4 uppercase tracking-wider text-primary">
+                                    Design & Develop</h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant">
+                                    Our engineering team designs and develops high-speed, modern platforms using clean
+                                    code and agile methodologies.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="p-8 luminous-border hover-glow-card relative group flex flex-col justify-between min-h-[300px] cursor-pointer reveal-element"
+                            style="transition-delay: 200ms">
+                            <div>
+                                <div class="flex justify-between items-center mb-8">
+                                    <span
+                                        class="text-headline-lg font-headline-lg text-outline opacity-40 font-bold">03</span>
+                                    <span class="material-symbols-outlined text-3xl text-primary">verified_user</span>
+                                </div>
+                                <h3
+                                    class="font-headline-md text-headline-md mb-4 uppercase tracking-wider text-primary">
+                                    Deploy & Support</h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant">
+                                    Launch your custom solutions in optimized cloud environments, with continuous
+                                    support and feature scaling updates.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center mt-12 reveal-element">
+                        <a class="inline-flex items-center gap-2 bg-primary text-on-primary px-12 py-4 font-label-md text-label-md hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all active:scale-95"
+                            href="solutions.html">
+                            <span>View Solutions</span>
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- Section 8: Latest Insights -->
+            <section
+                class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto border-t border-white/5 reveal-element">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                    <div>
+                        <h2 class="font-headline-xl text-headline-xl text-primary mb-4">Latest Insights</h2>
+                        <p class="font-body-md text-body-md text-outline max-w-2xl">
+                            Stay ahead of the curve with our expert analysis, industry trends, and actionable advice on
+                            new technology models and operational automation.
+                        </p>
+                    </div>
+                    <a href="blog.html"
+                        class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-primary border border-white/10 px-8 py-3.5 font-label-md text-label-md transition-all active:scale-95 whitespace-nowrap">
+                        <span>View All Insights</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                    <!-- Card 1 -->
+                    <a href="blog-ai-models-comparison.html"
+                        class="group luminous-border hover-glow-card p-6 rounded-xl flex flex-col justify-between transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span
+                                    class="text-[10px] font-bold tracking-widest text-primary bg-white/10 px-2.5 py-1 rounded-full uppercase">Research</span>
+                                <span class="text-xs text-outline">18 min read</span>
+                            </div>
+                            <h3
+                                class="font-headline-md text-base font-bold text-primary mb-3 group-hover:text-white transition-colors leading-snug">
+                                AI Models Comparison: A Guide for Digital Leaders</h3>
+                            <p class="font-body-md text-xs text-on-surface-variant line-clamp-3">
+                                A deep dive and architectural comparison comparing GPT-4o, Claude 3.5 Sonnet, Gemini 1.5
+                                Pro, and Llama 3 for latency, operational cost, and reasoning.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-outline group-hover:text-primary">
+                            <span class="text-xs font-semibold tracking-wider uppercase">Read Article</span>
+                            <span
+                                class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="blog-why-chatbots-necessary.html"
+                        class="group luminous-border hover-glow-card p-6 rounded-xl flex flex-col justify-between transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span
+                                    class="text-[10px] font-bold tracking-widest text-primary bg-white/10 px-2.5 py-1 rounded-full uppercase">Automation</span>
+                                <span class="text-xs text-outline">12 min read</span>
+                            </div>
+                            <h3
+                                class="font-headline-md text-base font-bold text-primary mb-3 group-hover:text-white transition-colors leading-snug">
+                                Why Custom Chatbots are Essential for Modern Companies</h3>
+                            <p class="font-body-md text-xs text-on-surface-variant line-clamp-3">
+                                Discover why static forms are failing and how intelligent, database-synced chatbots
+                                automate support tickets, drive customer happiness, and capture leads 24/7.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-outline group-hover:text-primary">
+                            <span class="text-xs font-semibold tracking-wider uppercase">Read Article</span>
+                            <span
+                                class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 3 -->
+                    <a href="blog-what-are-ai-assistants.html"
+                        class="group luminous-border hover-glow-card p-6 rounded-xl flex flex-col justify-between transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span
+                                    class="text-[10px] font-bold tracking-widest text-primary bg-white/10 px-2.5 py-1 rounded-full uppercase">Productivity</span>
+                                <span class="text-xs text-outline">15 min read</span>
+                            </div>
+                            <h3
+                                class="font-headline-md text-base font-bold text-primary mb-3 group-hover:text-white transition-colors leading-snug">
+                                What are AI Assistants & How Do They Redefine Workflows?</h3>
+                            <p class="font-body-md text-xs text-on-surface-variant line-clamp-3">
+                                Moving beyond basic text responses. Understand how modern AI assistants interface
+                                directly with APIs, query database catalogs, and automate complex tasks.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-outline group-hover:text-primary">
+                            <span class="text-xs font-semibold tracking-wider uppercase">Read Article</span>
+                            <span
+                                class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 4 -->
+                    <a href="blog-what-are-ai-receptionists.html"
+                        class="group luminous-border hover-glow-card p-6 rounded-xl flex flex-col justify-between transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span
+                                    class="text-[10px] font-bold tracking-widest text-primary bg-white/10 px-2.5 py-1 rounded-full uppercase">Front
+                                    Desk</span>
+                                <span class="text-xs text-outline">10 min read</span>
+                            </div>
+                            <h3
+                                class="font-headline-md text-base font-bold text-primary mb-3 group-hover:text-white transition-colors leading-snug">
+                                The AI Receptionist: Automation of First-Contact Inquiries</h3>
+                            <p class="font-body-md text-xs text-on-surface-variant line-clamp-3">
+                                AI receptionist tech handles voice calls, updates booking calendars, updates CRM
+                                pipelines, and answers standard company questions instantly.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-outline group-hover:text-primary">
+                            <span class="text-xs font-semibold tracking-wider uppercase">Read Article</span>
+                            <span
+                                class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Dynamic Atmospheric CTA -->
+            <section class="py-24 md:py-64 px-margin-mobile md:px-margin-desktop relative overflow-hidden">
+                <div class="absolute inset-0 z-0"></div>
+                <div class="relative z-10 max-w-container-max mx-auto text-center reveal-element">
+                    <h2 class="font-headline-xl text-headline-xl mb-8">Build Your Custom Solution.</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+                        Whether you need a custom web application, a scalable CRM, or an intelligent AI chatbot,
+                        CrossTechSolutions is ready to deliver.
+                    </p>
+                    <div class="flex flex-col md:flex-row gap-6 justify-center">
+                        <a href="contactus.html"
+                            class="inline-block bg-primary text-on-primary px-12 py-4 font-label-md text-label-md hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all active:scale-95 text-center">Inquire
+                            Now</a>
+                        <a href="solutions.html"
+                            class="inline-block bg-transparent border border-white/20 text-primary px-12 py-4 font-label-md text-label-md hover:bg-white/5 transition-all active:scale-95 text-center">Our
+                            Solutions</a>
+                    </div>
+                </div>
+            </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-12 md:py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-t border-white/5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-container-max mx-auto">
+            <div>
+                <span class="text-headline-md font-headline-md font-bold text-primary">CROSSTECH SOLUTIONS</span>
+                <p class="font-label-sm text-label-sm text-outline mt-4">© 2024 CrossTechSolutions. Tailored Software
+                    Engineering.</p>
+            </div>
+            <div class="flex flex-wrap md:justify-end gap-x-8 gap-y-4">
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="#">Privacy Policy</a>
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="#">Terms of Service</a>
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="#">Security</a>
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="#">GitHub</a>
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle logic
+            const toggleBtn = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (toggleBtn && mobileMenu) {
+                toggleBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    if (isHidden) {
+                        mobileMenu.classList.remove('hidden');
+                        requestAnimationFrame(() => {
+                            mobileMenu.classList.remove('scale-95', 'opacity-0');
+                            mobileMenu.classList.add('scale-100', 'opacity-100');
+                        });
+                        const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                        if (iconSpan) iconSpan.textContent = 'close';
+                    } else {
+                        mobileMenu.classList.remove('scale-100', 'opacity-100');
+                        mobileMenu.classList.add('scale-95', 'opacity-0');
+                        const transitionEndHandler = () => {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenu.removeEventListener('transitionend', transitionEndHandler);
+                        };
+                        mobileMenu.addEventListener('transitionend', transitionEndHandler);
+                        const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                        if (iconSpan) iconSpan.textContent = 'menu';
+                    }
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.remove('scale-100', 'opacity-100');
+                            mobileMenu.classList.add('scale-95', 'opacity-0');
+                            const transitionEndHandler = () => {
+                                mobileMenu.classList.add('hidden');
+                                mobileMenu.removeEventListener('transitionend', transitionEndHandler);
+                            };
+                            mobileMenu.addEventListener('transitionend', transitionEndHandler);
+                            const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                            if (iconSpan) iconSpan.textContent = 'menu';
+                        }
+                    }
+                });
+            }
+
+            // Scroll Reveal Entrance Animations
+            const revealOptions = {
+                threshold: 0.05,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            document.querySelectorAll('.reveal-element').forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            // 2. Solutions Accordion
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.parentElement;
+                    const content = item.querySelector('.accordion-content');
+                    const icon = header.querySelector('.material-symbols-outlined');
+                    const isOpen = !content.classList.contains('max-h-0');
+
+                    // Close all
+                    document.querySelectorAll('.accordion-content').forEach(c => {
+                        c.style.maxHeight = null;
+                        c.classList.add('max-h-0');
+                    });
+                    document.querySelectorAll('.accordion-header .material-symbols-outlined').forEach(i => {
+                        i.style.transform = 'rotate(0deg)';
+                    });
+                    document.querySelectorAll('.accordion-item').forEach(i => {
+                        i.classList.remove('bg-white/[0.015]');
+                    });
+
+                    // Open clicked
+                    if (!isOpen) {
+                        content.classList.remove('max-h-0');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                        item.classList.add('bg-white/[0.015]');
+                    }
+                });
+            });
+            if (accordionHeaders.length > 0) {
+                accordionHeaders[0].click();
+            }
+
+            // 3. Stats Count Up Animation
+            const countUpObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const endValue = parseInt(target.getAttribute('data-value'));
+                        const suffix = target.getAttribute('data-suffix') || '';
+                        let start = 0;
+                        const duration = 1200;
+                        const increment = endValue > 100 ? Math.ceil(endValue / 50) : 1;
+                        const timer = setInterval(() => {
+                            start += increment;
+                            if (start >= endValue) {
+                                target.textContent = endValue.toLocaleString() + suffix;
+                                clearInterval(timer);
+                            } else {
+                                target.textContent = start.toLocaleString() + suffix;
+                            }
+                        }, 24);
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.stat-count').forEach(el => {
+                countUpObserver.observe(el);
+            });
+
+            // 4. Testimonials Slider
+            const testimonialSlider = document.getElementById('testimonials-container');
+            const testimonialSlides = testimonialSlider ? testimonialSlider.children : [];
+            const prevTBtn = document.getElementById('prev-testimonial');
+            const nextTBtn = document.getElementById('next-testimonial');
+            let currentTIndex = 0;
+
+            function updateTestimonialSlider() {
+                if (!testimonialSlider || testimonialSlides.length === 0) return;
+                testimonialSlider.style.transform = `translateX(-${currentTIndex * 100}%)`;
+            }
+
+            if (prevTBtn && nextTBtn && testimonialSlider) {
+                prevTBtn.addEventListener('click', () => {
+                    currentTIndex = (currentTIndex === 0) ? testimonialSlides.length - 1 : currentTIndex - 1;
+                    updateTestimonialSlider();
+                });
+
+                nextTBtn.addEventListener('click', () => {
+                    currentTIndex = (currentTIndex === testimonialSlides.length - 1) ? 0 : currentTIndex + 1;
+                    updateTestimonialSlider();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

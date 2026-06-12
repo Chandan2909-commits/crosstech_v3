@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solutions | CrossTechSolutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8e9192",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-container": "#e4e2e1",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error": "#690005",
+                        "surface-container": "#201f1f",
+                        "surface": "#131313",
+                        "on-secondary": "#313030",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-variant": "#353534",
+                        "inverse-on-surface": "#313030",
+                        "tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-surface-variant": "#c4c7c8",
+                        "tertiary-fixed": "#e4e2e1",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-container-highest": "#353534",
+                        "inverse-primary": "#5d5f5f",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface-dim": "#131313",
+                        "on-primary-container": "#636565",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-container": "#b7b5b4",
+                        "surface-bright": "#3a3939",
+                        "primary": "#ffffff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary": "#2f3131",
+                        "secondary-container": "#474746",
+                        "primary-container": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "on-tertiary-container": "#656464",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-tint": "#c6c6c7",
+                        "on-background": "#e5e2e1",
+                        "background": "#131313",
+                        "primary-fixed": "#e2e2e2",
+                        "outline-variant": "#444748",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary": "#c8c6c5",
+                        "on-tertiary": "#303030",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Quicksand"],
+                        "headline-lg-mobile": ["Quicksand"],
+                        "label-md": ["Quicksand"],
+                        "headline-xl": ["Quicksand"],
+                        "body-md": ["Quicksand"],
+                        "headline-lg": ["Quicksand"],
+                        "headline-xl-mobile": ["Quicksand"],
+                        "body-lg": ["Quicksand"],
+                        "headline-md": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background: linear-gradient(135deg, #131313 0%, #0e0e0e 100%);
+            min-height: 100vh;
+            color: #e5e2e1;
+            font-family: 'Quicksand', sans-serif;
+        }
+        .luminous-border {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.035) 44%, rgba(255,255,255,0.08)) padding-box,
+                        linear-gradient(145deg, rgba(255,255,255,0.45), rgba(255,255,255,0.04) 42%, rgba(255,255,255,0.22)) border-box !important;
+            border: 1px solid transparent;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), inset 0 -22px 48px rgba(255,255,255,0.035), 0 18px 55px rgba(0,0,0,0.38);
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .luminous-border::before,
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 18% 14%, rgba(255,255,255,0.22), transparent 26%),
+                linear-gradient(120deg, transparent 16%, rgba(255,255,255,0.16) 32%, transparent 48%);
+            opacity: 0.55;
+            mix-blend-mode: screen;
+        }
+        .luminous-border:hover {
+            border-color: rgba(255, 255, 255, 0.28) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -22px 48px rgba(255,255,255,0.05), 0 24px 70px rgba(0,0,0,0.44);
+            transform: translateY(-4px) scale(1.01);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .liquid-glass {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.045) 48%, rgba(255,255,255,0.1)) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -18px 38px rgba(255,255,255,0.035), 0 18px 60px rgba(0,0,0,0.34);
+            backdrop-filter: blur(24px) saturate(155%);
+            -webkit-backdrop-filter: blur(24px) saturate(155%);
+        }
+        .liquid-nav {
+            width: min(calc(100% - 32px), 980px);
+            margin: 16px auto 0;
+            border-radius: 999px;
+        }
+        .nav-link {
+            border-radius: 999px;
+            padding: 10px 16px;
+            color: #c4c7c8;
+            transition: color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255,255,255,0.08);
+        }
+        .nav-link.active {
+            color: #0e0e0e;
+            background: rgba(255,255,255,0.88);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 8px 24px rgba(255,255,255,0.08);
+        }
+        @media (max-width: 768px) {
+            .liquid-nav {
+                width: calc(100% - 20px);
+                padding: 10px 14px !important;
+            }
+            .liquid-nav > a {
+                font-size: 16px;
+            }
+        }
+        /* Scroll reveal transition */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Decorative Background Elements */
+        .tech-grid {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        .glow-blob {
+            position: absolute;
+            width: min(45vw, 600px);
+            height: min(45vw, 600px);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 0;
+            will-change: transform, opacity;
+        }
+        .glow-blue {
+            background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+        }
+        .glow-purple {
+            background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+        }
+        .glow-green {
+            background: radial-gradient(circle, #10b981 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full z-50 px-4">
+<div class="liquid-glass liquid-nav flex justify-between items-center px-5 md:px-8 py-3 relative">
+<a class="text-headline-md font-headline-md font-bold tracking-tighter text-primary" href="index.html">CROSSTECH SOLUTIONS</a>
+<!-- Desktop Links -->
+<div class="hidden md:flex items-center gap-1 md:gap-2 font-label-md text-label-md">
+<a class="nav-link active:scale-95" href="index.html">Home</a>
+<a class="nav-link active active:scale-95" href="solutions.html">Solutions</a>
+<a class="nav-link active:scale-95" href="about.html">About Us</a>
+<a class="nav-link active:scale-95" href="blog.html">Blog</a>
+<a class="nav-link active:scale-95" href="careers.html">Careers</a>
+                <a class="nav-link active:scale-95" href="contactus.html">Contact Us</a>
+</div>
+<!-- Mobile Hamburger Toggle Button -->
+<button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-white transition-colors duration-200 flex items-center justify-center p-2">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+<!-- Mobile Menu Dropdown -->
+<div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-2 bg-[#131313]/95 border border-white/10 backdrop-blur-lg rounded-xl p-6 flex flex-col gap-4 shadow-[0_24px_50px_rgba(0,0,0,0.5)] z-40 transform scale-95 opacity-0 origin-top transition-all duration-300">
+<a class="nav-link text-center py-3 border-b border-white/5 active:scale-95" href="index.html">Home</a>
+<a class="nav-link text-center py-3 border-b border-white/5 active active:scale-95" href="solutions.html">Solutions</a>
+<a class="nav-link text-center py-3 border-b border-white/5" href="about.html">About Us</a>
+<a class="nav-link text-center py-3 border-b border-white/5" href="blog.html">Blog</a>
+<a class="nav-link text-center py-3" href="careers.html">Careers</a>
+                <a class="nav-link text-center py-3" href="contactus.html">Contact Us</a>
+</div>
+</div>
+</nav>
+<main class="relative tech-grid overflow-hidden pt-32 pb-24">
+    <!-- Background Glowing Accent Blobs -->
+    <div class="glow-blob glow-blue -top-40 -left-40"></div>
+    <div class="glow-blob glow-purple top-1/3 -right-40"></div>
+    <div class="glow-blob glow-green bottom-1/3 -left-40"></div>
+    <div class="glow-blob glow-blue bottom-10 right-10"></div>
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+<!-- Hero Section -->
+<section class="mb-24">
+<div class="max-w-3xl">
+<div class="inline-block px-3 py-1 bg-surface-container mb-6 rounded-full border border-white/5">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Custom Software Development</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl mb-8 tracking-tight">Engineering solutions that <span class="text-outline">drive business growth.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                CrossTechSolutions builds custom web applications, powerful CRM systems, and tailored AI chatbots. We design modern, high-performance software modules tailored to optimize your operations and elevate your business.
+            </p>
+</div>
+</section>
+<!-- Modules Grid -->
+<section id="modules-grid" class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-24 transition-all duration-300">
+<!-- Module: Web Applications -->
+<div class="luminous-border p-6 md:p-12 flex flex-col justify-between h-auto md:aspect-video lg:aspect-square gap-8 reveal-element">
+<div>
+<div class="flex justify-between items-start mb-6 md:mb-12">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'wght' 200">web</span>
+<span class="font-label-sm text-label-sm text-outline">MOD-01</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Web Applications</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Scalable, lightning-fast web applications designed with modern React, Next.js, and Vite architectures. We deliver smooth, intuitive user interfaces that run flawlessly across all browsers and devices.</p>
+</div>
+<div id="explore-webapps" class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between group cursor-pointer">
+<span class="font-label-md text-label-md uppercase tracking-wider group-hover:text-primary transition-colors">Explore Stack</span>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Module: CRMs & Portals -->
+<div class="luminous-border p-6 md:p-12 flex flex-col justify-between h-auto md:aspect-video lg:aspect-square gap-8 reveal-element" style="transition-delay: 100ms">
+<div>
+<div class="flex justify-between items-start mb-6 md:mb-12">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'wght' 200">database</span>
+<span class="font-label-sm text-label-sm text-outline">MOD-02</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">CRMs & Portals</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Custom customer relationship management platforms and portal systems built to centralize databases, automate routine operations, and track business telemetry in real-time.</p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between group cursor-pointer">
+<span class="font-label-md text-label-md uppercase tracking-wider group-hover:text-primary transition-colors">View Features</span>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Module: Custom AI Chatbots -->
+<div class="luminous-border p-6 md:p-12 flex flex-col justify-between h-auto md:aspect-video lg:aspect-square gap-8 reveal-element" style="transition-delay: 200ms">
+<div>
+<div class="flex justify-between items-start mb-6 md:mb-12">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'wght' 200">chat</span>
+<span class="font-label-sm text-label-sm text-outline">MOD-03</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Custom AI Chatbots</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Conversational intelligence models trained on your private business data. Resolve customer support tickets, automate lead generation, and provide 24/7 automated user interactions with high precision.</p>
+</div>
+<div id="explore-chatbots" class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between group cursor-pointer">
+<span class="font-label-md text-label-md uppercase tracking-wider group-hover:text-primary transition-colors">Analyze Models</span>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Module: Cloud & Integrations -->
+<div class="luminous-border p-6 md:p-12 flex flex-col justify-between h-auto md:aspect-video lg:aspect-square gap-8 reveal-element" style="transition-delay: 300ms">
+<div>
+<div class="flex justify-between items-start mb-6 md:mb-12">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'wght' 200">cloud_queue</span>
+<span class="font-label-sm text-label-sm text-outline">MOD-04</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Cloud & Integrations</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Custom API development, database sync systems, and serverless cloud deployment. Connect all your existing enterprise software modules into a unified mesh architecture.</p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between group cursor-pointer">
+<span class="font-label-md text-label-md uppercase tracking-wider group-hover:text-primary transition-colors">View Integrations</span>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+</section>
+
+<!-- Web Applications Portfolio Section -->
+<section id="webapps-portfolio" class="hidden opacity-0 translate-y-8 transition-all duration-300 mb-24">
+<div class="flex justify-between items-center mb-12 border-b border-white/5 pb-6">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest block mb-2">Portfolio</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Web Applications</h2>
+</div>
+<button id="back-to-modules" class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-primary border border-white/10 px-6 py-3 font-label-md text-label-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span>Back to Services</span>
+</button>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Web App 1: The Fusion Funded -->
+<div class="luminous-border flex flex-col h-full overflow-hidden group reveal-element">
+<div class="aspect-video relative overflow-hidden bg-surface-container border-b border-white/5">
+<img alt="The Fusion Funded" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="thefusionfunded.png"/>
+<span class="absolute top-4 right-4 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 text-label-sm font-label-sm rounded-full tracking-wider uppercase backdrop-blur-md">Completed</span>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">The Fusion Funded</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">A proprietary trading evaluation platform featuring MT5 integration, algo support, 100% fee refunds, and no consistency rules.</p>
+</div>
+<div class="pt-6 border-t border-white/5">
+<a class="inline-flex items-center gap-2 text-label-md font-label-md uppercase tracking-wider text-outline group-hover:text-primary transition-colors" href="https://thefusionfunded.com/" target="_blank">
+<span>Visit Live Site</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+
+<!-- Web App 2: Skip9to5 -->
+<div class="luminous-border flex flex-col h-full overflow-hidden group reveal-element" style="transition-delay: 100ms">
+<div class="aspect-video relative overflow-hidden bg-surface-container border-b border-white/5">
+<img alt="Skip9to5" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="skip9to5.png"/>
+<span class="absolute top-4 right-4 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 text-label-sm font-label-sm rounded-full tracking-wider uppercase backdrop-blur-md">Completed</span>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Skip9to5</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Stock market trading education platform and community offering masterclasses, mentorship programs, and structured courses in India.</p>
+</div>
+<div class="pt-6 border-t border-white/5">
+<a class="inline-flex items-center gap-2 text-label-md font-label-md uppercase tracking-wider text-outline group-hover:text-primary transition-colors" href="https://skip9to5.com/" target="_blank">
+<span>Visit Live Site</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+
+<!-- Web App 3: Pip Labs -->
+<div class="luminous-border flex flex-col h-full overflow-hidden group reveal-element" style="transition-delay: 200ms">
+<div class="aspect-video relative overflow-hidden bg-surface-container border-b border-white/5">
+<img alt="Pip Labs" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="jayant_fx.png"/>
+<span class="absolute top-4 right-4 bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 text-label-sm font-label-sm rounded-full tracking-wider uppercase backdrop-blur-md">Work In Progress</span>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Pip Labs</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Mentorship and trading education community portal by Jayant Chaudhary focused on helping retail traders obtain capital funding.</p>
+</div>
+<div class="pt-6 border-t border-white/5">
+<a class="inline-flex items-center gap-2 text-label-md font-label-md uppercase tracking-wider text-outline group-hover:text-primary transition-colors" href="https://jayant-fx-page-new.vercel.app/" target="_blank">
+<span>Visit Live Site</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+
+<!-- Web App 4: Pawan Singh Portfolio -->
+<div class="luminous-border flex flex-col h-full overflow-hidden group reveal-element">
+<div class="aspect-video relative overflow-hidden bg-surface-container border-b border-white/5">
+<img alt="Pawan Singh Portfolio" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="psr_v2.png"/>
+<span class="absolute top-4 right-4 bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 text-label-sm font-label-sm rounded-full tracking-wider uppercase backdrop-blur-md">Work In Progress</span>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Pawan Singh Portfolio</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">A strategic leadership speaker portfolio and personal branding platform highlighting consulting services and speaking engagements.</p>
+</div>
+<div class="pt-6 border-t border-white/5">
+<a class="inline-flex items-center gap-2 text-label-md font-label-md uppercase tracking-wider text-outline group-hover:text-primary transition-colors" href="https://psr-v2.vercel.app/" target="_blank">
+<span>Visit Live Site</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+
+<!-- Web App 5: Quarnex.Learn -->
+<div class="luminous-border flex flex-col h-full overflow-hidden group reveal-element" style="transition-delay: 100ms">
+<div class="aspect-video relative overflow-hidden bg-surface-container border-b border-white/5">
+<img alt="Quarnex Learn" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="quarnex_learn.png"/>
+<span class="absolute top-4 right-4 bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 text-label-sm font-label-sm rounded-full tracking-wider uppercase backdrop-blur-md">Work In Progress</span>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Quarnex.Learn</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">E-learning platform featuring micro-courses, webinars, interactive learning paths, and progress tracking for upskilling.</p>
+</div>
+<div class="pt-6 border-t border-white/5">
+<a class="inline-flex items-center gap-2 text-label-md font-label-md uppercase tracking-wider text-outline group-hover:text-primary transition-colors" href="https://quarnex-learn-orcin.vercel.app/" target="_blank">
+<span>Visit Live Site</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+
+<!-- Web App 6: QUARNEX Corporate -->
+<div class="luminous-border flex flex-col h-full overflow-hidden group reveal-element" style="transition-delay: 200ms">
+<div class="aspect-video relative overflow-hidden bg-surface-container border-b border-white/5">
+<img alt="Quarnex Corporate" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="quarnex_eight.png"/>
+<span class="absolute top-4 right-4 bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 text-label-sm font-label-sm rounded-full tracking-wider uppercase backdrop-blur-md">Work In Progress</span>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">QUARNEX</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Enterprise technological landing page presenting business development, CRM systems, web engineering, and customized software services.</p>
+</div>
+<div class="pt-6 border-t border-white/5">
+<a class="inline-flex items-center gap-2 text-label-md font-label-md uppercase tracking-wider text-outline group-hover:text-primary transition-colors" href="https://quarnex-eight.vercel.app/" target="_blank">
+<span>Visit Live Site</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+
+<!-- Web App 7: Pranmitra NGO -->
+<div class="luminous-border flex flex-col h-full overflow-hidden group reveal-element">
+<div class="aspect-video relative overflow-hidden bg-surface-container border-b border-white/5">
+<img alt="Pranmitra NGO" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="pranmitra3.png"/>
+<span class="absolute top-4 right-4 bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 text-label-sm font-label-sm rounded-full tracking-wider uppercase backdrop-blur-md">Work In Progress</span>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Pranmitra NGO</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Animal welfare advocacy and elder care platform supporting rescue efforts, shelters, donations, and social aid programs in India.</p>
+</div>
+<div class="pt-6 border-t border-white/5">
+<a class="inline-flex items-center gap-2 text-label-md font-label-md uppercase tracking-wider text-outline group-hover:text-primary transition-colors" href="https://pranmitra3.vercel.app/" target="_blank">
+<span>Visit Live Site</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Custom AI Chatbots Portfolio Section -->
+<section id="chatbots-portfolio" class="hidden opacity-0 translate-y-8 transition-all duration-300 mb-24">
+<div class="flex justify-between items-center mb-12 border-b border-white/5 pb-6">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest block mb-2">Portfolio</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Custom AI Chatbots</h2>
+</div>
+<button id="back-to-modules-chatbots" class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-primary border border-white/10 px-6 py-3 font-label-md text-label-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span>Back to Services</span>
+</button>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Chatbot 1: The Only Prop -->
+<div class="luminous-border flex flex-col h-full overflow-hidden group reveal-element">
+<div class="aspect-video relative overflow-hidden bg-surface-container border-b border-white/5">
+<img alt="The Only Prop" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="theonlyprop.png"/>
+</div>
+<div class="p-8 flex flex-col justify-between flex-grow">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">The Only Prop</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">An intelligent conversational assistant and automated evaluation portal built for prop trading, featuring daily profit splitting models and automated MT5 trade notifications.</p>
+</div>
+<div class="pt-6 border-t border-white/5">
+<a class="inline-flex items-center gap-2 text-label-md font-label-md uppercase tracking-wider text-outline group-hover:text-primary transition-colors" href="https://theonlyprop.com/" target="_blank">
+<span>Visit Live Site</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Technical Visualization -->
+<section class="mb-24 reveal-element">
+<div class="relative w-full h-[400px] liquid-glass flex items-center justify-center overflow-hidden">
+<div class="relative z-10 text-center px-6">
+<h2 class="font-headline-lg text-headline-lg mb-4">Unified Ecosystem</h2>
+<p class="font-body-md text-body-md text-outline max-w-xl mx-auto">Observe the seamless integration of our custom web apps, CRM telemetry, and intelligent AI chatbots.</p>
+<a href="contactus.html" class="inline-block mt-8 px-8 py-3 bg-transparent border border-white/20 text-primary font-label-md text-label-md hover:bg-white hover:text-black transition-all text-center">Request A Demo</a>
+</div>
+</div>
+</section>
+<!-- Stats/Details Bento -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="p-8 liquid-glass flex flex-col reveal-element">
+<span class="font-headline-xl text-headline-xl mb-2">99.99<span class="text-body-lg text-outline">%</span></span>
+<span class="font-label-sm text-label-sm text-outline uppercase">Uptime Performance</span>
+</div>
+<div class="p-8 liquid-glass flex flex-col reveal-element" style="transition-delay: 100ms">
+<span class="font-headline-xl text-headline-xl mb-2">2.4<span class="text-body-lg text-outline">ms</span></span>
+<span class="font-label-sm text-label-sm text-outline uppercase">Edge Latency</span>
+</div>
+<div class="p-8 liquid-glass flex flex-col reveal-element" style="transition-delay: 200ms">
+<span class="font-headline-xl text-headline-xl mb-2">PETA<span class="text-body-lg text-outline">ops</span></span>
+<span class="font-label-sm text-label-sm text-outline uppercase">Compute Capacity</span>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-margin-desktop border-t border-white/5 bg-surface-container-lowest reveal-element">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-12">
+<div>
+<div class="text-headline-md font-headline-md font-bold text-primary mb-4">CROSSTECH SOLUTIONS</div>
+<p class="font-body-md text-body-md text-outline max-w-xs">Engineered for scalable software delivery and custom business automation.</p>
+</div>
+<div class="flex flex-wrap gap-8 md:justify-end">
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300" href="#">Security</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300" href="#">GitHub</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300" href="#">LinkedIn</a>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex justify-between items-center">
+<p class="font-label-sm text-label-sm text-outline">© 2024 CrossTechSolutions. Tailored Software Engineering.</p>
+<div class="flex space-x-4">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-tighter">System Nominal</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Menu Toggle logic
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (toggleBtn && mobileMenu) {
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    mobileMenu.classList.remove('scale-95', 'opacity-0');
+                    mobileMenu.classList.add('scale-100', 'opacity-100');
+                });
+                const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                if (iconSpan) iconSpan.textContent = 'close';
+            } else {
+                mobileMenu.classList.remove('scale-100', 'opacity-100');
+                mobileMenu.classList.add('scale-95', 'opacity-0');
+                const transitionEndHandler = () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.removeEventListener('transitionend', transitionEndHandler);
+                };
+                mobileMenu.addEventListener('transitionend', transitionEndHandler);
+                const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                if (iconSpan) iconSpan.textContent = 'menu';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('scale-100', 'opacity-100');
+                    mobileMenu.classList.add('scale-95', 'opacity-0');
+                    const transitionEndHandler = () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.removeEventListener('transitionend', transitionEndHandler);
+                    };
+                    mobileMenu.addEventListener('transitionend', transitionEndHandler);
+                    const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                    if (iconSpan) iconSpan.textContent = 'menu';
+                }
+            }
+        });
+    }
+
+    // Scroll Reveal Entrance Animations
+    const revealOptions = {
+        threshold: 0.05,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+
+    document.querySelectorAll('.reveal-element').forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // Web Apps Portfolio elements
+    const exploreWebappsBtn = document.getElementById('explore-webapps');
+    const backWebappsBtn = document.getElementById('back-to-modules');
+    const webappsPortfolio = document.getElementById('webapps-portfolio');
+    
+    // Chatbots Portfolio elements
+    const exploreChatbotsBtn = document.getElementById('explore-chatbots');
+    const backChatbotsBtn = document.getElementById('back-to-modules-chatbots');
+    const chatbotsPortfolio = document.getElementById('chatbots-portfolio');
+    
+    const modulesGrid = document.getElementById('modules-grid');
+
+    // Toggling helper
+    function showPortfolio(portfolioEl) {
+        modulesGrid.classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+            modulesGrid.classList.add('hidden');
+            portfolioEl.classList.remove('hidden');
+            setTimeout(() => {
+                portfolioEl.classList.remove('opacity-0', 'translate-y-8');
+                // Re-trigger reveal check for inner elements
+                portfolioEl.querySelectorAll('.reveal-element').forEach(el => {
+                    revealObserver.observe(el);
+                });
+                const scrollTarget = portfolioEl.offsetTop - 120;
+                window.scrollTo({ top: scrollTarget > 0 ? scrollTarget : 0, behavior: 'smooth' });
+            }, 50);
+        }, 300);
+    }
+
+    function hidePortfolio(portfolioEl) {
+        portfolioEl.classList.add('opacity-0', 'translate-y-8');
+        setTimeout(() => {
+            portfolioEl.classList.add('hidden');
+            modulesGrid.classList.remove('hidden');
+            setTimeout(() => {
+                modulesGrid.classList.remove('opacity-0', 'pointer-events-none');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 50);
+        }, 300);
+    }
+
+    if (exploreWebappsBtn && backWebappsBtn && webappsPortfolio && modulesGrid) {
+        exploreWebappsBtn.addEventListener('click', () => showPortfolio(webappsPortfolio));
+        backWebappsBtn.addEventListener('click', () => hidePortfolio(webappsPortfolio));
+    }
+
+    if (exploreChatbotsBtn && backChatbotsBtn && chatbotsPortfolio && modulesGrid) {
+        exploreChatbotsBtn.addEventListener('click', () => showPortfolio(chatbotsPortfolio));
+        backChatbotsBtn.addEventListener('click', () => hidePortfolio(chatbotsPortfolio));
+    }
+});
+</script>
+</body></html>

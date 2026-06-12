@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Careers | CrossTechSolutions</title>
+    <meta name="description" content="Join CrossTechSolutions — where innovation meets purpose. Explore open roles in Agentic AI, Web Development, and PHP Engineering and be part of the future." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        * { box-sizing: border-box; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0d0e0f; }
+        ::-webkit-scrollbar-thumb { background: #444748; }
+
+        /* ===== GLASS SYSTEM ===== */
+        .luminous-border {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03) 42%, rgba(255,255,255,0.08)) padding-box,
+                        linear-gradient(145deg, rgba(255,255,255,0.45), rgba(255,255,255,0.04) 42%, rgba(255,255,255,0.22)) border-box !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -22px 48px rgba(255,255,255,0.035), 0 18px 55px rgba(0,0,0,0.38);
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
+        }
+
+        .luminous-border::before, .liquid-glass::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 18% 14%, rgba(255,255,255,0.22), transparent 26%),
+                        linear-gradient(120deg, transparent 16%, rgba(255,255,255,0.16) 32%, transparent 48%);
+            opacity: 0.55;
+            mix-blend-mode: screen;
+        }
+
+        .liquid-glass {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.045) 48%, rgba(255,255,255,0.1)) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -18px 38px rgba(255,255,255,0.035), 0 18px 60px rgba(0,0,0,0.34);
+            backdrop-filter: blur(24px) saturate(155%);
+            -webkit-backdrop-filter: blur(24px) saturate(155%);
+        }
+
+        /* ===== NAV ===== */
+        .liquid-nav {
+            width: min(calc(100% - 32px), 980px);
+            margin: 16px auto 0;
+            border-radius: 999px;
+        }
+
+        .nav-link {
+            border-radius: 999px;
+            padding: 10px 16px;
+            color: #c4c7c8;
+            transition: color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+        }
+
+        .nav-link:hover { color: #ffffff; background: rgba(255,255,255,0.08); }
+        .nav-link.active { color: #0e0e0e; background: rgba(255,255,255,0.88); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 8px 24px rgba(255,255,255,0.08); }
+
+        @media (max-width: 768px) {
+            .liquid-nav { width: calc(100% - 20px); padding: 10px 14px !important; }
+            .liquid-nav > a { font-size: 16px; }
+        }
+
+        /* ===== TEXT EFFECTS ===== */
+        .text-reveal-gradient {
+            background: linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== REVEAL ANIMATIONS ===== */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+        .reveal-element.revealed { opacity: 1; transform: translateY(0); }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-left.revealed { opacity: 1; transform: translateX(0); }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-right.revealed { opacity: 1; transform: translateX(0); }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-scale.revealed { opacity: 1; transform: scale(1); }
+
+        /* ===== BACKGROUND ===== */
+        .tech-grid {
+            background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        .glow-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 0;
+            will-change: transform;
+        }
+        .glow-blue { background: radial-gradient(circle, #38bdf8 0%, transparent 70%); width: 600px; height: 600px; }
+        .glow-purple { background: radial-gradient(circle, #a855f7 0%, transparent 70%); width: 500px; height: 500px; }
+        .glow-green { background: radial-gradient(circle, #10b981 0%, transparent 70%); width: 400px; height: 400px; }
+        .glow-amber { background: radial-gradient(circle, #f59e0b 0%, transparent 70%); width: 400px; height: 400px; }
+
+        /* ===== HERO PARTICLES ===== */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: particleFloat linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            10% { opacity: 1; }
+            90% { opacity: 0.6; }
+            100% { opacity: 0; transform: translateY(-120vh) scale(1.5); }
+        }
+
+        /* ===== HERO BADGE ===== */
+        @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
+        }
+        .badge-pulse { animation: pulse-badge 2s ease-in-out infinite; }
+
+        /* ===== JOB CARDS ===== */
+        .job-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s ease,
+                        box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+        .job-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 18% 14%, rgba(255,255,255,0.15), transparent 45%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        .job-card:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(56,189,248,0.4); box-shadow: 0 30px 60px -10px rgba(0,0,0,0.6), 0 0 40px rgba(56,189,248,0.08); }
+        .job-card:hover::before { opacity: 1; }
+
+        .job-card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .job-card:hover .job-card-image { transform: scale(1.06); }
+
+        .job-card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ===== PERK CARDS ===== */
+        .perk-card {
+            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+            border-radius: 16px;
+            padding: 28px 24px;
+            transition: transform 0.4s, border-color 0.4s, background 0.4s;
+        }
+        .perk-card:hover { transform: translateY(-4px); border-color: rgba(56,189,248,0.25); background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(255,255,255,0.02)); }
+
+        /* ===== MARQUEE ===== */
+        .marquee-track {
+            display: flex;
+            gap: 24px;
+            animation: marquee 28s linear infinite;
+            white-space: nowrap;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ===== FORM STYLES ===== */
+        .form-field {
+            width: 100%;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #e5e2e1;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+        }
+        .form-field:focus {
+            border-color: rgba(56,189,248,0.5);
+            background: rgba(56,189,248,0.04);
+            box-shadow: 0 0 0 3px rgba(56,189,248,0.08);
+        }
+        .form-field::placeholder { color: #8e9192; }
+        select.form-field option { background: #1a1a1a; color: #e5e2e1; }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #8e9192;
+            margin-bottom: 8px;
+        }
+
+        /* Upload Zone */
+        .upload-zone {
+            border: 2px dashed rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            transition: border-color 0.3s, background 0.3s;
+            cursor: pointer;
+        }
+        .upload-zone:hover, .upload-zone.drag-over {
+            border-color: rgba(56,189,248,0.5);
+            background: rgba(56,189,248,0.04);
+        }
+
+        /* Submit button glow pulse */
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 2.5s ease infinite;
+        }
+
+        /* ===== HERO NUMBER COUNTER ===== */
+        .counter-value {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        /* ===== FLOATING ICONS ANIMATION ===== */
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-12px) rotate(3deg); }
+            66% { transform: translateY(-6px) rotate(-2deg); }
+        }
+        .float-icon { animation: floatIcon 5s ease-in-out infinite; }
+        .float-icon-delay-1 { animation-delay: 0.8s; }
+        .float-icon-delay-2 { animation-delay: 1.6s; }
+
+        /* ===== SUCCESS STATE ===== */
+        @keyframes successPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.08); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .success-pop { animation: successPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        /* ===== SCROLL INDICATOR ===== */
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(8px); opacity: 0.4; }
+        }
+        .scroll-indicator { animation: scrollBounce 1.8s ease-in-out infinite; }
+
+        /* ===== TYPING CURSOR ===== */
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .cursor-blink { animation: blink 1s step-end infinite; }
+
+        /* ===== PROGRESS BAR ===== */
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ===== STAT CARD GLOW ===== */
+        .stat-card {
+            position: relative;
+        }
+        .stat-card::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(56,189,248,0.3), transparent 50%, rgba(129,140,248,0.2));
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .stat-card:hover::after { opacity: 1; }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline": "#8e9192",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container": "#201f1f",
+                        "surface": "#131313",
+                        "on-surface-variant": "#c4c7c8",
+                        "surface-container-highest": "#353534",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary": "#ffffff",
+                        "on-primary": "#2f3131",
+                        "background": "#131313",
+                        "on-background": "#e5e2e1",
+                        "outline-variant": "#444748",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary": "#c8c6c5",
+                    },
+                    fontFamily: {
+                        "label-sm": ["Quicksand"],
+                        "headline-xl": ["Quicksand"],
+                        "body-md": ["Quicksand"],
+                        "headline-lg": ["Quicksand"],
+                        "headline-md": ["Quicksand"],
+                        "body-lg": ["Quicksand"],
+                    },
+                    fontSize: {
+                        "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "600" }],
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "headline-xl": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-lg": ["32px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "headline-md": ["20px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                    },
+                    spacing: {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-background overflow-x-hidden">
+
+    <!-- ======= TOP NAVIGATION ======= -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4">
+        <div class="liquid-glass liquid-nav flex justify-between items-center px-5 md:px-8 py-3 relative">
+            <a class="text-headline-md font-headline-md font-bold tracking-tighter text-primary" href="index.html">CROSSTECH SOLUTIONS</a>
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-1 md:gap-2 font-label-md text-label-md">
+                <a class="nav-link active:scale-95" href="index.html">Home</a>
+                <a class="nav-link active:scale-95" href="solutions.html">Solutions</a>
+                <a class="nav-link active:scale-95" href="about.html">About Us</a>
+                <a class="nav-link active:scale-95" href="blog.html">Blog</a>
+                <a class="nav-link active active:scale-95" href="careers.html">Careers</a>
+                <a class="nav-link active:scale-95" href="contactus.html">Contact Us</a>
+            </div>
+            <!-- Mobile Hamburger -->
+            <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-white transition-colors duration-200 flex items-center justify-center p-2">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-2 bg-[#131313]/95 border border-white/10 backdrop-blur-lg rounded-xl p-6 flex flex-col gap-4 shadow-[0_24px_50px_rgba(0,0,0,0.5)] z-40 transform scale-95 opacity-0 origin-top transition-all duration-300">
+                <a class="nav-link text-center py-3 border-b border-white/5" href="index.html">Home</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="solutions.html">Solutions</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="about.html">About Us</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="blog.html">Blog</a>
+                <a class="nav-link text-center py-3 border-b border-white/5 active" href="careers.html">Careers</a>
+                <a class="nav-link text-center py-3" href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative tech-grid overflow-hidden">
+
+        <!-- ======= BACKGROUND GLOBS ======= -->
+        <div class="glow-blob glow-blue" style="top:-200px;left:-200px;"></div>
+        <div class="glow-blob glow-purple" style="top:40%;right:-200px;"></div>
+        <div class="glow-blob glow-green" style="bottom:20%;left:-100px;"></div>
+        <div class="glow-blob glow-amber" style="bottom:5%;right:10%;opacity:0.07;"></div>
+
+        <!-- Floating Particles Container -->
+        <div id="particles-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+        <!-- ======= HERO SECTION ======= -->
+        <section class="relative min-h-screen flex items-center justify-center pt-28 pb-20 px-4 md:px-16 z-10 overflow-hidden">
+            <!-- Hero Background Image with Overlay -->
+            <div class="absolute inset-0 z-0">
+                <img src="careers_hero.png" alt="CrossTech Careers Background" class="w-full h-full object-cover opacity-25" />
+                <div class="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80"></div>
+            </div>
+
+            <div class="relative z-10 max-w-container-max mx-auto w-full">
+                <!-- Badge -->
+                <div class="flex justify-center mb-8 reveal-element">
+                    <span class="badge-pulse inline-flex items-center gap-2 bg-sky-400/10 border border-sky-400/30 text-sky-400 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+                        <span class="w-2 h-2 bg-sky-400 rounded-full inline-block animate-pulse"></span>
+                        We're Hiring — Join Our Team
+                    </span>
+                </div>
+
+                <!-- Hero Heading -->
+                <div class="text-center reveal-element" style="transition-delay: 100ms">
+                    <h1 class="font-headline-xl text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none tracking-tighter mb-4">
+                        <span class="text-reveal-gradient">Build the</span>
+                        <br />
+                        <span class="text-gradient-blue">Future</span>
+                        <span class="text-reveal-gradient"> With Us</span>
+                    </h1>
+                    <p class="text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mt-6 leading-relaxed reveal-element" style="transition-delay: 200ms">
+                        Join a team of visionary engineers and designers building next-generation AI systems, scalable platforms, and transformative digital products for the world.
+                    </p>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10 reveal-element" style="transition-delay: 300ms">
+                    <a href="#openings" class="inline-flex items-center gap-2 bg-primary text-on-primary px-8 py-4 font-bold text-sm uppercase tracking-widest hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition-all active:scale-95 rounded-full btn-shimmer">
+                        <span class="material-symbols-outlined text-base">work</span>
+                        View Open Roles
+                    </a>
+                    <a href="#apply-form" class="inline-flex items-center gap-2 bg-transparent border border-white/20 text-primary px-8 py-4 font-bold text-sm uppercase tracking-widest hover:bg-white/5 transition-all active:scale-95 rounded-full">
+                        <span class="material-symbols-outlined text-base">send</span>
+                        Apply Directly
+                    </a>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div class="flex justify-center mt-16 reveal-element" style="transition-delay: 400ms">
+                    <div class="scroll-indicator flex flex-col items-center gap-2 text-outline text-xs uppercase tracking-widest">
+                        <span>Scroll</span>
+                        <span class="material-symbols-outlined text-base">keyboard_arrow_down</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Icon Decorations -->
+            <div class="absolute top-1/3 left-8 opacity-20 float-icon hidden lg:block">
+                <span class="material-symbols-outlined text-sky-400" style="font-size:48px">psychology</span>
+            </div>
+            <div class="absolute top-1/2 right-12 opacity-20 float-icon float-icon-delay-1 hidden lg:block">
+                <span class="material-symbols-outlined text-purple-400" style="font-size:42px">code</span>
+            </div>
+            <div class="absolute bottom-1/4 left-1/4 opacity-15 float-icon float-icon-delay-2 hidden lg:block">
+                <span class="material-symbols-outlined text-green-400" style="font-size:36px">cloud</span>
+            </div>
+        </section>
+
+        <!-- ======= STATS BAR ======= -->
+        <section class="relative z-10 py-10 border-y border-white/5 bg-[#0d0e0f]/60">
+            <div class="max-w-container-max mx-auto px-4 md:px-16">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="stat-card liquid-glass rounded-2xl p-6 text-center reveal-scale">
+                        <div class="counter-value text-primary" data-target="50">0</div>
+                        <div class="text-xs text-sky-400 font-bold uppercase tracking-widest mt-1">+</div>
+                        <div class="text-outline text-sm mt-2">Team Members</div>
+                    </div>
+                    <div class="stat-card liquid-glass rounded-2xl p-6 text-center reveal-scale" style="transition-delay:100ms">
+                        <div class="counter-value text-primary" data-target="25">0</div>
+                        <div class="text-xs text-sky-400 font-bold uppercase tracking-widest mt-1">+</div>
+                        <div class="text-outline text-sm mt-2">Countries Served</div>
+                    </div>
+                    <div class="stat-card liquid-glass rounded-2xl p-6 text-center reveal-scale" style="transition-delay:200ms">
+                        <div class="counter-value text-primary" data-target="120">0</div>
+                        <div class="text-xs text-sky-400 font-bold uppercase tracking-widest mt-1">+</div>
+                        <div class="text-outline text-sm mt-2">Projects Delivered</div>
+                    </div>
+                    <div class="stat-card liquid-glass rounded-2xl p-6 text-center reveal-scale" style="transition-delay:300ms">
+                        <div class="counter-value text-primary" data-target="98">0</div>
+                        <div class="text-xs text-sky-400 font-bold uppercase tracking-widest mt-1">%</div>
+                        <div class="text-outline text-sm mt-2">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= TECH STACK MARQUEE ======= -->
+        <section class="relative z-10 py-8 bg-[#0a0a0b]/40 border-b border-white/5 overflow-hidden">
+            <div class="overflow-hidden">
+                <div class="marquee-track">
+                    <!-- Repeated twice for seamless loop -->
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-sky-400 text-base">star</span> Python</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-purple-400 text-base">star</span> LangChain</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-green-400 text-base">star</span> React.js</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-amber-400 text-base">star</span> Next.js</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-sky-400 text-base">star</span> PHP / Laravel</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-purple-400 text-base">star</span> OpenAI API</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-green-400 text-base">star</span> AWS / GCP</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-amber-400 text-base">star</span> TypeScript</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-sky-400 text-base">star</span> Docker / K8s</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-purple-400 text-base">star</span> PostgreSQL</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-green-400 text-base">star</span> Node.js</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-amber-400 text-base">star</span> Tailwind CSS</span>
+                    <!-- Duplicate for seamless scroll -->
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-sky-400 text-base">star</span> Python</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-purple-400 text-base">star</span> LangChain</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-green-400 text-base">star</span> React.js</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-amber-400 text-base">star</span> Next.js</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-sky-400 text-base">star</span> PHP / Laravel</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-purple-400 text-base">star</span> OpenAI API</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-green-400 text-base">star</span> AWS / GCP</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-amber-400 text-base">star</span> TypeScript</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-sky-400 text-base">star</span> Docker / K8s</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-purple-400 text-base">star</span> PostgreSQL</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-green-400 text-base">star</span> Node.js</span>
+                    <span class="inline-flex items-center gap-2 text-outline text-sm font-semibold uppercase tracking-widest shrink-0"><span class="material-symbols-outlined text-amber-400 text-base">star</span> Tailwind CSS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= CULTURE SECTION ======= -->
+        <section class="relative z-10 py-24 px-4 md:px-16 max-w-container-max mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-left">
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Our Culture</span>
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-reveal-gradient mt-3 mb-6">Where Innovation<br/>Meets <span class="text-gradient-blue">Purpose</span></h2>
+                    <p class="text-on-surface-variant leading-relaxed mb-8">
+                        At CrossTech Solutions, we don't just write code — we architect the future. Our culture is rooted in radical curiosity, deep collaboration, and an unwavering commitment to engineering excellence.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-sky-400/10 border border-sky-400/20 rounded-xl flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-sky-400 text-base">rocket_launch</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary text-base mb-1">Move Fast, Build Right</h3>
+                                <p class="text-outline text-sm leading-relaxed">Agile sprints, rapid prototyping, and continuous delivery as core principles.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-purple-400/10 border border-purple-400/20 rounded-xl flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-purple-400 text-base">group</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary text-base mb-1">Collaborative by Design</h3>
+                                <p class="text-outline text-sm leading-relaxed">Cross-functional pods where every voice matters in architectural decisions.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-green-400/10 border border-green-400/20 rounded-xl flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-green-400 text-base">school</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-primary text-base mb-1">Continuous Learning</h3>
+                                <p class="text-outline text-sm leading-relaxed">Dedicated learning budgets, tech talks, and access to cutting-edge research.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="luminous-border rounded-3xl overflow-hidden p-2">
+                        <img src="careers_culture.png" alt="CrossTech Team Culture" class="w-full rounded-2xl object-cover aspect-[4/3]" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= PERKS SECTION ======= -->
+        <section class="relative z-10 py-20 bg-[#0d0e0f]/50 border-y border-white/5">
+            <div class="max-w-container-max mx-auto px-4 md:px-16">
+                <div class="text-center mb-14 reveal-element">
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Why Join Us</span>
+                    <h2 class="text-4xl font-bold tracking-tighter text-reveal-gradient mt-2">Perks & Benefits</h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                    <div class="perk-card reveal-element text-center" style="transition-delay:0ms">
+                        <span class="material-symbols-outlined text-4xl text-sky-400 mb-3 block">health_and_safety</span>
+                        <h3 class="font-bold text-primary text-sm mb-1">Health Coverage</h3>
+                        <p class="text-outline text-xs leading-relaxed">Comprehensive medical, dental & vision for you and family</p>
+                    </div>
+                    <div class="perk-card reveal-element text-center" style="transition-delay:80ms">
+                        <span class="material-symbols-outlined text-4xl text-purple-400 mb-3 block">laptop_mac</span>
+                        <h3 class="font-bold text-primary text-sm mb-1">Remote Flexibility</h3>
+                        <p class="text-outline text-xs leading-relaxed">Hybrid & fully remote options with premium hardware setup</p>
+                    </div>
+                    <div class="perk-card reveal-element text-center" style="transition-delay:160ms">
+                        <span class="material-symbols-outlined text-4xl text-green-400 mb-3 block">payments</span>
+                        <h3 class="font-bold text-primary text-sm mb-1">Competitive Pay</h3>
+                        <p class="text-outline text-xs leading-relaxed">Market-leading salaries with performance bonuses & equity</p>
+                    </div>
+                    <div class="perk-card reveal-element text-center" style="transition-delay:240ms">
+                        <span class="material-symbols-outlined text-4xl text-amber-400 mb-3 block">auto_stories</span>
+                        <h3 class="font-bold text-primary text-sm mb-1">Learning Budget</h3>
+                        <p class="text-outline text-xs leading-relaxed">$2,000/year for courses, books, conferences & certifications</p>
+                    </div>
+                    <div class="perk-card reveal-element text-center" style="transition-delay:0ms">
+                        <span class="material-symbols-outlined text-4xl text-sky-400 mb-3 block">beach_access</span>
+                        <h3 class="font-bold text-primary text-sm mb-1">Unlimited PTO</h3>
+                        <p class="text-outline text-xs leading-relaxed">Take time when you need it — we trust you to deliver</p>
+                    </div>
+                    <div class="perk-card reveal-element text-center" style="transition-delay:80ms">
+                        <span class="material-symbols-outlined text-4xl text-purple-400 mb-3 block">diversity_3</span>
+                        <h3 class="font-bold text-primary text-sm mb-1">Inclusive Culture</h3>
+                        <p class="text-outline text-xs leading-relaxed">Diverse, equitable, and welcoming teams across all offices</p>
+                    </div>
+                    <div class="perk-card reveal-element text-center" style="transition-delay:160ms">
+                        <span class="material-symbols-outlined text-4xl text-green-400 mb-3 block">sports_esports</span>
+                        <h3 class="font-bold text-primary text-sm mb-1">Hackathons & Fun</h3>
+                        <p class="text-outline text-xs leading-relaxed">Monthly hackathons, game nights, and team offsites globally</p>
+                    </div>
+                    <div class="perk-card reveal-element text-center" style="transition-delay:240ms">
+                        <span class="material-symbols-outlined text-4xl text-amber-400 mb-3 block">trending_up</span>
+                        <h3 class="font-bold text-primary text-sm mb-1">Career Growth</h3>
+                        <p class="text-outline text-xs leading-relaxed">Clear promotion paths with mentorship from industry leaders</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= JOB OPENINGS SECTION ======= -->
+        <section id="openings" class="relative z-10 py-24 px-4 md:px-16 max-w-container-max mx-auto">
+            <div class="text-center mb-16 reveal-element">
+                <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Open Positions</span>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-reveal-gradient mt-2">Current Openings</h2>
+                <p class="text-on-surface-variant mt-4 max-w-xl mx-auto">Each role is an opportunity to shape next-generation technology. Click any position to apply.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Job 1: Agentic AI Developer -->
+                <div class="job-card reveal-element" style="transition-delay:0ms" onclick="applyForRole('Agentic AI Developer')">
+                    <div class="overflow-hidden relative">
+                        <img src="careers_ai.png" alt="Agentic AI Developer" class="job-card-image" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0d0e0f] via-[#0d0e0f]/20 to-transparent"></div>
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="job-card-badge bg-sky-400/20 border border-sky-400/30 text-sky-400">
+                                <span class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse"></span>
+                                Hot Role
+                            </span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="job-card-badge bg-white/10 border border-white/10 text-white">Full-Time</span>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-sky-400/15 border border-sky-400/25 rounded-xl flex items-center justify-center">
+                                <span class="material-symbols-outlined text-sky-400 text-base">psychology</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-primary leading-tight">Agentic AI Developer</h3>
+                                <p class="text-xs text-sky-400 font-semibold uppercase tracking-wider">AI Engineering</p>
+                            </div>
+                        </div>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                            Build and deploy autonomous AI agents using LangChain, LangGraph, and OpenAI APIs. Design multi-agent orchestration systems and integrate LLMs into scalable production pipelines.
+                        </p>
+                        <!-- Skills -->
+                        <div class="space-y-2 mb-6">
+                            <div class="text-xs text-outline font-bold uppercase tracking-widest mb-3">Core Skills</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-sky-400/10 border border-sky-400/20 text-sky-400 px-2.5 py-1 rounded-full">Python</span>
+                                <span class="text-xs bg-sky-400/10 border border-sky-400/20 text-sky-400 px-2.5 py-1 rounded-full">LangChain</span>
+                                <span class="text-xs bg-sky-400/10 border border-sky-400/20 text-sky-400 px-2.5 py-1 rounded-full">RAG Systems</span>
+                                <span class="text-xs bg-sky-400/10 border border-sky-400/20 text-sky-400 px-2.5 py-1 rounded-full">Vector DBs</span>
+                                <span class="text-xs bg-sky-400/10 border border-sky-400/20 text-sky-400 px-2.5 py-1 rounded-full">OpenAI API</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between border-t border-white/5 pt-5">
+                            <div class="text-xs text-outline">
+                                <span class="material-symbols-outlined text-xs align-middle mr-1">location_on</span>Remote / Hybrid
+                            </div>
+                            <button class="inline-flex items-center gap-1.5 bg-sky-400 text-[#0d0e0f] px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-sky-300 transition-colors active:scale-95">
+                                Apply Now <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 2: Web Developer -->
+                <div class="job-card reveal-element" style="transition-delay:120ms" onclick="applyForRole('Web Developer')">
+                    <div class="overflow-hidden relative">
+                        <img src="careers_web.png" alt="Web Developer" class="job-card-image" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0d0e0f] via-[#0d0e0f]/20 to-transparent"></div>
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="job-card-badge bg-purple-400/20 border border-purple-400/30 text-purple-400">
+                                <span class="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse"></span>
+                                Urgent
+                            </span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="job-card-badge bg-white/10 border border-white/10 text-white">Full-Time</span>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-purple-400/15 border border-purple-400/25 rounded-xl flex items-center justify-center">
+                                <span class="material-symbols-outlined text-purple-400 text-base">web</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-primary leading-tight">Web Developer</h3>
+                                <p class="text-xs text-purple-400 font-semibold uppercase tracking-wider">Frontend Engineering</p>
+                            </div>
+                        </div>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                            Craft stunning, performant web experiences using React, Next.js, and modern CSS. Work on complex UI systems, design tokens, animations, and integrate with RESTful & GraphQL APIs.
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="text-xs text-outline font-bold uppercase tracking-widest mb-3">Core Skills</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-purple-400/10 border border-purple-400/20 text-purple-400 px-2.5 py-1 rounded-full">React / Next.js</span>
+                                <span class="text-xs bg-purple-400/10 border border-purple-400/20 text-purple-400 px-2.5 py-1 rounded-full">TypeScript</span>
+                                <span class="text-xs bg-purple-400/10 border border-purple-400/20 text-purple-400 px-2.5 py-1 rounded-full">CSS / Tailwind</span>
+                                <span class="text-xs bg-purple-400/10 border border-purple-400/20 text-purple-400 px-2.5 py-1 rounded-full">Node.js</span>
+                                <span class="text-xs bg-purple-400/10 border border-purple-400/20 text-purple-400 px-2.5 py-1 rounded-full">GraphQL</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between border-t border-white/5 pt-5">
+                            <div class="text-xs text-outline">
+                                <span class="material-symbols-outlined text-xs align-middle mr-1">location_on</span>Remote / Hybrid
+                            </div>
+                            <button class="inline-flex items-center gap-1.5 bg-purple-400 text-[#0d0e0f] px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-purple-300 transition-colors active:scale-95">
+                                Apply Now <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 3: PHP Developer -->
+                <div class="job-card reveal-element" style="transition-delay:240ms" onclick="applyForRole('PHP Developer')">
+                    <div class="overflow-hidden relative">
+                        <img src="careers_php.png" alt="PHP Developer" class="job-card-image" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0d0e0f] via-[#0d0e0f]/20 to-transparent"></div>
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="job-card-badge bg-green-400/20 border border-green-400/30 text-green-400">
+                                <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+                                Open
+                            </span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="job-card-badge bg-white/10 border border-white/10 text-white">Full-Time</span>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-green-400/15 border border-green-400/25 rounded-xl flex items-center justify-center">
+                                <span class="material-symbols-outlined text-green-400 text-base">terminal</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-primary leading-tight">PHP Developer</h3>
+                                <p class="text-xs text-green-400 font-semibold uppercase tracking-wider">Backend Engineering</p>
+                            </div>
+                        </div>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                            Engineer robust backend systems with PHP 8.x and Laravel. Design RESTful APIs, optimize database schemas, handle complex server logic, and maintain high-availability deployments.
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="text-xs text-outline font-bold uppercase tracking-widest mb-3">Core Skills</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-green-400/10 border border-green-400/20 text-green-400 px-2.5 py-1 rounded-full">PHP 8.x</span>
+                                <span class="text-xs bg-green-400/10 border border-green-400/20 text-green-400 px-2.5 py-1 rounded-full">Laravel</span>
+                                <span class="text-xs bg-green-400/10 border border-green-400/20 text-green-400 px-2.5 py-1 rounded-full">MySQL / PgSQL</span>
+                                <span class="text-xs bg-green-400/10 border border-green-400/20 text-green-400 px-2.5 py-1 rounded-full">REST APIs</span>
+                                <span class="text-xs bg-green-400/10 border border-green-400/20 text-green-400 px-2.5 py-1 rounded-full">Docker</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between border-t border-white/5 pt-5">
+                            <div class="text-xs text-outline">
+                                <span class="material-symbols-outlined text-xs align-middle mr-1">location_on</span>Remote / Hybrid
+                            </div>
+                            <button class="inline-flex items-center gap-1.5 bg-green-400 text-[#0d0e0f] px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-green-300 transition-colors active:scale-95">
+                                Apply Now <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======= PROCESS SECTION ======= -->
+        <section class="relative z-10 py-20 bg-[#0d0e0f]/50 border-t border-white/5">
+            <div class="max-w-container-max mx-auto px-4 md:px-16">
+                <div class="text-center mb-14 reveal-element">
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Hiring Process</span>
+                    <h2 class="text-4xl font-bold tracking-tighter text-reveal-gradient mt-2">How We Hire</h2>
+                    <p class="text-on-surface-variant mt-3 max-w-xl mx-auto text-sm">Transparent, fast, and respectful — we value your time as much as you value ours.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="reveal-element text-center relative" style="transition-delay:0ms">
+                        <div class="w-16 h-16 mx-auto bg-sky-400/10 border border-sky-400/25 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-sky-400/20 transition-colors">
+                            <span class="material-symbols-outlined text-sky-400" style="font-size:28px">description</span>
+                        </div>
+                        <div class="absolute top-8 left-[60%] w-[80%] h-[1px] bg-gradient-to-r from-sky-400/30 to-transparent hidden md:block"></div>
+                        <div class="text-xs text-sky-400 font-bold uppercase tracking-widest mb-2">Step 01</div>
+                        <h3 class="font-bold text-primary text-base mb-2">Submit Application</h3>
+                        <p class="text-outline text-xs leading-relaxed">Fill our single form below and attach your resume and portfolio</p>
+                    </div>
+                    <div class="reveal-element text-center relative" style="transition-delay:100ms">
+                        <div class="w-16 h-16 mx-auto bg-purple-400/10 border border-purple-400/25 rounded-2xl flex items-center justify-center mb-4">
+                            <span class="material-symbols-outlined text-purple-400" style="font-size:28px">video_call</span>
+                        </div>
+                        <div class="absolute top-8 left-[60%] w-[80%] h-[1px] bg-gradient-to-r from-purple-400/30 to-transparent hidden md:block"></div>
+                        <div class="text-xs text-purple-400 font-bold uppercase tracking-widest mb-2">Step 02</div>
+                        <h3 class="font-bold text-primary text-base mb-2">Intro Call</h3>
+                        <p class="text-outline text-xs leading-relaxed">30-minute culture-fit call with our talent team — casual and friendly</p>
+                    </div>
+                    <div class="reveal-element text-center relative" style="transition-delay:200ms">
+                        <div class="w-16 h-16 mx-auto bg-green-400/10 border border-green-400/25 rounded-2xl flex items-center justify-center mb-4">
+                            <span class="material-symbols-outlined text-green-400" style="font-size:28px">code</span>
+                        </div>
+                        <div class="absolute top-8 left-[60%] w-[80%] h-[1px] bg-gradient-to-r from-green-400/30 to-transparent hidden md:block"></div>
+                        <div class="text-xs text-green-400 font-bold uppercase tracking-widest mb-2">Step 03</div>
+                        <h3 class="font-bold text-primary text-base mb-2">Technical Round</h3>
+                        <p class="text-outline text-xs leading-relaxed">A practical take-home challenge and live pair programming session</p>
+                    </div>
+                    <div class="reveal-element text-center" style="transition-delay:300ms">
+                        <div class="w-16 h-16 mx-auto bg-amber-400/10 border border-amber-400/25 rounded-2xl flex items-center justify-center mb-4">
+                            <span class="material-symbols-outlined text-amber-400" style="font-size:28px">handshake</span>
+                        </div>
+                        <div class="text-xs text-amber-400 font-bold uppercase tracking-widest mb-2">Step 04</div>
+                        <h3 class="font-bold text-primary text-base mb-2">Offer & Onboarding</h3>
+                        <p class="text-outline text-xs leading-relaxed">Competitive offer within 3 days + guided 30-day onboarding program</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= APPLICATION FORM SECTION ======= -->
+        <section id="apply-form" class="relative z-10 py-28 px-4 md:px-16">
+            <div class="max-w-3xl mx-auto">
+
+                <!-- Form Header -->
+                <div class="text-center mb-14 reveal-element">
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Your Next Chapter</span>
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mt-3 mb-4">
+                        <span class="text-reveal-gradient">Apply to</span>
+                        <span id="form-role-heading" class="text-gradient-blue"> CrossTech</span>
+                    </h2>
+                    <p class="text-on-surface-variant text-sm max-w-lg mx-auto" id="form-subtitle">
+                        Fill in your details below — our talent team reviews every submission within 48 hours.
+                    </p>
+                </div>
+
+                <!-- The Form -->
+                <div class="luminous-border rounded-3xl p-8 md:p-12 reveal-element" style="transition-delay:100ms">
+
+                    <!-- Role Selection Banner -->
+                    <div id="selected-role-banner" class="mb-8 p-4 rounded-2xl bg-sky-400/5 border border-sky-400/20 hidden">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-sky-400">work</span>
+                                <div>
+                                    <div class="text-xs text-outline uppercase tracking-widest">Applying for</div>
+                                    <div id="role-banner-text" class="text-primary font-bold text-base"></div>
+                                </div>
+                            </div>
+                            <button onclick="clearSelectedRole()" class="text-outline hover:text-white text-xs flex items-center gap-1 transition-colors">
+                                <span class="material-symbols-outlined text-sm">close</span> Change
+                            </button>
+                        </div>
+                    </div>
+
+                    <form id="career-form" onsubmit="handleSubmit(event)" novalidate>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <!-- First Name -->
+                            <div>
+                                <label class="form-label" for="first-name">First Name <span class="text-red-400">*</span></label>
+                                <input type="text" id="first-name" name="first_name" class="form-field" placeholder="e.g. Chandan" required />
+                            </div>
+                            <!-- Last Name -->
+                            <div>
+                                <label class="form-label" for="last-name">Last Name <span class="text-red-400">*</span></label>
+                                <input type="text" id="last-name" name="last_name" class="form-field" placeholder="e.g. Chaudhary" required />
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <!-- Email -->
+                            <div>
+                                <label class="form-label" for="email">Email Address <span class="text-red-400">*</span></label>
+                                <input type="email" id="email" name="email" class="form-field" placeholder="you@company.com" required />
+                            </div>
+                            <!-- Phone -->
+                            <div>
+                                <label class="form-label" for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-field" placeholder="+91 9876543210" />
+                            </div>
+                        </div>
+
+                        <!-- Role Selection -->
+                        <div class="mb-6">
+                            <label class="form-label" for="role-select">Position Applying For <span class="text-red-400">*</span></label>
+                            <select id="role-select" name="role" class="form-field" required>
+                                <option value="">— Select a Role —</option>
+                                <option value="Agentic AI Developer">Agentic AI Developer</option>
+                                <option value="Web Developer">Web Developer</option>
+                                <option value="PHP Developer">PHP Developer</option>
+                                <option value="Other">Other / Spontaneous Application</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <!-- Experience -->
+                            <div>
+                                <label class="form-label" for="experience">Years of Experience <span class="text-red-400">*</span></label>
+                                <select id="experience" name="experience" class="form-field" required>
+                                    <option value="">— Select —</option>
+                                    <option value="0-1">0 – 1 years (Fresher)</option>
+                                    <option value="1-3">1 – 3 years</option>
+                                    <option value="3-5">3 – 5 years</option>
+                                    <option value="5-8">5 – 8 years</option>
+                                    <option value="8+">8+ years (Senior)</option>
+                                </select>
+                            </div>
+                            <!-- Work Type Preference -->
+                            <div>
+                                <label class="form-label" for="work-type">Work Preference</label>
+                                <select id="work-type" name="work_type" class="form-field">
+                                    <option value="">— Select —</option>
+                                    <option value="Remote">Remote</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                    <option value="On-Site">On-Site</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Portfolio / LinkedIn -->
+                        <div class="mb-6">
+                            <label class="form-label" for="portfolio">Portfolio / LinkedIn / GitHub URL</label>
+                            <input type="url" id="portfolio" name="portfolio" class="form-field" placeholder="https://github.com/yourusername" />
+                        </div>
+
+                        <!-- Cover Letter -->
+                        <div class="mb-6">
+                            <label class="form-label" for="cover-letter">Cover Letter / Why CrossTech? <span class="text-red-400">*</span></label>
+                            <textarea id="cover-letter" name="cover_letter" rows="5" class="form-field resize-none" placeholder="Tell us what excites you about this role and what you'd bring to the team..." required></textarea>
+                            <div class="flex justify-end mt-1">
+                                <span id="char-count" class="text-xs text-outline">0 / 1000</span>
+                            </div>
+                        </div>
+
+                        <!-- Resume Upload -->
+                        <div class="mb-8">
+                            <label class="form-label">Resume / CV <span class="text-red-400">*</span></label>
+                            <div class="upload-zone" id="upload-zone" onclick="document.getElementById('resume-file').click()">
+                                <input type="file" id="resume-file" accept=".pdf,.doc,.docx" class="hidden" onchange="handleFileChange(event)" />
+                                <span class="material-symbols-outlined text-outline text-4xl mb-3 block">upload_file</span>
+                                <p class="text-primary font-semibold text-sm mb-1">Drop your resume here or click to browse</p>
+                                <p class="text-outline text-xs">PDF, DOC or DOCX — Max 5MB</p>
+                                <div id="file-selected" class="hidden mt-4 flex items-center justify-center gap-2 text-sky-400 text-sm font-semibold">
+                                    <span class="material-symbols-outlined text-base">check_circle</span>
+                                    <span id="file-name"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms Checkbox -->
+                        <div class="mb-8 flex items-start gap-3">
+                            <input type="checkbox" id="terms" name="terms" class="mt-1 w-4 h-4 accent-sky-400" required />
+                            <label for="terms" class="text-outline text-sm leading-relaxed">
+                                I agree to CrossTechSolutions processing my personal data for recruitment purposes. I have read and accept the <a href="#" class="text-sky-400 underline hover:text-white transition-colors">Privacy Policy</a>.
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="submit-btn" class="w-full bg-primary text-on-primary py-4 px-8 font-bold text-sm uppercase tracking-widest hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition-all active:scale-[0.98] rounded-2xl btn-shimmer flex items-center justify-center gap-3">
+                            <span class="material-symbols-outlined">send</span>
+                            <span id="submit-text">Submit Application</span>
+                        </button>
+
+                        <!-- Error message container -->
+                        <div id="form-error" class="hidden mt-4 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm text-center"></div>
+                    </form>
+
+                    <!-- Success State -->
+                    <div id="form-success" class="hidden text-center py-12">
+                        <div class="success-pop w-20 h-20 mx-auto bg-green-400/10 border border-green-400/30 rounded-full flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-green-400" style="font-size:40px;font-variation-settings:'FILL' 1">check_circle</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-3">Application Submitted! 🎉</h3>
+                        <p class="text-on-surface-variant leading-relaxed max-w-sm mx-auto mb-8">
+                            Thank you for applying! Our talent team will review your application and reach out within <strong class="text-primary">48 hours</strong>.
+                        </p>
+                        <button onclick="resetForm()" class="inline-flex items-center gap-2 bg-transparent border border-white/20 text-primary px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-colors">
+                            <span class="material-symbols-outlined text-sm">refresh</span> Submit Another
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= CTA STRIP ======= -->
+        <section class="relative z-10 py-20 px-4 md:px-16 border-t border-white/5">
+            <div class="max-w-container-max mx-auto text-center reveal-element">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tighter text-reveal-gradient mb-4">Don't See Your Role?</h2>
+                <p class="text-on-surface-variant mb-8 max-w-lg mx-auto">We're always on the lookout for exceptional talent. Submit a spontaneous application and we'll keep your profile on file.</p>
+                <a href="#apply-form" onclick="applyForRole('Other')" class="inline-flex items-center gap-2 bg-primary text-on-primary px-10 py-4 font-bold text-sm uppercase tracking-widest rounded-full hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] transition-all active:scale-95 btn-shimmer">
+                    <span class="material-symbols-outlined text-sm">mail</span>
+                    Send Open Application
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======= FOOTER ======= -->
+    <footer class="w-full py-12 md:py-16 px-4 md:px-16 bg-surface-container-lowest border-t border-white/5 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-container-max mx-auto">
+            <div>
+                <span class="text-headline-md font-headline-md font-bold text-primary" style="font-family:Quicksand;">CROSSTECH SOLUTIONS</span>
+                <p class="font-label-sm text-label-sm text-outline mt-4" style="font-family:Quicksand;font-size:12px;">© 2026 CrossTechSolutions. Tailored Software Engineering.</p>
+            </div>
+            <div class="flex flex-wrap md:justify-end gap-x-8 gap-y-4">
+                <a class="text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" style="font-size:12px;font-family:Quicksand;" href="#">Privacy Policy</a>
+                <a class="text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" style="font-size:12px;font-family:Quicksand;" href="#">Terms of Service</a>
+                <a class="text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" style="font-size:12px;font-family:Quicksand;" href="https://github.com">GitHub</a>
+                <a class="text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" style="font-size:12px;font-family:Quicksand;" href="https://linkedin.com">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ===== MOBILE MENU =====
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (toggleBtn && mobileMenu) {
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                requestAnimationFrame(() => { mobileMenu.classList.remove('scale-95', 'opacity-0'); mobileMenu.classList.add('scale-100', 'opacity-100'); });
+                toggleBtn.querySelector('.material-symbols-outlined').textContent = 'close';
+            } else {
+                mobileMenu.classList.remove('scale-100', 'opacity-100'); mobileMenu.classList.add('scale-95', 'opacity-0');
+                mobileMenu.addEventListener('transitionend', () => { mobileMenu.classList.add('hidden'); }, { once: true });
+                toggleBtn.querySelector('.material-symbols-outlined').textContent = 'menu';
+            }
+        });
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('scale-100', 'opacity-100'); mobileMenu.classList.add('scale-95', 'opacity-0');
+                mobileMenu.addEventListener('transitionend', () => { mobileMenu.classList.add('hidden'); }, { once: true });
+                toggleBtn.querySelector('.material-symbols-outlined').textContent = 'menu';
+            }
+        });
+    }
+
+    // ===== SCROLL REVEAL =====
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add('revealed'); obs.unobserve(entry.target); }
+        });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal-element, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+    // ===== PARTICLE SYSTEM =====
+    function createParticle() {
+        const container = document.getElementById('particles-container');
+        if (!container) return;
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const colors = ['rgba(56,189,248,0.6)', 'rgba(129,140,248,0.6)', 'rgba(16,185,129,0.5)', 'rgba(245,158,11,0.4)'];
+        const size = Math.random() * 4 + 1;
+        particle.style.cssText = `
+            left: ${Math.random() * 100}%;
+            bottom: -${size}px;
+            width: ${size}px;
+            height: ${size}px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            animation-duration: ${Math.random() * 12 + 10}s;
+            animation-delay: ${Math.random() * 5}s;
+        `;
+        container.appendChild(particle);
+        setTimeout(() => particle.remove(), 25000);
+    }
+    setInterval(createParticle, 600);
+
+    // ===== COUNTER ANIMATION =====
+    function animateCounters() {
+        document.querySelectorAll('.counter-value[data-target]').forEach(el => {
+            const target = parseInt(el.dataset.target);
+            const duration = 1800;
+            const start = performance.now();
+            const update = (time) => {
+                const elapsed = time - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * target);
+                if (progress < 1) requestAnimationFrame(update);
+                else el.textContent = target;
+            };
+            requestAnimationFrame(update);
+        });
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) { animateCounters(); statsObserver.disconnect(); }
+    }, { threshold: 0.3 });
+    const statsSection = document.querySelector('.counter-value');
+    if (statsSection) statsObserver.observe(statsSection.closest('section'));
+
+    // ===== APPLY FOR ROLE FUNCTION =====
+    let selectedRole = '';
+    function applyForRole(role) {
+        selectedRole = role;
+        // Update form elements
+        const roleSelect = document.getElementById('role-select');
+        const banner = document.getElementById('selected-role-banner');
+        const bannerText = document.getElementById('role-banner-text');
+        const heading = document.getElementById('form-role-heading');
+        const subtitle = document.getElementById('form-subtitle');
+
+        if (roleSelect) roleSelect.value = role;
+        if (banner) banner.classList.remove('hidden');
+        if (bannerText) bannerText.textContent = role;
+        if (heading) {
+            heading.innerHTML = ` <span style="background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent">${role}</span>`;
+        }
+        if (subtitle) subtitle.textContent = `You're applying for the ${role} position. Fill in your details below and we'll be in touch within 48 hours.`;
+
+        // Smooth scroll to form
+        const formSection = document.getElementById('apply-form');
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function clearSelectedRole() {
+        selectedRole = '';
+        document.getElementById('role-select').value = '';
+        document.getElementById('selected-role-banner').classList.add('hidden');
+        document.getElementById('form-role-heading').innerHTML = ' CrossTech';
+        document.getElementById('form-subtitle').textContent = "Fill in your details below — our talent team reviews every submission within 48 hours.";
+    }
+
+    // ===== FILE UPLOAD =====
+    function handleFileChange(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const fileSelectedDiv = document.getElementById('file-selected');
+        const fileNameSpan = document.getElementById('file-name');
+        if (fileSelectedDiv && fileNameSpan) {
+            fileSelectedDiv.classList.remove('hidden');
+            fileNameSpan.textContent = file.name;
+        }
+    }
+
+    // Drag and drop for upload zone
+    const uploadZone = document.getElementById('upload-zone');
+    if (uploadZone) {
+        uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+        uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length) {
+                document.getElementById('resume-file').files = files;
+                handleFileChange({ target: document.getElementById('resume-file') });
+            }
+        });
+    }
+
+    // ===== CHAR COUNTER =====
+    const coverLetter = document.getElementById('cover-letter');
+    const charCount = document.getElementById('char-count');
+    if (coverLetter && charCount) {
+        coverLetter.addEventListener('input', () => {
+            const len = coverLetter.value.length;
+            charCount.textContent = `${len} / 1000`;
+            charCount.style.color = len > 900 ? '#f87171' : '#8e9192';
+            if (len > 1000) coverLetter.value = coverLetter.value.substring(0, 1000);
+        });
+    }
+
+    // ===== FORM SUBMISSION =====
+    function handleSubmit(e) {
+        e.preventDefault();
+        const form = document.getElementById('career-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitText = document.getElementById('submit-text');
+        const errorDiv = document.getElementById('form-error');
+
+        // Clear errors
+        errorDiv.classList.add('hidden');
+        errorDiv.textContent = '';
+
+        // Validation
+        const firstName = document.getElementById('first-name').value.trim();
+        const lastName = document.getElementById('last-name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const role = document.getElementById('role-select').value;
+        const experience = document.getElementById('experience').value;
+        const coverLetterVal = document.getElementById('cover-letter').value.trim();
+        const terms = document.getElementById('terms').checked;
+
+        if (!firstName || !lastName) { showError('Please enter your full name.'); return; }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('Please enter a valid email address.'); return; }
+        if (!role) { showError('Please select the role you are applying for.'); return; }
+        if (!experience) { showError('Please select your years of experience.'); return; }
+        if (coverLetterVal.length < 50) { showError('Please write at least 50 characters in your cover letter.'); return; }
+        if (!terms) { showError('Please accept the Privacy Policy to continue.'); return; }
+
+        // Simulate submission
+        submitBtn.disabled = true;
+        submitText.textContent = 'Submitting...';
+        submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+        const spinner = document.createElement('span');
+        spinner.className = 'material-symbols-outlined animate-spin text-base';
+        spinner.textContent = 'progress_activity';
+        submitBtn.insertBefore(spinner, submitBtn.querySelector('span'));
+
+        setTimeout(() => {
+            // Show success
+            form.classList.add('hidden');
+            const successDiv = document.getElementById('form-success');
+            successDiv.classList.remove('hidden');
+        }, 1800);
+    }
+
+    function showError(msg) {
+        const errorDiv = document.getElementById('form-error');
+        errorDiv.textContent = msg;
+        errorDiv.classList.remove('hidden');
+        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function resetForm() {
+        document.getElementById('career-form').reset();
+        document.getElementById('career-form').classList.remove('hidden');
+        document.getElementById('form-success').classList.add('hidden');
+        document.getElementById('submit-btn').disabled = false;
+        document.getElementById('submit-text').textContent = 'Submit Application';
+        document.getElementById('submit-btn').classList.remove('opacity-70', 'cursor-not-allowed');
+        document.getElementById('file-selected').classList.add('hidden');
+        document.getElementById('char-count').textContent = '0 / 1000';
+        clearSelectedRole();
+        const spinner = document.getElementById('submit-btn').querySelector('.animate-spin');
+        if (spinner) spinner.remove();
+    }
+
+    // ===== DRAG SMOOTH HOVER TILT ON JOB CARDS =====
+    document.querySelectorAll('.job-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `translateY(-8px) scale(1.01) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            card.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1)';
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us | CrossTechSolutions</title>
+    <meta name="description" content="Discover the software engineering philosophy, core values, and milestones of CrossTechSolutions. We design, build and modernize digital products and commerce platforms." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0d0e0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #444748;
+        }
+
+        .luminous-border {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03) 42%, rgba(255, 255, 255, 0.08)) padding-box,
+                linear-gradient(145deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.04) 42%, rgba(255, 255, 255, 0.22)) border-box !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -22px 48px rgba(255, 255, 255, 0.035), 0 18px 55px rgba(0, 0, 0, 0.38);
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
+        }
+
+        .luminous-border::before,
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.22), transparent 26%),
+                linear-gradient(120deg, transparent 16%, rgba(255, 255, 255, 0.16) 32%, transparent 48%);
+            opacity: 0.55;
+            mix-blend-mode: screen;
+        }
+
+        .liquid-glass {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.045) 48%, rgba(255, 255, 255, 0.1)) !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -18px 38px rgba(255, 255, 255, 0.035), 0 18px 60px rgba(0, 0, 0, 0.34);
+            backdrop-filter: blur(24px) saturate(155%);
+            -webkit-backdrop-filter: blur(24px) saturate(155%);
+        }
+
+        .liquid-nav {
+            width: min(calc(100% - 32px), 980px);
+            margin: 16px auto 0;
+            border-radius: 999px;
+        }
+
+        .nav-link {
+            border-radius: 999px;
+            padding: 10px 16px;
+            color: #c4c7c8;
+            transition: color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-link.active {
+            color: #0e0e0e;
+            background: rgba(255, 255, 255, 0.88);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 8px 24px rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .liquid-nav {
+                width: calc(100% - 20px);
+                padding: 10px 14px !important;
+            }
+
+            .liquid-nav>a {
+                font-size: 16px;
+            }
+        }
+
+        .text-reveal-gradient {
+            background: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0.1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tech-grid {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        .glow-blob {
+            position: absolute;
+            width: min(45vw, 600px);
+            height: min(45vw, 600px);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 0;
+            will-change: transform, opacity;
+        }
+
+        .glow-blue {
+            background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+        }
+
+        .glow-purple {
+            background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+        }
+
+        .glow-green {
+            background: radial-gradient(circle, #10b981 0%, transparent 70%);
+        }
+
+        .hover-glow-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s;
+        }
+
+        .hover-glow-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.28) !important;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.05);
+        }
+
+        /* Slide Transition CSS */
+        .slide-fade-in {
+            animation: slideFadeIn 0.5s forwards cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8e9192",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-container": "#e4e2e1",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error": "#690005",
+                        "surface-container": "#201f1f",
+                        "surface": "#131313",
+                        "on-secondary": "#313030",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-variant": "#353534",
+                        "inverse-on-surface": "#313030",
+                        "tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-surface-variant": "#c4c7c8",
+                        "tertiary-fixed": "#e4e2e1",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-container-highest": "#353534",
+                        "inverse-primary": "#5d5f5f",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface-dim": "#131313",
+                        "on-primary-container": "#636565",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-container": "#b7b5b4",
+                        "surface-bright": "#3a3939",
+                        "primary": "#ffffff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary": "#2f3131",
+                        "secondary-container": "#474746",
+                        "primary-container": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "on-tertiary-container": "#656464",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-tint": "#c6c6c7",
+                        "on-background": "#e5e2e1",
+                        "background": "#131313",
+                        "primary-fixed": "#e2e2e2",
+                        "outline-variant": "#444748",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary": "#c8c6c5",
+                        "on-tertiary": "#303030",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Quicksand"],
+                        "headline-lg-mobile": ["Quicksand"],
+                        "label-md": ["Quicksand"],
+                        "headline-xl": ["Quicksand"],
+                        "body-md": ["Quicksand"],
+                        "headline-lg": ["Quicksand"],
+                        "headline-xl-mobile": ["Quicksand"],
+                        "body-lg": ["Quicksand"],
+                        "headline-md": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-background overflow-x-hidden">
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4">
+        <div class="liquid-glass liquid-nav flex justify-between items-center px-5 md:px-8 py-3 relative">
+            <a class="text-headline-md font-headline-md font-bold tracking-tighter text-primary" href="index.html">CROSSTECH SOLUTIONS</a>
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-1 md:gap-2 font-label-md text-label-md">
+                <a class="nav-link active:scale-95" href="index.html">Home</a>
+                <a class="nav-link active:scale-95" href="solutions.html">Solutions</a>
+                <a class="nav-link active active:scale-95" href="about.html">About Us</a>
+                <a class="nav-link active:scale-95" href="blog.html">Blog</a>
+                <a class="nav-link active:scale-95" href="careers.html">Careers</a>
+                <a class="nav-link active:scale-95" href="contactus.html">Contact Us</a>
+            </div>
+            <!-- Mobile Hamburger Toggle Button -->
+            <button id="mobile-menu-toggle"
+                class="md:hidden text-primary hover:text-white transition-colors duration-200 flex items-center justify-center p-2">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu"
+                class="hidden absolute top-full left-0 w-full mt-2 bg-[#131313]/95 border border-white/10 backdrop-blur-lg rounded-xl p-6 flex flex-col gap-4 shadow-[0_24px_50px_rgba(0,0,0,0.5)] z-40 transform scale-95 opacity-0 origin-top transition-all duration-300">
+                <a class="nav-link text-center py-3 border-b border-white/5" href="index.html">Home</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="solutions.html">Solutions</a>
+                <a class="nav-link text-center py-3 border-b border-white/5 active" href="about.html">About Us</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="blog.html">Blog</a>
+                <a class="nav-link text-center py-3" href="careers.html">Careers</a>
+                <a class="nav-link text-center py-3" href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative tech-grid overflow-hidden pt-28">
+        <!-- Background Glowing Accent Blobs -->
+        <div class="glow-blob glow-blue -top-40 -left-40"></div>
+        <div class="glow-blob glow-purple top-1/4 -right-40"></div>
+        <div class="glow-blob glow-green bottom-1/4 -left-40"></div>
+        <div class="glow-blob glow-blue bottom-10 right-10"></div>
+
+        <!-- 1. Hero Section -->
+        <section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Column Header -->
+                <div class="lg:col-span-5 reveal-element">
+                    <h1 class="font-headline-xl text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none tracking-tighter text-reveal-gradient mb-6">
+                        About <span class="text-sky-400">Us</span>
+                    </h1>
+                    <div class="mt-8">
+                        <a href="contactus.html"
+                            class="inline-block bg-primary text-on-primary px-8 py-3.5 font-label-md text-label-md hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all active:scale-95 text-center">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Right Column Text Narratives & Hero Image Overlay -->
+                <div class="lg:col-span-7 space-y-8 reveal-element" style="transition-delay: 100ms">
+                    <p class="font-body-lg text-lg sm:text-xl md:text-2xl text-on-surface-variant leading-relaxed">
+                        We design, build and modernize digital products and commerce platforms for mid-market leaders, combining industry expertise, AI-driven engineering, and data insights to accelerate growth.
+                    </p>
+                    <div class="luminous-border p-2 rounded-2xl">
+                        <img alt="CrossTech Solutions Hero Design" class="w-full rounded-xl object-cover shadow-2xl" src="about_hero.png" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. "How We Work" Carousel Slider Section -->
+        <section class="py-20 bg-[#0d0e0f]/50 border-y border-white/5 relative z-10">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="mb-12 reveal-element">
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Our Engineering Framework</span>
+                    <h2 class="font-headline-xl text-3xl md:text-4xl text-primary mt-2">How We Work</h2>
+                </div>
+
+                <div class="luminous-border p-6 md:p-10 rounded-3xl relative overflow-hidden flex flex-col lg:flex-row gap-12 items-center reveal-element">
+                    <!-- Left Slide Details -->
+                    <div class="lg:w-7/12 space-y-6 flex flex-col justify-between min-h-[320px]">
+                        <div id="hww-slider-content" class="space-y-6">
+                            <!-- Injected by JS -->
+                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-headline-lg text-primary tracking-tight font-bold" id="hww-title">How We Work</h2>
+                            <div class="space-y-4 text-on-surface-variant text-body-md leading-relaxed" id="hww-description">
+                                <p>As a global, award-winning leader in the tech and design industry, you could sum up what we do in three simple words: design, build, grow. But then again, there's so much more to that than meets the eye.</p>
+                                <p>Behind it all is the unflagging, human-centric approach of Design Thinking and our proprietary Agile-Scrum + DevOps methodology designed to meet the ever-evolving challenges of creating digital products and platforms that put people first.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slider Navigation controls -->
+                        <div class="flex items-center gap-4 pt-6">
+                            <button onclick="prevHWWSlide()" class="w-10 h-10 rounded-full border border-white/20 hover:border-white/60 flex items-center justify-center text-primary transition-colors hover:bg-white/5 active:scale-90">
+                                <span class="material-symbols-outlined">chevron_left</span>
+                            </button>
+                            <!-- Bullet Indicator container -->
+                            <div id="hww-bullets" class="flex gap-2">
+                                <!-- Injected by JS -->
+                            </div>
+                            <button onclick="nextHWWSlide()" class="w-10 h-10 rounded-full border border-white/20 hover:border-white/60 flex items-center justify-center text-primary transition-colors hover:bg-white/5 active:scale-90">
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Graphic Frame -->
+                    <div class="lg:w-5/12 w-full">
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                            <img alt="Interactive Workspace Graphic" class="w-full object-cover aspect-video lg:aspect-square" src="about_workspace.png" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Mid Narrative Link Section -->
+        <section class="py-20 px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto text-center relative z-10 reveal-element">
+            <p class="font-body-lg text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6">
+                Since we launched 5 years ago, CrossTech Solutions has kept pace with every major shift in technology; from early dynamic web design and mobile environments to cloud mesh networking, and now context-aware Data and AI systems. A lot has changed but what has stayed constant is the value we place on learning, unlearning and re-learning to meet our customers where their business needs us.
+            </p>
+            <p class="font-headline-md text-base md:text-lg text-sky-400 font-bold uppercase tracking-widest">
+                We are the partners you can count on for delivering high value, outcome driven digital products and platforms.
+            </p>
+        </section>
+
+        <!-- 4. "There's More to the Story" Tabbed Timeline Section -->
+        <section class="py-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10 border-t border-white/5">
+            <div class="mb-16 reveal-element">
+                <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Architectural Milestones</span>
+                <h2 class="font-headline-xl text-3xl md:text-4xl text-primary mt-2">There's More to the Story</h2>
+            </div>
+
+            <!-- Double Column Tab Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <!-- Left Chapter Selection tabs -->
+                <div class="lg:col-span-4 space-y-2 relative pl-6 reveal-element">
+                    <!-- Vertical line indicator decoration -->
+                    <div class="absolute left-1 top-0 bottom-0 w-[2px] bg-white/10 rounded"></div>
+                    <div id="timeline-indicator-bar" class="absolute left-1 w-[2px] bg-sky-400 rounded transition-all duration-300" style="height: 48px; top: 0px;"></div>
+
+                    <button onclick="selectTimelineTab(0)" class="timeline-tab-btn w-full text-left py-3 px-4 rounded-xl text-outline font-headline-md transition-colors hover:text-white flex flex-col justify-start">
+                        <span class="text-xs uppercase tracking-wider text-outline mb-0.5">Chapter 1</span>
+                        <span class="text-lg font-bold text-slate-300">Powering Up</span>
+                    </button>
+                    <button onclick="selectTimelineTab(1)" class="timeline-tab-btn w-full text-left py-3 px-4 rounded-xl text-outline font-headline-md transition-colors hover:text-white flex flex-col justify-start">
+                        <span class="text-xs uppercase tracking-wider text-outline mb-0.5">Chapter 2</span>
+                        <span class="text-lg font-bold text-slate-300">Design the Right Experiences</span>
+                    </button>
+                    <button onclick="selectTimelineTab(2)" class="timeline-tab-btn w-full text-left py-3 px-4 rounded-xl text-outline font-headline-md transition-colors hover:text-white flex flex-col justify-start">
+                        <span class="text-xs uppercase tracking-wider text-outline mb-0.5">Chapter 3</span>
+                        <span class="text-lg font-bold text-slate-300">Build the Right Products</span>
+                    </button>
+                    <button onclick="selectTimelineTab(3)" class="timeline-tab-btn w-full text-left py-3 px-4 rounded-xl text-outline font-headline-md transition-colors hover:text-white flex flex-col justify-start">
+                        <span class="text-xs uppercase tracking-wider text-outline mb-0.5">Chapter 4</span>
+                        <span class="text-lg font-bold text-slate-300">Grow with the Right Customers</span>
+                    </button>
+                    <button onclick="selectTimelineTab(4)" class="timeline-tab-btn w-full text-left py-3 px-4 rounded-xl text-outline font-headline-md transition-colors hover:text-white flex flex-col justify-start">
+                        <span class="text-xs uppercase tracking-wider text-outline mb-0.5">Chapter 5</span>
+                        <span class="text-lg font-bold text-slate-300">There's More to the Story</span>
+                    </button>
+                </div>
+
+                <!-- Right Narrative panel updating dynamically -->
+                <div class="lg:col-span-8 luminous-border p-6 md:p-8 rounded-3xl reveal-element" style="transition-delay: 150ms">
+                    <div id="timeline-content-pane" class="space-y-8 min-h-[420px] flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-center border-b border-white/5 pb-4">
+                                <h3 id="timeline-title" class="text-2xl sm:text-3xl font-headline-lg text-primary tracking-tight font-bold">Powering Up</h3>
+                                <span id="timeline-year" class="text-sm font-bold bg-sky-400/10 text-sky-400 px-4 py-1.5 rounded-full border border-sky-400/20">2021</span>
+                            </div>
+                            <div id="timeline-desc" class="text-on-surface-variant space-y-4 text-body-md leading-relaxed">
+                                <!-- Dynamic narrative content -->
+                            </div>
+                        </div>
+
+                        <!-- Blockquote element (only shows for tab 0) -->
+                        <div id="timeline-quote-box" class="border-l-4 border-sky-400 pl-6 py-2 bg-sky-400/5 rounded-r-xl my-6">
+                            <p id="timeline-quote" class="italic text-slate-300 text-sm md:text-base"></p>
+                        </div>
+
+                        <!-- Timeline illustration display -->
+                        <div class="rounded-xl overflow-hidden border border-white/5 shadow-inner mt-6">
+                            <img alt="Interactive growth milestone representation" class="w-full max-h-[260px] object-cover" src="about_growth.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. "Meet Our Leaders" Grid Section -->
+        <section class="py-24 bg-[#0d0e0f]/35 border-t border-white/5 relative z-10">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-16 reveal-element">
+                    <div>
+                        <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Strategic Collaboration Team</span>
+                        <h2 class="font-headline-xl text-3xl md:text-4xl text-primary mt-2">Meet Our Leaders</h2>
+                    </div>
+                    <p class="text-outline text-body-md max-w-md">
+                        Together, they shape the future — one decision at a time, aligning operations with engineering integrity.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Leader 1 -->
+                    <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element">
+                        <div class="aspect-[4/3] bg-surface-container overflow-hidden border-b border-white/5 relative">
+                            <img alt="Chandan Chaudhary" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="pranmitra3.png" />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-lg font-bold text-primary">Sameer Jain</h3>
+                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Chief Executive Officer</p>
+                            <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
+                                Directs corporate alignment, global expansion strategies, and engineering program structures.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Leader 2 -->
+                    <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element" style="transition-delay: 100ms">
+                        <div class="aspect-[4/3] bg-surface-container overflow-hidden border-b border-white/5 relative">
+                            <img alt="Pawan Singh" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="psr_v2.png" />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-lg font-bold text-primary">Aditi Jain</h3>
+                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Chief Operating Officer</p>
+                            <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
+                                Manages operational efficiency, client relation contracts, and global delivery systems.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Leader 3 -->
+                    <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element" style="transition-delay: 200ms">
+                        <div class="aspect-[4/3] bg-surface-container overflow-hidden border-b border-white/5 relative">
+                            <img alt="Jayant Chaudhary" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="jayant_fx.png" />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-lg font-bold text-primary">Joseph Jude</h3>
+                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Chief Technology Officer</p>
+                            <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
+                                Orchestrates custom cloud frameworks, database nodes, and cognitive conversational AI chatbot architectures.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Leader 4 -->
+                    <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element">
+                        <div class="aspect-[4/3] bg-surface-container/60 flex items-center justify-center border-b border-white/5 relative p-4">
+                            <div class="text-center space-y-2">
+                                <span class="material-symbols-outlined text-outline text-5xl">trending_up</span>
+                                <div class="text-outline font-headline-md text-xs uppercase tracking-widest">Leadership Profile</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-lg font-bold text-primary">Andrew Jackson Proes</h3>
+                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Chief Revenue Officer</p>
+                            <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
+                                Leads global business developments, strategic revenue targets, and key partner relations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Leader 5 -->
+                    <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element" style="transition-delay: 100ms">
+                        <div class="aspect-[4/3] bg-surface-container/60 flex items-center justify-center border-b border-white/5 relative p-4">
+                            <div class="text-center space-y-2">
+                                <span class="material-symbols-outlined text-outline text-5xl">group</span>
+                                <div class="text-outline font-headline-md text-xs uppercase tracking-widest">Human Resources</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-lg font-bold text-primary">Teevrta Kaul</h3>
+                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Head | HR</p>
+                            <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
+                                Builds global development talent nodes and manages developer acquisition frameworks.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Leader 6 -->
+                    <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element" style="transition-delay: 200ms">
+                        <div class="aspect-[4/3] bg-surface-container/60 flex items-center justify-center border-b border-white/5 relative p-4">
+                            <div class="text-center space-y-2">
+                                <span class="material-symbols-outlined text-outline text-5xl">settings_applications</span>
+                                <div class="text-outline font-headline-md text-xs uppercase tracking-widest">Operations Head</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-headline-md text-lg font-bold text-primary">Anand Bhusari</h3>
+                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Head | Operations</p>
+                            <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
+                                Directs physical delivery metrics, data centers, and compliant service execution metrics.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Technology Partners Grid Section -->
+        <section class="py-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10 border-t border-white/5">
+            <div class="text-center mb-16 reveal-element">
+                <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Technology Ecosystems</span>
+                <h2 class="font-headline-xl text-3xl md:text-4xl text-primary mt-2">Innovating with Top Technology Partners</h2>
+            </div>
+
+            <!-- Partners Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 reveal-element">
+                <!-- Partner Adobe -->
+                <div class="liquid-glass p-6 rounded-2xl hover:border-white/20 transition-all flex flex-col justify-center items-center min-h-[120px] text-center group">
+                    <span class="font-bold text-lg tracking-wider text-outline group-hover:text-primary transition-colors">ADOBE</span>
+                    <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mt-1">Certified Partner</span>
+                </div>
+                <!-- Partner AWS -->
+                <div class="liquid-glass p-6 rounded-2xl hover:border-white/20 transition-all flex flex-col justify-center items-center min-h-[120px] text-center group">
+                    <span class="font-bold text-lg tracking-wider text-outline group-hover:text-primary transition-colors">AWS</span>
+                    <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mt-1">Consulting Partner</span>
+                </div>
+                <!-- Partner BigCommerce -->
+                <div class="liquid-glass p-6 rounded-2xl hover:border-white/20 transition-all flex flex-col justify-center items-center min-h-[120px] text-center group">
+                    <span class="font-bold text-lg tracking-wider text-outline group-hover:text-primary transition-colors">BIGCOMMERCE</span>
+                    <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mt-1">Elite Partner</span>
+                </div>
+                <!-- Partner Contentful -->
+                <div class="liquid-glass p-6 rounded-2xl hover:border-white/20 transition-all flex flex-col justify-center items-center min-h-[120px] text-center group">
+                    <span class="font-bold text-lg tracking-wider text-outline group-hover:text-primary transition-colors">CONTENTFUL</span>
+                    <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mt-1">Partner Specialist</span>
+                </div>
+                <!-- Partner Akeneo -->
+                <div class="liquid-glass p-6 rounded-2xl hover:border-white/20 transition-all flex flex-col justify-center items-center min-h-[120px] text-center group">
+                    <span class="font-bold text-lg tracking-wider text-outline group-hover:text-primary transition-colors">AKENEO</span>
+                    <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mt-1">System Integrator</span>
+                </div>
+                <!-- Partner VWO -->
+                <div class="liquid-glass p-6 rounded-2xl hover:border-white/20 transition-all flex flex-col justify-center items-center min-h-[120px] text-center group">
+                    <span class="font-bold text-lg tracking-wider text-outline group-hover:text-primary transition-colors">VWO</span>
+                    <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mt-1">Optimization Partner</span>
+                </div>
+                <!-- Partner Feedono -->
+                <div class="liquid-glass p-6 rounded-2xl hover:border-white/20 transition-all flex flex-col justify-center items-center min-h-[120px] text-center group">
+                    <span class="font-bold text-lg tracking-wider text-outline group-hover:text-primary transition-colors">FEEDONO</span>
+                    <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mt-1">Strategic Integration</span>
+                </div>
+                <!-- Partner Pimberly -->
+                <div class="liquid-glass p-6 rounded-2xl hover:border-white/20 transition-all flex flex-col justify-center items-center min-h-[120px] text-center group">
+                    <span class="font-bold text-lg tracking-wider text-outline group-hover:text-primary transition-colors">PIMBERLY</span>
+                    <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mt-1">Product Data Partner</span>
+                </div>
+                <!-- Partner Shopify -->
+                <div class="liquid-glass p-6 rounded-2xl hover:border-white/20 transition-all flex flex-col justify-center items-center min-h-[120px] text-center group">
+                    <span class="font-bold text-lg tracking-wider text-outline group-hover:text-primary transition-colors">SHOPIFY</span>
+                    <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mt-1">Plus Alliance</span>
+                </div>
+                <!-- Partner Sanity -->
+                <div class="liquid-glass p-6 rounded-2xl hover:border-white/20 transition-all flex flex-col justify-center items-center min-h-[120px] text-center group">
+                    <span class="font-bold text-lg tracking-wider text-outline group-hover:text-primary transition-colors">SANITY</span>
+                    <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest mt-1">Headless CMS Partner</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. "Trusted by Industry Leaders" Testimonial Slider Section -->
+        <section class="py-24 bg-[#0d0e0f]/50 border-t border-white/5 relative z-10">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5 space-y-6 reveal-element">
+                        <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Customer Praise</span>
+                        <h2 class="font-headline-xl text-3xl md:text-4xl text-primary leading-tight">
+                            Trusted by<br />Industry Leaders
+                        </h2>
+                        <p class="text-on-surface-variant text-body-md leading-relaxed">
+                            Our client’s success is the best measure of our expertise. Over the years, we’ve built a reputation for delivering exceptional results and fostering long-term partnerships with industry-leading companies.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Testimonial Slider Panel -->
+                    <div class="lg:col-span-7 luminous-border p-6 md:p-10 rounded-3xl relative min-h-[360px] flex flex-col justify-between reveal-element" style="transition-delay: 150ms">
+                        <div id="testimonial-slider-content" class="space-y-6">
+                            <!-- Injected by JS -->
+                            <p class="text-slate-300 text-body-lg italic leading-relaxed" id="testi-text"></p>
+                            <div class="flex items-center gap-4 border-t border-white/5 pt-6">
+                                <div class="w-12 h-12 rounded-full bg-sky-400/10 border border-sky-400/20 flex items-center justify-center text-sky-400 font-bold text-lg" id="testi-avatar">
+                                    RS
+                                </div>
+                                <div>
+                                    <h4 class="font-headline-md text-base text-primary font-bold" id="testi-author">Robbie Stevens</h4>
+                                    <p class="text-xs text-outline" id="testi-role">Digital Sales Director | GSF CAR PARTS</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Slider Controls -->
+                        <div class="flex justify-between items-center pt-8">
+                            <div id="testi-bullets" class="flex gap-2">
+                                <!-- Injected by JS -->
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="prevTesti()" class="w-8 h-8 rounded-full border border-white/10 hover:border-white/40 flex items-center justify-center text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-sm">chevron_left</span>
+                                </button>
+                                <button onclick="nextTesti()" class="w-8 h-8 rounded-full border border-white/10 hover:border-white/40 flex items-center justify-center text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-sm">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Latest Insights Section -->
+        <section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10 border-t border-white/5">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-16 reveal-element">
+                <div>
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Industry Analysis</span>
+                    <h2 class="font-headline-xl text-3xl md:text-4xl text-primary mt-2">Latest Insights</h2>
+                </div>
+                <a class="inline-block bg-transparent border border-white/20 text-primary px-6 py-2.5 font-label-md text-label-md hover:bg-white/5 transition-all active:scale-95 text-center" href="blog.html">View All</a>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Blog 1 -->
+                <a href="blog-ai-models-comparison.html" class="group luminous-border rounded-2xl overflow-hidden hover-glow-card flex flex-col justify-between min-h-[300px] p-6 reveal-element">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between text-xs text-outline">
+                            <span class="bg-white/5 px-2.5 py-1 rounded-full border border-white/5">AI Trends</span>
+                            <span>17 min read</span>
+                        </div>
+                        <h3 class="font-headline-md text-lg font-bold text-primary group-hover:text-sky-400 transition-colors">
+                            AI Models Comparison in 2026: An In-Depth Look
+                        </h3>
+                        <p class="font-body-md text-xs text-on-surface-variant leading-relaxed line-clamp-3">
+                            A granular analysis of parameter efficiency, inference latencies, and token processing costs between Claude, GPT, and Llama series.
+                        </p>
+                    </div>
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1 mt-6">
+                        Read Article <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </span>
+                </a>
+
+                <!-- Blog 2 -->
+                <a href="blog-why-chatbots-necessary.html" class="group luminous-border rounded-2xl overflow-hidden hover-glow-card flex flex-col justify-between min-h-[300px] p-6 reveal-element" style="transition-delay: 100ms">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between text-xs text-outline">
+                            <span class="bg-white/5 px-2.5 py-1 rounded-full border border-white/5">Enterprise AI</span>
+                            <span>12 min read</span>
+                        </div>
+                        <h3 class="font-headline-md text-lg font-bold text-primary group-hover:text-sky-400 transition-colors">
+                            Why Chatbots are Necessary for a Company
+                        </h3>
+                        <p class="font-body-md text-xs text-on-surface-variant leading-relaxed line-clamp-3">
+                            How modern conversational systems reduce overhead costs, improve transaction retention, and streamline tier-1 support tickets.
+                        </p>
+                    </div>
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1 mt-6">
+                        Read Article <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </span>
+                </a>
+
+                <!-- Blog 3 -->
+                <a href="blog-what-are-ai-assistants.html" class="group luminous-border rounded-2xl overflow-hidden hover-glow-card flex flex-col justify-between min-h-[300px] p-6 reveal-element" style="transition-delay: 200ms">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between text-xs text-outline">
+                            <span class="bg-white/5 px-2.5 py-1 rounded-full border border-white/5">AI Assistants</span>
+                            <span>14 min read</span>
+                        </div>
+                        <h3 class="font-headline-md text-lg font-bold text-primary group-hover:text-sky-400 transition-colors">
+                            What are AI Assistants & How Do They Scale Operations?
+                        </h3>
+                        <p class="font-body-md text-xs text-on-surface-variant leading-relaxed line-clamp-3">
+                            Understand how specialized AI agents execute complex tasks, manage internal databases, and accelerate corporate growth.
+                        </p>
+                    </div>
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1 mt-6">
+                        Read Article <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 9. Global Office Networks Section -->
+        <section class="py-24 bg-[#0d0e0f]/50 border-t border-white/5 relative z-10">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="mb-16 reveal-element">
+                    <span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Global Delivery Network</span>
+                    <h2 class="font-headline-xl text-3xl md:text-4xl text-primary mt-2">Our Locations</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Location 1 -->
+                    <div class="liquid-glass p-8 rounded-2xl space-y-4 reveal-element">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-primary font-headline-md">LOS ANGELES</h3>
+                            <span class="text-xs bg-white/5 text-outline px-2.5 py-1 rounded border border-white/10 uppercase tracking-widest font-semibold">USA</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            11601 Wilshire Blvd<br />
+                            5th Floor<br />
+                            Los Angeles, CA 90025
+                        </p>
+                        <a href="tel:+14167201790" class="inline-block text-xs font-bold text-sky-400 hover:text-white transition-colors pt-2">+1 (416) 720-1790</a>
+                    </div>
+
+                    <!-- Location 2 -->
+                    <div class="liquid-glass p-8 rounded-2xl space-y-4 reveal-element" style="transition-delay: 100ms">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-primary font-headline-md">NEW YORK</h3>
+                            <span class="text-xs bg-white/5 text-outline px-2.5 py-1 rounded border border-white/10 uppercase tracking-widest font-semibold">USA</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            101 Avenue of the Americas<br />
+                            8th Floor<br />
+                            New York City, NY 10013
+                        </p>
+                        <a href="tel:+14167201790" class="inline-block text-xs font-bold text-sky-400 hover:text-white transition-colors pt-2">+1 (416) 720-1790</a>
+                    </div>
+
+                    <!-- Location 3 -->
+                    <div class="liquid-glass p-8 rounded-2xl space-y-4 reveal-element" style="transition-delay: 200ms">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-primary font-headline-md">TORONTO</h3>
+                            <span class="text-xs bg-white/5 text-outline px-2.5 py-1 rounded border border-white/10 uppercase tracking-widest font-semibold">Canada</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            111 Queen Street East<br />
+                            South Building, Suite 450<br />
+                            Toronto, ON M5C 1S2
+                        </p>
+                        <a href="tel:+14167201790" class="inline-block text-xs font-bold text-sky-400 hover:text-white transition-colors pt-2">+1 (416) 720-1790</a>
+                    </div>
+
+                    <!-- Location 4 -->
+                    <div class="liquid-glass p-8 rounded-2xl space-y-4 reveal-element">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-primary font-headline-md">LONDON</h3>
+                            <span class="text-xs bg-white/5 text-outline px-2.5 py-1 rounded border border-white/10 uppercase tracking-widest font-semibold">UK</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            184 Fleet Street<br />
+                            London, EC4A 2HD<br />
+                            United Kingdom
+                        </p>
+                        <a href="tel:+442078822000" class="inline-block text-xs font-bold text-sky-400 hover:text-white transition-colors pt-2">+44 (207) 882-2000</a>
+                    </div>
+
+                    <!-- Location 5 -->
+                    <div class="liquid-glass p-8 rounded-2xl space-y-4 reveal-element" style="transition-delay: 100ms">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-primary font-headline-md">SYDNEY</h3>
+                            <span class="text-xs bg-white/5 text-outline px-2.5 py-1 rounded border border-white/10 uppercase tracking-widest font-semibold">Australia</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            Level 34, 120 Pitt Street<br />
+                            Sydney, NSW 2000<br />
+                            Australia
+                        </p>
+                        <a href="tel:+61280055000" class="inline-block text-xs font-bold text-sky-400 hover:text-white transition-colors pt-2">+61 (2) 8005-5000</a>
+                    </div>
+
+                    <!-- Location 6 -->
+                    <div class="liquid-glass p-8 rounded-2xl space-y-4 reveal-element" style="transition-delay: 200ms">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-primary font-headline-md">MUMBAI</h3>
+                            <span class="text-xs bg-white/5 text-outline px-2.5 py-1 rounded border border-white/10 uppercase tracking-widest font-semibold">India</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            Naman Centre, G Block BKC<br />
+                            Bandra Kurla Complex<br />
+                            Mumbai, MH 400051
+                        </p>
+                        <a href="tel:+912261050000" class="inline-block text-xs font-bold text-sky-400 hover:text-white transition-colors pt-2">+91 (22) 6105-0000</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-24 md:py-40 px-margin-mobile md:px-margin-desktop relative z-10 overflow-hidden">
+            <div class="relative max-w-container-max mx-auto text-center reveal-element">
+                <h2 class="font-headline-xl text-3xl md:text-5xl mb-8">Build Your Custom Solution.</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+                    Whether you need a custom web application, a scalable CRM, or an intelligent AI chatbot, CrossTechSolutions is ready to deliver.
+                </p>
+                <div class="flex flex-col md:flex-row gap-6 justify-center">
+                    <a href="contactus.html"
+                        class="inline-block bg-primary text-on-primary px-12 py-4 font-label-md text-label-md hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all active:scale-95 text-center">Inquire Now</a>
+                    <a href="solutions.html"
+                        class="inline-block bg-transparent border border-white/20 text-primary px-12 py-4 font-label-md text-label-md hover:bg-white/5 transition-all active:scale-95 text-center">Our Solutions</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-12 md:py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-t border-white/5 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-container-max mx-auto">
+            <div>
+                <span class="text-headline-md font-headline-md font-bold text-primary">CROSSTECH SOLUTIONS</span>
+                <p class="font-label-sm text-label-sm text-outline mt-4">© 2026 CrossTechSolutions. Tailored Software Engineering.</p>
+            </div>
+            <div class="flex flex-wrap md:justify-end gap-x-8 gap-y-4">
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="#">Privacy Policy</a>
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="#">Terms of Service</a>
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="#">Security</a>
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="https://github.com">GitHub</a>
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="https://linkedin.com">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle logic
+            const toggleBtn = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (toggleBtn && mobileMenu) {
+                toggleBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    if (isHidden) {
+                        mobileMenu.classList.remove('hidden');
+                        requestAnimationFrame(() => {
+                            mobileMenu.classList.remove('scale-95', 'opacity-0');
+                            mobileMenu.classList.add('scale-100', 'opacity-100');
+                        });
+                        const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                        if (iconSpan) iconSpan.textContent = 'close';
+                    } else {
+                        mobileMenu.classList.remove('scale-100', 'opacity-100');
+                        mobileMenu.classList.add('scale-95', 'opacity-0');
+                        const transitionEndHandler = () => {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenu.removeEventListener('transitionend', transitionEndHandler);
+                        };
+                        mobileMenu.addEventListener('transitionend', transitionEndHandler);
+                        const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                        if (iconSpan) iconSpan.textContent = 'menu';
+                    }
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.remove('scale-100', 'opacity-100');
+                            mobileMenu.classList.add('scale-95', 'opacity-0');
+                            const transitionEndHandler = () => {
+                                mobileMenu.classList.add('hidden');
+                                mobileMenu.removeEventListener('transitionend', transitionEndHandler);
+                            };
+                            mobileMenu.addEventListener('transitionend', transitionEndHandler);
+                            const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                            if (iconSpan) iconSpan.textContent = 'menu';
+                        }
+                    }
+                });
+            }
+
+            // Scroll Reveal Entrance Animations
+            const revealOptions = {
+                threshold: 0.05,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            document.querySelectorAll('.reveal-element').forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            // Initialize sliders and tabbed timeline components
+            initHWWSlider();
+            initTimeline();
+            initTestimonialSlider();
+        });
+
+        // 1. "How We Work" Carousel Slider Logic
+        const hwwSlides = [
+            {
+                title: "How We Work",
+                desc: `<p>As a global, award-winning leader in the tech and design industry, you could sum up what we do in three simple words: design, build, grow. But then again, there's so much more to that than meets the eye.</p>
+                       <p>Behind it all is the unflagging, human-centric approach of Design Thinking and our proprietary Agile-Scrum + DevOps methodology designed to meet the ever-evolving challenges of creating digital products and platforms that put people first.</p>`
+            },
+            {
+                title: "Everything We do Starts with People",
+                desc: `<p>We use Empathy as a Key Design Tool. In the early stages of any project, ideation driven by Design Thinking uncovers the needs and challenges of your business, customers and technology. Ours is a co-creative process that starts with understanding what your people need - your team and your customers alike.</p>
+                       <p>We bring into the mix our people, which is a carefully selected cross section of talent working at the intersection of great design and robust engineering.</p>`
+            },
+            {
+                title: "We don’t just build the Right Products - We build them Right.",
+                desc: `<p>It's easy to look at the build phase as a nuts and bolts programming exercise. But we never lose sight of the fact that we’re building experiences for human beings to enjoy.</p>
+                       <p>Our dynamic iterative development process with rapid prototyping and early customer validation allows us to measure, test and scale your solution in the markets, mediums and channels that move your business forward.</p>`
+            },
+            {
+                title: "We build Technology that Scales",
+                desc: `<p>Our battle-tested engineering process, coupled with agile devops practices, amplified and accelerated with Data & AI has helped us deliver predictable delivery outcomes project after project, customer after customer, year after year for over 5 years now.</p>
+                       <p>This also keeps our technology team on their toes, continuously test-driving the latest frameworks and services for leading-edge solutions we can confidently use in your projects for optimal results.</p>`
+            },
+            {
+                title: "We put our Customers first, always.",
+                desc: `<p>We drive value for you through continuous delivery, ongoing innovation and increased opportunities for better ROI and bottom line growth. And as your partner, we see launch as not an end point, but as a new start.</p>
+                       <p>As the needs and goals of both your customers and you evolve and change, we’re here to ensure our work for you continues to engage, inspire, delight - and move your business forward.</p>`
+            }
+        ];
+
+        let currentHWWSlideIndex = 0;
+
+        function initHWWSlider() {
+            renderHWWSlide();
+            renderHWWBullets();
+        }
+
+        function renderHWWSlide() {
+            const titleEl = document.getElementById("hww-title");
+            const descEl = document.getElementById("hww-description");
+            const container = document.getElementById("hww-slider-content");
+
+            if (titleEl && descEl && container) {
+                // Add smooth transition trigger class
+                container.classList.remove("slide-fade-in");
+                void container.offsetWidth; // trigger reflow
+                container.classList.add("slide-fade-in");
+
+                titleEl.textContent = hwwSlides[currentHWWSlideIndex].title;
+                descEl.innerHTML = hwwSlides[currentHWWSlideIndex].desc;
+            }
+            updateHWWBullets();
+        }
+
+        function renderHWWBullets() {
+            const container = document.getElementById("hww-bullets");
+            if (!container) return;
+            container.innerHTML = "";
+            hwwSlides.forEach((_, idx) => {
+                const bullet = document.createElement("button");
+                bullet.className = "w-2.5 h-2.5 rounded-full transition-all duration-300";
+                bullet.onclick = () => {
+                    currentHWWSlideIndex = idx;
+                    renderHWWSlide();
+                };
+                container.appendChild(bullet);
+            });
+            updateHWWBullets();
+        }
+
+        function updateHWWBullets() {
+            const container = document.getElementById("hww-bullets");
+            if (!container) return;
+            const bullets = container.querySelectorAll("button");
+            bullets.forEach((bullet, idx) => {
+                if (idx === currentHWWSlideIndex) {
+                    bullet.className = "w-6 h-2.5 bg-sky-400 rounded-full transition-all duration-300";
+                } else {
+                    bullet.className = "w-2.5 h-2.5 bg-white/20 hover:bg-white/40 rounded-full transition-all duration-300";
+                }
+            });
+        }
+
+        function prevHWWSlide() {
+            currentHWWSlideIndex = (currentHWWSlideIndex - 1 + hwwSlides.length) % hwwSlides.length;
+            renderHWWSlide();
+        }
+
+        function nextHWWSlide() {
+            currentHWWSlideIndex = (currentHWWSlideIndex + 1) % hwwSlides.length;
+            renderHWWSlide();
+        }
+
+        // 2. Timeline Chapters Data & Switch Logic
+        const timelineChapters = [
+            {
+                title: "Powering Up",
+                year: "2021",
+                desc: `<p>The potential of custom software architecture came to life when we saw the limitations of generic templates. While others deployed standard web tools, our founder Chandan Chaudhary laid the foundation of CrossTechSolutions by coding optimized API integrations and custom database structures in a small local workspace.</p>
+                       <p>As early inquiries arrived from stakeholders looking to deploy complex platforms, we quickly transitioned from single-dev operations into a dedicated technical hub designed to prioritize absolute engineering precision.</p>`,
+                quote: `"The same potential that was exciting to us more than two decades ago is just as strong today. I believe that the more connected we are as human beings, the better. This is a vision that everyone on the Net Solutions team holds." ~ Sameer Jain, founder of Net Solutions.`
+            },
+            {
+                title: "Design the Right Experiences",
+                year: "2022",
+                desc: `<p>By 2022, we grew our primary coding core, hiring specialist front-end engineers to construct fluid, glassmorphic layout frameworks. We developed responsive portals for global brand partners, optimizing digital experiences to resolve complex design hurdles.</p>
+                       <p>If a customer interacted with an online portal that felt remarkably smooth and responsive during this time, chances are it was built on top of our custom web layouts.</p>`,
+                quote: null
+            },
+            {
+                title: "Build the Right Products",
+                year: "2023",
+                desc: `<p>While we loved making layouts look beautiful, we also transitioned heavily into engineering custom SaaS tools, secure payment gateways, and backend inventory replication nodes. We wanted businesses to succeed with direct system automation.</p>
+                       <p>This led to the release of our modular CRM meshes and telemetry platforms, ensuring our clients never had to worry about scaling databases or handling complex security logs.</p>`,
+                quote: null
+            },
+            {
+                title: "Grow with the Right Customers",
+                year: "2024",
+                desc: `<p>In 2024, our client portfolio expanded globally. We established a dedicated R&D hub in Mumbai to facilitate continuous integration sprints. We focused on secure database setups, server migrations, and compliance measures.</p>
+                       <p>Today, our engineering operations spanning London, Sydney, Toronto, and Los Angeles maintain a lean startup mentality coupled with enterprise-level outcomes.</p>`,
+                quote: null
+            },
+            {
+                title: "There's More to the Story",
+                year: "2026",
+                desc: `<p>Now you know a bit about our journey. But the most important part of our architecture is the work we execute daily to help our client systems thrive. We keep pace with conversational AI, LLM fine-tuning, and robust automated workflows.</p>
+                       <p>Ultimately, your systems' security, reliability, and growth are the exact measures of our engineering commitment.</p>`,
+                quote: null
+            }
+        ];
+
+        function initTimeline() {
+            selectTimelineTab(0);
+        }
+
+        function selectTimelineTab(idx) {
+            const btns = document.querySelectorAll(".timeline-tab-btn");
+            const indicator = document.getElementById("timeline-indicator-bar");
+
+            // Update active styles on sidebar buttons
+            btns.forEach((btn, buttonIdx) => {
+                if (buttonIdx === idx) {
+                    btn.classList.add("text-white");
+                    btn.classList.remove("text-outline");
+                    btn.querySelectorAll("span").forEach(el => el.classList.remove("text-outline"));
+                    // Align indicator bar
+                    if (indicator) {
+                        const btnHeight = btn.offsetHeight;
+                        const btnTop = btn.offsetTop;
+                        indicator.style.height = `${btnHeight}px`;
+                        indicator.style.top = `${btnTop}px`;
+                    }
+                } else {
+                    btn.classList.remove("text-white");
+                    btn.classList.add("text-outline");
+                }
+            });
+
+            // Update main content card
+            const titleEl = document.getElementById("timeline-title");
+            const yearEl = document.getElementById("timeline-year");
+            const descEl = document.getElementById("timeline-desc");
+            const quoteEl = document.getElementById("timeline-quote");
+            const quoteBox = document.getElementById("timeline-quote-box");
+            const container = document.getElementById("timeline-content-pane");
+
+            if (titleEl && yearEl && descEl && container) {
+                // Apply animation
+                container.classList.remove("slide-fade-in");
+                void container.offsetWidth; // trigger reflow
+                container.classList.add("slide-fade-in");
+
+                titleEl.textContent = timelineChapters[idx].title;
+                yearEl.textContent = timelineChapters[idx].year;
+                descEl.innerHTML = timelineChapters[idx].desc;
+
+                if (timelineChapters[idx].quote) {
+                    if (quoteBox && quoteEl) {
+                        quoteBox.style.display = "block";
+                        quoteEl.textContent = timelineChapters[idx].quote;
+                    }
+                } else {
+                    if (quoteBox) quoteBox.style.display = "none";
+                }
+            }
+        }
+
+        // 3. Testimonial Slider Logic
+        const testimonials = [
+            {
+                text: "We highly recommend CrossTech Solutions to any business looking for a professional, innovative, and trustworthy IT development team. They have been instrumental in our success, and we look forward to continuing our collaboration for many years to come! From day one, they demonstrated a deep understanding of our business goals and provided innovative solutions.",
+                author: "Robbie Stevens",
+                role: "Digital Sales Director | The Fusion Funded",
+                initials: "RS"
+            },
+            {
+                text: "We have partnered with CrossTech Solutions for several iterations of our platform. They supported and modernized many aspects of our digital ecosystem. The team is excellent to work with, consistently taking ownership of challenges, paying meticulous attention to detail, and delivering outcome-driven solutions.",
+                author: "Rich Evans",
+                role: "General Manager | The Only Prop",
+                initials: "RE"
+            },
+            {
+                text: "CrossTech Solutions has delivered software on time, with the correct specifications, and with minimal post-release bugs. The team conducts regular sprint reviews and asks the right questions. They offer smart ways of achieving business goals and demonstrate a strong commitment to achieving them.",
+                author: "Michael Landless",
+                role: "Head of Product | Quarnex",
+                initials: "ML"
+            }
+        ];
+
+        let currentTestiIndex = 0;
+
+        function initTestimonialSlider() {
+            renderTesti();
+            renderTestiBullets();
+        }
+
+        function renderTesti() {
+            const textEl = document.getElementById("testi-text");
+            const authorEl = document.getElementById("testi-author");
+            const roleEl = document.getElementById("testi-role");
+            const avatarEl = document.getElementById("testi-avatar");
+            const container = document.getElementById("testimonial-slider-content");
+
+            if (textEl && authorEl && roleEl && avatarEl && container) {
+                container.classList.remove("slide-fade-in");
+                void container.offsetWidth; // trigger reflow
+                container.classList.add("slide-fade-in");
+
+                textEl.textContent = `"${testimonials[currentTestiIndex].text}"`;
+                authorEl.textContent = testimonials[currentTestiIndex].author;
+                roleEl.textContent = testimonials[currentTestiIndex].role;
+                avatarEl.textContent = testimonials[currentTestiIndex].initials;
+            }
+            updateTestiBullets();
+        }
+
+        function renderTestiBullets() {
+            const container = document.getElementById("testi-bullets");
+            if (!container) return;
+            container.innerHTML = "";
+            testimonials.forEach((_, idx) => {
+                const bullet = document.createElement("button");
+                bullet.className = "w-2 h-2 rounded-full transition-all duration-300";
+                bullet.onclick = () => {
+                    currentTestiIndex = idx;
+                    renderTesti();
+                };
+                container.appendChild(bullet);
+            });
+            updateTestiBullets();
+        }
+
+        function updateTestiBullets() {
+            const container = document.getElementById("testi-bullets");
+            if (!container) return;
+            const bullets = container.querySelectorAll("button");
+            bullets.forEach((bullet, idx) => {
+                if (idx === currentTestiIndex) {
+                    bullet.className = "w-4 h-2 bg-sky-400 rounded-full transition-all duration-300";
+                } else {
+                    bullet.className = "w-2 h-2 bg-white/20 hover:bg-white/40 rounded-full transition-all duration-300";
+                }
+            });
+        }
+
+        function prevTesti() {
+            currentTestiIndex = (currentTestiIndex - 1 + testimonials.length) % testimonials.length;
+            renderTesti();
+        }
+
+        function nextTesti() {
+            currentTestiIndex = (currentTestiIndex + 1) % testimonials.length;
+            renderTesti();
+        }
+    </script>
+</body>
+
+</html>
