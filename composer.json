@@ -37,7 +37,19 @@
             "democrm/Files/core/app/Http/Helpers/helpers.php"
         ]
     },
+    "scripts": {
+        "pre-autoload-dump": "Google\\Task\\Composer::cleanup",
+        "post-install-cmd": [
+            "php cleanup-google.php"
+        ],
+        "vercel": [
+            "php cleanup-google.php"
+        ]
+    },
     "extra": {
+        "google/apiclient-services": [
+            ""
+        ],
         "laravel": {
             "dont-discover": []
         }
