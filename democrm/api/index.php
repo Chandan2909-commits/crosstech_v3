@@ -3,11 +3,17 @@
 /**
  * Vercel Serverless Entry Point — CrossFlow CRM
  *
- * This file is the PHP function that Vercel invokes for every request
- * to democrm.crosstechsolutions.in. It simply delegates to the
- * Laravel entry point in Files/index.php.
- *
- * Vercel deploys with vercel-php@0.7.4 (PHP 8.3).
+ * The vercel-php runtime installs vendor/ here (from api/composer.json).
+ * We load that autoloader, then bootstrap Laravel from Files/core/.
  */
 
-require __DIR__ . '/../Files/index.php';
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+// Autoloader installed by vercel-php runtime into api/vendor/
+require __DIR__ . '/vendor/autoload.php';
+
+// Boot Laravel from the actual app directory
+(require_once __DIR__ . '/../Files/core/bootstrap/app.php')
+    ->handleRequest(Request::capture());
