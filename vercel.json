@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "cd democrm/Files/core && composer install --no-dev --optimize-autoloader --no-scripts",
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.4"

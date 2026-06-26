@@ -1,8 +1,5 @@
-# Vercel ignore — mirrors .gitignore but explicitly excludes large dirs
-# so the CLI upload stays lean (Vercel installs vendor via buildCommand)
-
-# Laravel vendor — Vercel runs `composer install` during build
-democrm/Files/core/vendor/
+# Vercel ignore — keeps the upload lean
+# vendor/ is intentionally INCLUDED (Vercel cannot run composer itself)
 
 # Runtime storage (generated on /tmp at runtime)
 democrm/Files/core/storage/framework/sessions/*
