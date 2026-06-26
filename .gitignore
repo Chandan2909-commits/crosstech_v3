@@ -23,3 +23,6 @@ democrm/Files/core/bootstrap/cache/*.php
 node_modules/
 npm-debug.log
 yarn-error.log
+
+.vercel
+.env*
