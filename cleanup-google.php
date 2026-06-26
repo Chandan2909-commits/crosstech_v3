@@ -10,33 +10,32 @@ if (!is_dir($dir)) {
     $dir = __DIR__ . '/democrm/Files/core/vendor/google/apiclient-services/src';
 }
 
-if (!is_dir($dir)) {
-    echo "Directory $dir not found. Skipping cleanup.\n";
-    exit(0);
-}
+if (is_dir($dir)) {
+    echo "Cleaning up Google API client services to reduce package size...\n";
 
-echo "Cleaning up Google API client services to reduce package size...\n";
+    $dirIterator = new DirectoryIterator($dir);
+    $deletedDirs = 0;
+    $deletedFiles = 0;
 
-$dirIterator = new DirectoryIterator($dir);
-$deletedDirs = 0;
-$deletedFiles = 0;
-
-foreach ($dirIterator as $item) {
-    if ($item->isDot()) {
-        continue;
+    foreach ($dirIterator as $item) {
+        if ($item->isDot()) {
+            continue;
+        }
+        
+        $path = $item->getPathname();
+        if ($item->isDir()) {
+            deleteDirectory($path);
+            $deletedDirs++;
+        } else if ($item->isFile() && $item->getExtension() === 'php') {
+            unlink($path);
+            $deletedFiles++;
+        }
     }
-    
-    $path = $item->getPathname();
-    if ($item->isDir()) {
-        deleteDirectory($path);
-        $deletedDirs++;
-    } else if ($item->isFile() && $item->getExtension() === 'php') {
-        unlink($path);
-        $deletedFiles++;
-    }
-}
 
-echo "Google API client services cleanup completed. Deleted $deletedDirs directories and $deletedFiles service files.\n";
+    echo "Google API client services cleanup completed. Deleted $deletedDirs directories and $deletedFiles service files.\n";
+} else {
+    echo "Directory $dir not found. Skipping Google client cleanup.\n";
+}
 
 // --- Patch ViserLab License Check ---
 $vendorDir = __DIR__ . '/vendor';
