@@ -1,5 +1,26 @@
 <?php
 
+// Clean up any BOM or zero-width spaces from environment variables
+foreach ($_ENV as $key => $value) {
+    if (is_string($value)) {
+        $cleanValue = preg_replace('/[\x{200B}-\x{200D}\x{FEFF}]/u', '', $value);
+        $cleanValue = trim($cleanValue);
+        if ($cleanValue !== $value) {
+            $_ENV[$key] = $cleanValue;
+            putenv("$key=$cleanValue");
+        }
+    }
+}
+foreach ($_SERVER as $key => $value) {
+    if (is_string($value)) {
+        $cleanValue = preg_replace('/[\x{200B}-\x{200D}\x{FEFF}]/u', '', $value);
+        $cleanValue = trim($cleanValue);
+        if ($cleanValue !== $value) {
+            $_SERVER[$key] = $cleanValue;
+        }
+    }
+}
+
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckStatus;
 use App\Http\Middleware\Demo;
