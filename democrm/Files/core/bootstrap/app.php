@@ -99,6 +99,10 @@ $app = Application::configure(basePath: dirname(__DIR__))
         );
     })
     ->withExceptions(function (Exceptions $exceptions) {
+        $exceptions->report(function (\Throwable $e) {
+            file_put_contents('php://stderr', "CRASH: " . get_class($e) . " - " . $e->getMessage() . " in " . $e->getFile() . ":" . $e->getLine() . "\n");
+        });
+
         $exceptions->shouldRenderJsonWhen(function () {
             if (request()->is('api/*')) {
                 return true;
