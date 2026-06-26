@@ -77,7 +77,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        if (gs('force_ssl')) {
+        if (getenv('VERCEL') || gs('force_ssl')) {
             \URL::forceScheme('https');
         }
 
