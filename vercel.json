@@ -2,7 +2,7 @@
   "version": 2,
   "buildCommand": "cd democrm/Files/core && composer install --no-dev --optimize-autoloader --no-scripts",
   "functions": {
-    "democrm/api/index.php": {
+    "api/index.php": {
       "runtime": "vercel-php@0.7.4"
     }
   },
@@ -15,7 +15,7 @@
     {
       "has": [{ "type": "host", "value": "democrm.crosstechsolutions.in" }],
       "src": "/(.*)",
-      "dest": "/democrm/api/index.php"
+      "dest": "/api/index.php"
     }
   ]
 }
