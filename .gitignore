@@ -1,0 +1,25 @@
+# ─── IDE / Editor ────────────────────────────────────────────────────────────
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+
+# ─── Laravel (CRM) ───────────────────────────────────────────────────────────
+democrm/Files/core/vendor/
+democrm/Files/core/.env
+democrm/Files/core/.env.backup
+democrm/Files/core/.env.production
+democrm/Files/core/storage/framework/sessions/*
+!democrm/Files/core/storage/framework/sessions/.gitignore
+democrm/Files/core/storage/framework/views/*
+!democrm/Files/core/storage/framework/views/.gitignore
+democrm/Files/core/storage/framework/cache/data/*
+!democrm/Files/core/storage/framework/cache/.gitignore
+democrm/Files/core/storage/logs/*.log
+democrm/Files/core/bootstrap/cache/*.php
+
+# ─── Node ────────────────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log
+yarn-error.log

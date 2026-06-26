@@ -1,0 +1,796 @@
+/* ============================================================
+   CrossFlow Glassmorphism Theme — Crosstech Solutions
+   Pure aesthetic overhaul. Zero DOM/layout/logic changes.
+   ============================================================ */
+
+/* ── 1. GLOBAL BACKGROUND CANVAS ── */
+html, body {
+  min-height: 100vh;
+  background-color: #f0eeff !important;
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(196, 181, 253, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(251, 207, 232, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 60% 85%, rgba(186, 206, 230, 0.40) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 45% at 90% 70%, rgba(221, 214, 254, 0.50) 0%, transparent 55%),
+    linear-gradient(135deg, #f5f3ff 0%, #fdf2f8 40%, #eff6ff 100%) !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
+/* ── 2. SIDEBAR — Glass Panel ── */
+.sidebar {
+  background: rgba(30, 15, 80, 0.55) !important;
+  backdrop-filter: blur(32px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+  border-right: 1px solid rgba(167, 139, 250, 0.25) !important;
+  box-shadow: 4px 0 40px rgba(20, 10, 60, 0.25) !important;
+}
+
+/* Sidebar logo area */
+.sidebar__logo {
+  border-bottom: 1px solid rgba(167, 139, 250, 0.18) !important;
+  background: transparent !important;
+}
+
+/* Sidebar menu header labels */
+.sidebar__menu-header {
+  color: rgba(196, 181, 253, 0.55) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+}
+
+/* Sidebar menu links */
+.sidebar__menu .sidebar-menu-item > a {
+  border-left: 3px solid transparent !important;
+  border-radius: 0 !important;
+  transition: all 0.25s ease !important;
+}
+
+.sidebar__menu .sidebar-menu-item > a:hover {
+  background: rgba(167, 139, 250, 0.15) !important;
+  border-left-color: rgba(196, 181, 253, 0.5) !important;
+}
+
+.sidebar__menu .menu-icon {
+  color: rgba(255, 255, 255, 0.70) !important;
+}
+
+.sidebar__menu .menu-title {
+  color: rgba(255, 255, 255, 0.80) !important;
+}
+
+/* Active sidebar item */
+.sidebar__menu .sidebar-menu-item .side-menu--open,
+.sidebar__menu .sidebar-menu-item.active > a {
+  background: linear-gradient(135deg, rgba(139, 110, 255, 0.70), rgba(109, 77, 255, 0.55)) !important;
+  border-left-color: #a78bfa !important;
+  border-radius: 0 16px 16px 0 !important;
+  box-shadow: 0 4px 20px rgba(109, 77, 255, 0.30) !important;
+}
+
+.sidebar__menu .sidebar-menu-item.active > a .menu-icon,
+.sidebar__menu .sidebar-menu-item.active > a .menu-title {
+  color: #ffffff !important;
+}
+
+/* Submenu */
+.sidebar__menu .sidebar-submenu {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+
+.sidebar__menu .sidebar-submenu .sidebar-menu-item.active > a {
+  background: rgba(139, 110, 255, 0.25) !important;
+  border-radius: 0 12px 12px 0 !important;
+}
+
+.sidebar__menu .sidebar-submenu .sidebar-menu-item.active a .menu-icon,
+.sidebar__menu .sidebar-submenu .sidebar-menu-item.active a .menu-title,
+.sidebar__menu .sidebar-submenu .sidebar-menu-item a .menu-icon,
+.sidebar__menu .sidebar-submenu .sidebar-menu-item a .menu-title {
+  color: rgba(255, 255, 255, 0.80) !important;
+}
+
+.sidebar__menu .sidebar-dropdown > a::before {
+  color: rgba(255, 255, 255, 0.60) !important;
+}
+
+/* Version info strip */
+.sidebar .version-info {
+  background: rgba(0, 0, 0, 0.20) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(167, 139, 250, 0.18) !important;
+}
+
+/* Sidebar scrollbar */
+.sidebar__menu-wrapper::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.sidebar__menu-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(167, 139, 250, 0.30) !important;
+  border-radius: 99px !important;
+}
+
+/* ── 3. NAVBAR / TOPNAV — Seamless with page ── */
+.navbar-wrapper {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.navbar__right button i {
+  color: rgba(30, 16, 70, 0.60) !important;
+}
+
+.navbar-user__name {
+  color: #1a1035 !important;
+}
+
+/* Search field */
+.navbar-search-field {
+  background: rgba(255, 255, 255, 0.40) !important;
+  border: 1px solid rgba(109, 77, 255, 0.15) !important;
+  color: #1a1035 !important;
+  border-radius: 999px !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.navbar-search-field::placeholder {
+  color: rgba(30, 16, 70, 0.35) !important;
+}
+
+.navbar-search-field:focus {
+  background: rgba(255, 255, 255, 0.65) !important;
+  border-color: rgba(109, 77, 255, 0.40) !important;
+  box-shadow: 0 0 0 3px rgba(109, 77, 255, 0.10) !important;
+}
+
+/* Notification badge */
+.notification-count {
+  background: linear-gradient(135deg, #f43f5e, #e11d48) !important;
+  box-shadow: 0 2px 8px rgba(244, 63, 94, 0.40) !important;
+}
+
+/* ── 4. MAIN CONTENT BACKGROUND ── */
+.container-fluid,
+.body-wrapper,
+.bodywrapper__inner {
+  background: transparent !important;
+}
+
+/* ── 5. CARDS — Glass Surface ── */
+.card {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.60) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 8px 32px rgba(109, 77, 255, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.80) !important;
+}
+
+.card-header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(109, 77, 255, 0.10) !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+.card-footer {
+  background: rgba(255, 255, 255, 0.35) !important;
+  border-top: 1px solid rgba(109, 77, 255, 0.08) !important;
+  border-radius: 0 0 20px 20px !important;
+}
+
+/* ── 6. WIDGET CARDS ── */
+.widget-seven,
+.dashboard-w1 {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 8px 32px rgba(180, 160, 220, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Override any bg--gradi or bg--* color on widget-seven */
+.widget-seven[class*='bg--'],
+.widget-seven[style] {
+  background: rgba(255, 255, 255, 0.55) !important;
+}
+
+/* Icon box inside widget-seven — light pastel tint instead of bold color */
+.widget-seven .widget-seven__content-icon::after {
+  background-color: rgba(200, 180, 240, 0.20) !important;
+  opacity: 1 !important;
+}
+
+/* Icon color — soft mauve instead of vivid */
+.widget-seven .widget-seven__content-icon .icon {
+  color: #9b7fc7 !important;
+}
+
+/* Text on widget-seven — dark on light glass */
+.widget-seven .widget-seven__content-title,
+.widget-seven .widget-seven__content-subheading,
+.widget-seven .widget-seven__content-amount {
+  color: #2d1f5e !important;
+}
+
+/* Arrow */
+.widget-seven .widget-seven__arrow {
+  color: #9b7fc7 !important;
+}
+
+/* widget-eight: make the whole card glass */
+.widget-eight {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.60) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 8px 32px rgba(109, 77, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.80) !important;
+}
+
+/* Remove the colored ::after pseudo-element on the left description */
+.widget-eight.style-two .widget-eight__description::after {
+  background-color: transparent !important;
+}
+
+/* Remove the dark overlay ::before on the left description */
+.widget-eight.style-two .widget-eight__description::before {
+  background-color: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Left section text should be dark (on light glass background) */
+.widget-eight.style-two .widget-eight__content-amount,
+.widget-eight.style-two .widget-eight__content-title {
+  color: #1a1035 !important;
+}
+
+/* Right icon section keeps its var(--color) background — untouched */
+
+.widget-card {
+  background: transparent !important;
+}
+
+/* ── 7. TABLE WRAPPER ── */
+.table-responsive,
+table.dataTable,
+.table-wrapper {
+  background: transparent !important;
+}
+
+.table {
+  background: transparent !important;
+}
+
+.table thead tr {
+  background: linear-gradient(135deg, rgba(109, 77, 255, 0.80), rgba(147, 51, 234, 0.75)) !important;
+}
+
+.table thead tr th {
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.table td,
+.table th {
+  border-top: 1px solid rgba(109, 77, 255, 0.08) !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(109, 77, 255, 0.04) !important;
+}
+
+/* ── 8. BUTTONS ── */
+.btn--primary {
+  background: linear-gradient(135deg, #6d4dff, #9333ea) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 16px rgba(109, 77, 255, 0.35) !important;
+  transition: all 0.25s ease !important;
+}
+
+.btn--primary:hover {
+  background: linear-gradient(135deg, #5b3de8, #7e22ce) !important;
+  box-shadow: 0 6px 24px rgba(109, 77, 255, 0.45) !important;
+  transform: translateY(-1px) !important;
+}
+
+.btn--success {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.30) !important;
+}
+
+.btn--danger {
+  background: linear-gradient(135deg, #f43f5e, #e11d48) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 16px rgba(244, 63, 94, 0.30) !important;
+}
+
+.btn--warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  border: none !important;
+  border-radius: 12px !important;
+}
+
+.btn--info {
+  background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+  border: none !important;
+  border-radius: 12px !important;
+}
+
+.btn--secondary {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(109, 77, 255, 0.20) !important;
+  color: #4c3aaf !important;
+  border-radius: 12px !important;
+}
+
+.cmn-btn {
+  background: linear-gradient(135deg, #6d4dff, #9333ea) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 16px rgba(109, 77, 255, 0.35) !important;
+}
+
+/* ── 9. BADGES ── */
+.badge--primary {
+  background: rgba(109, 77, 255, 0.12) !important;
+  border: 1px solid rgba(109, 77, 255, 0.35) !important;
+  color: #6d4dff !important;
+  border-radius: 999px !important;
+}
+
+.badge--success {
+  background: rgba(16, 185, 129, 0.10) !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+  color: #059669 !important;
+  border-radius: 999px !important;
+}
+
+.badge--danger {
+  background: rgba(244, 63, 94, 0.10) !important;
+  border: 1px solid rgba(244, 63, 94, 0.35) !important;
+  color: #e11d48 !important;
+  border-radius: 999px !important;
+}
+
+.badge--warning {
+  background: rgba(245, 158, 11, 0.10) !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+  color: #d97706 !important;
+  border-radius: 999px !important;
+}
+
+.badge--info {
+  background: rgba(59, 130, 246, 0.10) !important;
+  border: 1px solid rgba(59, 130, 246, 0.35) !important;
+  color: #2563eb !important;
+  border-radius: 999px !important;
+}
+
+/* ── 10. FORM INPUTS ── */
+input.form-control,
+select.form-control,
+textarea.form-control,
+input:not([type='radio']),
+textarea,
+select {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(109, 77, 255, 0.18) !important;
+  border-radius: 12px !important;
+  color: #2d1f6e !important;
+  transition: all 0.25s ease !important;
+}
+
+input.form-control:focus,
+select.form-control:focus,
+textarea.form-control:focus,
+input:not([type='radio']):focus,
+textarea:focus,
+select:focus {
+  background: rgba(255, 255, 255, 0.70) !important;
+  border-color: rgba(109, 77, 255, 0.50) !important;
+  box-shadow: 0 0 0 3px rgba(109, 77, 255, 0.12) !important;
+}
+
+/* ── 11. DROPDOWN MENUS ── */
+.dropdown-menu {
+  background: rgba(255, 255, 255, 0.70) !important;
+  backdrop-filter: blur(28px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 16px 40px rgba(109, 77, 255, 0.14),
+    0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  overflow: hidden !important;
+}
+
+.dropdown-menu__header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(109, 77, 255, 0.10) !important;
+}
+
+.dropdown-menu__item {
+  border-bottom: 1px solid rgba(109, 77, 255, 0.07) !important;
+  transition: background 0.2s ease !important;
+}
+
+.dropdown-menu__item:hover {
+  background: rgba(109, 77, 255, 0.08) !important;
+}
+
+.dropdown-menu__footer {
+  border-top: 1px solid rgba(109, 77, 255, 0.10) !important;
+  background: transparent !important;
+}
+
+.dropdown-menu__footer .view-all-message {
+  color: #6d4dff !important;
+}
+
+/* ── 12. BREADCRUMB NAV TABS ── */
+.breadcrumb-nav {
+  background: rgba(255, 255, 255, 0.50) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(109, 77, 255, 0.12) !important;
+  margin-bottom: 35px !important;
+}
+
+.breadcrumb-nav li.active a {
+  background: rgba(109, 77, 255, 0.08) !important;
+  border-color: rgba(109, 77, 255, 0.25) !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.breadcrumb-nav li a .menu-title,
+.breadcrumb-nav a i {
+  color: rgba(60, 40, 140, 0.65) !important;
+}
+
+.breadcrumb-nav li.active a .menu-title,
+.breadcrumb-nav li.active a i {
+  color: #6d4dff !important;
+}
+
+/* ── 13. PAGINATION ── */
+.pagination .page-item.active .page-link {
+  background: linear-gradient(135deg, #6d4dff, #9333ea) !important;
+  border-color: transparent !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(109, 77, 255, 0.30) !important;
+}
+
+.pagination .page-item .page-link {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(109, 77, 255, 0.15) !important;
+  border-radius: 8px !important;
+  color: #4c3aaf !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* ── 14. PROGRESS BARS ── */
+.progress {
+  background: rgba(109, 77, 255, 0.10) !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+}
+
+.progress-bar {
+  background: linear-gradient(135deg, #6d4dff, #9333ea) !important;
+  border-radius: 999px !important;
+}
+
+/* ── 15. ALERTS ── */
+.alert {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.60) !important;
+  border-radius: 16px !important;
+}
+
+/* ── 16. MODAL ── */
+.modal-content {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(28px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 24px 64px rgba(109, 77, 255, 0.18) !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(109, 77, 255, 0.10) !important;
+  border-radius: 24px 24px 0 0 !important;
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(109, 77, 255, 0.10) !important;
+  border-radius: 0 0 24px 24px !important;
+}
+
+/* ── 17. NOTIFY / TOAST ITEMS ── */
+.notify__item {
+  background: rgba(255, 255, 255, 0.60) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.60) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 16px rgba(109, 77, 255, 0.08) !important;
+}
+
+.notify__item:hover {
+  background: rgba(109, 77, 255, 0.08) !important;
+}
+
+/* ── 18. SELECT2 ── */
+.select2-dropdown {
+  background: rgba(255, 255, 255, 0.80) !important;
+  backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(109, 77, 255, 0.20) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 12px 32px rgba(109, 77, 255, 0.14) !important;
+}
+
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(109, 77, 255, 0.18) !important;
+  border-radius: 12px !important;
+}
+
+/* ── 19. TYPOGRAPHY REFINEMENT ── */
+h1, h2, h3, h4, h5, h6 {
+  color: #1a1035 !important;
+}
+
+p, label {
+  color: #2d2060 !important;
+}
+
+.table td {
+  color: #1a1035 !important;
+}
+
+a {
+  color: #6d4dff !important;
+}
+
+a:hover {
+  color: #5b3de8 !important;
+}
+
+.text--primary { color: #6d4dff !important; }
+.text--success { color: #059669 !important; }
+.text--danger  { color: #e11d48 !important; }
+.text--warning { color: #d97706 !important; }
+.text--info    { color: #2563eb !important; }
+
+/* ── 20. SHADOW UTILITIES ── */
+.box--shadow1 {
+  box-shadow: 0 8px 32px rgba(109, 77, 255, 0.12) !important;
+}
+
+.box--shadow2 {
+  box-shadow: 0 4px 16px rgba(109, 77, 255, 0.08) !important;
+}
+
+/* ── 21. LOGIN PAGE ── */
+.login-main {
+  background-color: #f0eeff !important;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(196, 181, 253, 0.60) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(251, 207, 232, 0.50) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 60% 85%, rgba(186, 206, 230, 0.45) 0%, transparent 60%),
+    linear-gradient(135deg, #f5f3ff 0%, #fdf2f8 50%, #eff6ff 100%) !important;
+}
+
+.login-main::before {
+  display: none !important;
+}
+
+.login-wrapper {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(28px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 24px 64px rgba(109, 77, 255, 0.16) !important;
+}
+
+.login-wrapper__top {
+  background: linear-gradient(135deg, rgba(109, 77, 255, 0.70), rgba(147, 51, 234, 0.65)) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+.login-wrapper__top .title {
+  color: #ffffff !important;
+}
+
+.login-wrapper__top p {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.login-form .form-control {
+  background: rgba(255, 255, 255, 0.40) !important;
+  border: 1px solid rgba(109, 77, 255, 0.25) !important;
+  color: #1e1346 !important;
+  border-radius: 12px !important;
+}
+
+.login-form .form-control:focus {
+  background: rgba(255, 255, 255, 0.65) !important;
+  border-color: rgba(109, 77, 255, 0.50) !important;
+}
+
+.login-form label {
+  color: rgba(30, 19, 70, 0.75) !important;
+}
+
+.login-form .forget-text {
+  color: #6d4dff !important;
+}
+
+/* ── 22. ACTIVE PRIMARY COLOR ACCENTS ── */
+.bg--primary,
+.btn--primary,
+.dataTables_paginate .pagination .page-item.active .page-link,
+table.dataTable thead tr {
+  background: linear-gradient(135deg, #6d4dff, #9333ea) !important;
+  border-color: transparent !important;
+}
+
+/* ── 23. NAV TABS ── */
+.nav-tabs-primary .nav-item a.active {
+  border-bottom-color: #6d4dff !important;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  background: rgba(109, 77, 255, 0.07) !important;
+  border-color: rgba(109, 77, 255, 0.20) rgba(109, 77, 255, 0.20) transparent !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+/* ── 24. SINGLE ANSWER / SUPPORT CARDS ── */
+.single-answer {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.60) !important;
+  border-radius: 16px !important;
+}
+
+.single-answer__header {
+  background: rgba(109, 77, 255, 0.06) !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+.single-answer.from__admin .single-answer__header {
+  background: rgba(16, 185, 129, 0.08) !important;
+}
+
+/* ── 25. IMAGE UPLOAD PREVIEW ── */
+.image-upload-preview {
+  background-color: rgba(255,255,255,0.55) !important;
+  border: 2px solid rgba(109, 77, 255, 0.20) !important;
+  border-radius: 16px !important;
+}
+
+/* ── 26. SCROLLBAR GLOBAL ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.20);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(109, 77, 255, 0.25);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(109, 77, 255, 0.45);
+}
+
+/* ── 27. NEUTRALIZE VIVID BG GRADIENTS ON WIDGET CARDS ── */
+/* widget-seven uses bg--gradi-* classes which inject saturated colors.
+   Override them all to pastel mauve glass. */
+.widget-seven[class*='bg--gradi'],
+.widget-seven[class*='bg--primary'],
+.widget-seven[class*='bg--success'],
+.widget-seven[class*='bg--danger'],
+.widget-seven[class*='bg--warning'],
+.widget-seven[class*='bg--info'],
+.widget-seven[class*='bg--'] {
+  background: rgba(240, 234, 255, 0.60) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 6px 24px rgba(180, 160, 230, 0.12) !important;
+}
+
+/* Also reset the ::after pseudo overlay that bg--gradi classes create */
+.widget-seven[class*='bg--']::before,
+.widget-seven[class*='bg--']::after {
+  display: none !important;
+}
+
+/* Keep icon tint subtle — pastel version of the original color */
+.widget-seven .widget-seven__content-icon::after {
+  opacity: 0.15 !important;
+  background-color: #b39ddb !important;
+}
+
+/* Text stays dark on light pastel background */
+.widget-seven *,
+.widget-seven .widget-seven__content-amount,
+.widget-seven .widget-seven__content-title,
+.widget-seven .widget-seven__content-subheading,
+.widget-seven .widget-seven__arrow {
+  color: #2d1f5e !important;
+}
+
+/* ── 28. WIDGET-EIGHT LEFT SECTION — Remove colored background ── */
+/* Catches all bg--* and bg--gradi-* classes on widget-eight */
+.widget-eight[class*='bg--'] .widget-eight__description::after,
+.widget-eight[class*='bg--'] .widget-eight__description::before,
+.widget-eight.style-two[class*='bg--'] .widget-eight__description::after,
+.widget-eight.style-two[class*='bg--'] .widget-eight__description::before {
+  display: none !important;
+  background-color: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Also catch the ::after on the widget-eight wrapper itself */
+.widget-eight[class*='bg--']::after {
+  background-color: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Left description text — dark on light glass */
+.widget-eight[class*='bg--'] .widget-eight__content-amount,
+.widget-eight[class*='bg--'] .widget-eight__content-title,
+.widget-eight.style-two[class*='bg--'] .widget-eight__content-amount,
+.widget-eight.style-two[class*='bg--'] .widget-eight__content-title {
+  color: #1a1035 !important;
+}
+
+/* Force glass background on the whole widget-eight regardless of bg class */
+.widget-eight[class*='bg--'],
+.widget-eight.style-two[class*='bg--'] {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+}
+
+/* ── 29. HIDE VERSION INFO FROM SIDEBAR ── */
+.sidebar .version-info {
+  display: none !important;
+}
