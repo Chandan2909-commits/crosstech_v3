@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-// Autoloader installed by vercel-php runtime into api/vendor/
-require __DIR__ . '/vendor/autoload.php';
+// Autoloader installed by vercel-php runtime into root vendor/
+require __DIR__ . '/../vendor/autoload.php';
 
 // Boot Laravel
 (require_once __DIR__ . '/../democrm/Files/core/bootstrap/app.php')

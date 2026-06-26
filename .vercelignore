@@ -1,5 +1,6 @@
 # Vercel ignore — keeps the upload lean
-# vendor/ is intentionally INCLUDED (Vercel cannot run composer itself)
+vendor/
+democrm/Files/core/vendor/
 
 # Runtime storage (generated on /tmp at runtime)
 democrm/Files/core/storage/framework/sessions/*
