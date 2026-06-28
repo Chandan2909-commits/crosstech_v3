@@ -1,21 +1,10 @@
 {
   "version": 2,
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.7.4",
-      "excludeFiles": "{democrm/Files/assets/**/*,democrm/Documentation/**/*,*.png,*.PNG,*.html}"
-    }
-  },
   "routes": [
     {
-      "has": [{ "type": "host", "value": "democrm.crosstechsolutions.in" }],
-      "src": "^/assets/(.*)",
-      "dest": "/democrm/Files/assets/$1"
-    },
-    {
-      "has": [{ "type": "host", "value": "democrm.crosstechsolutions.in" }],
       "src": "/(.*)",
-      "dest": "/api/index.php"
+      "dest": "/$1"
     }
   ]
 }
+
