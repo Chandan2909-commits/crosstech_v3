@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "composer install --no-dev --optimize-autoloader --working-dir=api",
+  "buildCommand": "composer install --no-dev --optimize-autoloader --working-dir=Files/core",
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.4"

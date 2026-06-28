@@ -3,16 +3,15 @@
 /**
  * Vercel Serverless Entry Point — CrossFlow CRM
  *
- * The vercel-php runtime installs vendor/ here (from api/composer.json).
- * We load that autoloader, then bootstrap Laravel from Files/core/.
+ * Uses the full vendor/ from Files/core/ — no separate api/vendor needed.
  */
 
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-// Autoloader installed by vercel-php runtime into api/vendor/
-require __DIR__ . '/vendor/autoload.php';
+// Use the full Laravel vendor from Files/core/
+require __DIR__ . '/../Files/core/vendor/autoload.php';
 
 // Boot Laravel from the actual app directory
 (require_once __DIR__ . '/../Files/core/bootstrap/app.php')
