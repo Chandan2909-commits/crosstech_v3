@@ -1003,26 +1003,18 @@
                             </div>
                         </div>
 
-                        <!-- Resume Upload -->
+                        <!-- Resume Link (Google Drive) -->
                         <div class="mb-8">
-                            <label class="form-label">Resume / CV <span class="text-red-400">*</span></label>
-                            <div class="upload-zone" id="upload-zone" onclick="document.getElementById('resume-file').click()">
-                                <input type="file" id="resume-file" accept=".pdf,.doc,.docx" class="hidden" onchange="handleFileChange(event)" />
-                                <span class="material-symbols-outlined text-outline text-4xl mb-3 block">upload_file</span>
-                                <p class="text-primary font-semibold text-sm mb-1">Drop your resume here or click to browse</p>
-                                <p class="text-outline text-xs">PDF, DOC or DOCX — Max 5MB</p>
-                                <div id="file-selected" class="hidden mt-4 flex items-center justify-center gap-2 text-sky-400 text-sm font-semibold">
-                                    <span class="material-symbols-outlined text-base">check_circle</span>
-                                    <span id="file-name"></span>
-                                </div>
-                            </div>
+                            <label class="form-label" for="resume-link">Public Google Drive Link to Resume (PDF/DOCX) <span class="text-red-400">*</span></label>
+                            <input type="url" id="resume-link" name="resume_link" class="form-field" placeholder="e.g. https://drive.google.com/file/d/.../view?usp=sharing" required />
+                            <p class="text-outline text-xs mt-2">Please upload your resume to Google Drive and ensure the share settings are set to <strong>"Anyone with the link can view"</strong>.</p>
                         </div>
 
                         <!-- Terms Checkbox -->
                         <div class="mb-8 flex items-start gap-3">
                             <input type="checkbox" id="terms" name="terms" class="mt-1 w-4 h-4 accent-sky-400" required />
                             <label for="terms" class="text-outline text-sm leading-relaxed">
-                                I agree to CrossTechSolutions processing my personal data for recruitment purposes. I have read and accept the <a href="#" class="text-sky-400 underline hover:text-white transition-colors">Privacy Policy</a>.
+                                I agree to CrossTechSolutions processing my personal data for recruitment purposes. I have read and accept the <a href="privacy.html" class="text-sky-400 underline hover:text-white transition-colors">Privacy Policy</a>.
                             </label>
                         </div>
 
@@ -1075,10 +1067,8 @@
                 <p class="font-label-sm text-label-sm text-outline mt-4" style="font-family:Quicksand;font-size:12px;">© 2026 CrossTechSolutions. Tailored Software Engineering.</p>
             </div>
             <div class="flex flex-wrap md:justify-end gap-x-8 gap-y-4">
-                <a class="text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" style="font-size:12px;font-family:Quicksand;" href="#">Privacy Policy</a>
-                <a class="text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" style="font-size:12px;font-family:Quicksand;" href="#">Terms of Service</a>
-                <a class="text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" style="font-size:12px;font-family:Quicksand;" href="https://github.com">GitHub</a>
-                <a class="text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" style="font-size:12px;font-family:Quicksand;" href="https://linkedin.com">LinkedIn</a>
+                <a class="text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" style="font-size:12px;font-family:Quicksand;" href="privacy.html">Privacy Policy</a>
+                <a class="text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" style="font-size:12px;font-family:Quicksand;" href="terms.html">Terms of Service</a>
             </div>
         </div>
     </footer>
@@ -1212,33 +1202,9 @@
         document.getElementById('form-subtitle').textContent = "Fill in your details below — our talent team reviews every submission within 48 hours.";
     }
 
-    // ===== FILE UPLOAD =====
-    function handleFileChange(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-        const fileSelectedDiv = document.getElementById('file-selected');
-        const fileNameSpan = document.getElementById('file-name');
-        if (fileSelectedDiv && fileNameSpan) {
-            fileSelectedDiv.classList.remove('hidden');
-            fileNameSpan.textContent = file.name;
-        }
-    }
-
-    // Drag and drop for upload zone
-    const uploadZone = document.getElementById('upload-zone');
-    if (uploadZone) {
-        uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
-        uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
-        uploadZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadZone.classList.remove('drag-over');
-            const files = e.dataTransfer.files;
-            if (files.length) {
-                document.getElementById('resume-file').files = files;
-                handleFileChange({ target: document.getElementById('resume-file') });
-            }
-        });
-    }
+    // Google Sheets Integration Config
+    // REPLACE THIS URL WITH YOUR DEPLOYED APPS SCRIPT WEB APP URL
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPz26k8-YOUR-WEB-APP-ID/exec';
 
     // ===== CHAR COUNTER =====
     const coverLetter = document.getElementById('cover-letter');
@@ -1272,15 +1238,17 @@
         const experience = document.getElementById('experience').value;
         const coverLetterVal = document.getElementById('cover-letter').value.trim();
         const terms = document.getElementById('terms').checked;
+        const resumeLink = document.getElementById('resume-link').value.trim();
 
         if (!firstName || !lastName) { showError('Please enter your full name.'); return; }
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('Please enter a valid email address.'); return; }
         if (!role) { showError('Please select the role you are applying for.'); return; }
         if (!experience) { showError('Please select your years of experience.'); return; }
+        if (!resumeLink || !/^https?:\/\/[^\s$.?#].[^\s]*$/i.test(resumeLink)) { showError('Please enter a valid Google Drive URL for your resume.'); return; }
         if (coverLetterVal.length < 50) { showError('Please write at least 50 characters in your cover letter.'); return; }
         if (!terms) { showError('Please accept the Privacy Policy to continue.'); return; }
 
-        // Simulate submission
+        // Submit to Google Sheets via Apps Script Web App
         submitBtn.disabled = true;
         submitText.textContent = 'Submitting...';
         submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
@@ -1288,14 +1256,54 @@
         const spinner = document.createElement('span');
         spinner.className = 'material-symbols-outlined animate-spin text-base';
         spinner.textContent = 'progress_activity';
-        submitBtn.insertBefore(spinner, submitBtn.querySelector('span'));
+        submitBtn.insertBefore(spinner, submitBtn.querySelector('span') || submitBtn.firstChild);
 
-        setTimeout(() => {
-            // Show success
-            form.classList.add('hidden');
-            const successDiv = document.getElementById('form-success');
-            successDiv.classList.remove('hidden');
-        }, 1800);
+        const data = {
+            form_type: 'careers',
+            first_name: firstName,
+            last_name: lastName,
+            email: email,
+            phone: document.getElementById('phone').value.trim(),
+            role: role,
+            experience: experience,
+            work_type: document.getElementById('work-type').value,
+            portfolio: document.getElementById('portfolio').value.trim(),
+            cover_letter: coverLetterVal,
+            resume_link: resumeLink
+        };
+
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.status === 'success') {
+                form.classList.add('hidden');
+                const successDiv = document.getElementById('form-success');
+                successDiv.classList.remove('hidden');
+            } else {
+                showError('Error submitting application: ' + (result.message || 'Unknown error'));
+                resetSubmitButton();
+            }
+        })
+        .catch(err => {
+            console.error('Submission error:', err);
+            showError('Unable to connect to submission service. Please check your internet connection and try again.');
+            resetSubmitButton();
+        });
+
+        function resetSubmitButton() {
+            submitBtn.disabled = false;
+            submitText.textContent = 'Submit Application';
+            submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+            const spinnerEl = submitBtn.querySelector('.animate-spin');
+            if (spinnerEl) spinnerEl.remove();
+        }
     }
 
     function showError(msg) {
@@ -1312,7 +1320,6 @@
         document.getElementById('submit-btn').disabled = false;
         document.getElementById('submit-text').textContent = 'Submit Application';
         document.getElementById('submit-btn').classList.remove('opacity-70', 'cursor-not-allowed');
-        document.getElementById('file-selected').classList.add('hidden');
         document.getElementById('char-count').textContent = '0 / 1000';
         clearSelectedRole();
         const spinner = document.getElementById('submit-btn').querySelector('.animate-spin');
@@ -1457,3 +1464,4 @@
 </script>
 </body>
 </html>
+

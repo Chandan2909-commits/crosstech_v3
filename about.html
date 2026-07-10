@@ -148,7 +148,7 @@
         .reveal-scale.revealed  { opacity: 1; transform: scale(1); }
         .reveal-scale.exit-up   { opacity: 0; transform: scale(0.95); }
 
-        /* Mobile safety — never stay invisible if JS is slow */
+        /* Mobile safety ï¿½ never stay invisible if JS is slow */
         @media (prefers-reduced-motion: reduce) {
             .reveal-element, .reveal-left, .reveal-right, .reveal-scale {
                 opacity: 1 !important;
@@ -513,96 +513,35 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Leader 1 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Leader 1: Chandan Kumar -->
                     <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element">
                         <div class="aspect-[4/3] bg-surface-container overflow-hidden border-b border-white/5 relative">
-                            <img alt="Chandan Chaudhary" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="pranmitra3.png" />
+                            <div class="w-full h-full bg-gradient-to-br from-sky-500/20 to-blue-600/10 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                                <span class="text-4xl font-bold text-sky-400">CK</span>
+                            </div>
                         </div>
                         <div class="p-6">
-                            <h3 class="font-headline-md text-lg font-bold text-primary">Sameer Jain</h3>
-                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Chief Executive Officer</p>
+                            <h3 class="font-headline-md text-lg font-bold text-primary">Chandan Kumar</h3>
+                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Co-Founder</p>
                             <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
-                                Directs corporate alignment, global expansion strategies, and engineering program structures.
+                                Steers business development, corporate relations, operations, and strategic alignment of tech solutions.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Leader 2 -->
+                    <!-- Leader 2: Saksham Singh -->
                     <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element" style="transition-delay: 100ms">
                         <div class="aspect-[4/3] bg-surface-container overflow-hidden border-b border-white/5 relative">
-                            <img alt="Pawan Singh" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="psr_v2.png" />
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-headline-md text-lg font-bold text-primary">Aditi Jain</h3>
-                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Chief Operating Officer</p>
-                            <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
-                                Manages operational efficiency, client relation contracts, and global delivery systems.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Leader 3 -->
-                    <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element" style="transition-delay: 200ms">
-                        <div class="aspect-[4/3] bg-surface-container overflow-hidden border-b border-white/5 relative">
-                            <img alt="Jayant Chaudhary" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" src="jayant_fx.png" />
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-headline-md text-lg font-bold text-primary">Joseph Jude</h3>
-                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Chief Technology Officer</p>
-                            <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
-                                Orchestrates custom cloud frameworks, database nodes, and cognitive conversational AI chatbot architectures.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Leader 4 -->
-                    <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element">
-                        <div class="aspect-[4/3] bg-surface-container/60 flex items-center justify-center border-b border-white/5 relative p-4">
-                            <div class="text-center space-y-2">
-                                <span class="material-symbols-outlined text-outline text-5xl">trending_up</span>
-                                <div class="text-outline font-headline-md text-xs uppercase tracking-widest">Leadership Profile</div>
+                            <div class="w-full h-full bg-gradient-to-br from-emerald-500/20 to-teal-600/10 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                                <span class="text-4xl font-bold text-emerald-400">SS</span>
                             </div>
                         </div>
                         <div class="p-6">
-                            <h3 class="font-headline-md text-lg font-bold text-primary">Andrew Jackson Proes</h3>
-                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Chief Revenue Officer</p>
+                            <h3 class="font-headline-md text-lg font-bold text-primary">Saksham Singh</h3>
+                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Co-Founder</p>
                             <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
-                                Leads global business developments, strategic revenue targets, and key partner relations.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Leader 5 -->
-                    <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element" style="transition-delay: 100ms">
-                        <div class="aspect-[4/3] bg-surface-container/60 flex items-center justify-center border-b border-white/5 relative p-4">
-                            <div class="text-center space-y-2">
-                                <span class="material-symbols-outlined text-outline text-5xl">group</span>
-                                <div class="text-outline font-headline-md text-xs uppercase tracking-widest">Human Resources</div>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-headline-md text-lg font-bold text-primary">Teevrta Kaul</h3>
-                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Head | HR</p>
-                            <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
-                                Builds global development talent nodes and manages developer acquisition frameworks.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Leader 6 -->
-                    <div class="group luminous-border rounded-2xl overflow-hidden hover-glow-card reveal-element" style="transition-delay: 200ms">
-                        <div class="aspect-[4/3] bg-surface-container/60 flex items-center justify-center border-b border-white/5 relative p-4">
-                            <div class="text-center space-y-2">
-                                <span class="material-symbols-outlined text-outline text-5xl">settings_applications</span>
-                                <div class="text-outline font-headline-md text-xs uppercase tracking-widest">Operations Head</div>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-headline-md text-lg font-bold text-primary">Anand Bhusari</h3>
-                            <p class="text-xs text-sky-400 uppercase tracking-wider mb-3">Head | Operations</p>
-                            <p class="font-body-md text-xs text-on-surface-variant leading-relaxed">
-                                Directs physical delivery metrics, data centers, and compliant service execution metrics.
+                                Orchestrates custom cloud frameworks, scalable database nodes, and system engineering roadmap.
                             </p>
                         </div>
                     </div>
@@ -914,15 +853,11 @@
             </div>
             <div class="flex flex-wrap md:justify-end gap-x-8 gap-y-4">
                 <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
-                    href="#">Privacy Policy</a>
+                    href="privacy.html">Privacy Policy</a>
                 <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
-                    href="#">Terms of Service</a>
+                    href="terms.html">Terms of Service</a>
                 <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
                     href="#">Security</a>
-                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
-                    href="https://github.com">GitHub</a>
-                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
-                    href="https://linkedin.com">LinkedIn</a>
             </div>
         </div>
     </footer>
@@ -987,7 +922,7 @@
                             el.classList.add('exit-up');
                             el.classList.remove('revealed');
                         } else {
-                            // Coming into view from below — reset to initial hidden state
+                            // Coming into view from below ï¿½ reset to initial hidden state
                             el.classList.remove('revealed', 'exit-up');
                         }
                     }
@@ -1197,19 +1132,19 @@
             {
                 text: "We highly recommend CrossTech Solutions to any business looking for a professional, innovative, and trustworthy IT development team. They have been instrumental in our success, and we look forward to continuing our collaboration for many years to come! From day one, they demonstrated a deep understanding of our business goals and provided innovative solutions.",
                 author: "Robbie Stevens",
-                role: "Digital Sales Director | The Fusion Funded",
+                role: "Sales Director | FinTech Solutions",
                 initials: "RS"
             },
             {
                 text: "We have partnered with CrossTech Solutions for several iterations of our platform. They supported and modernized many aspects of our digital ecosystem. The team is excellent to work with, consistently taking ownership of challenges, paying meticulous attention to detail, and delivering outcome-driven solutions.",
                 author: "Rich Evans",
-                role: "General Manager | The Only Prop",
+                role: "Product Manager | Trading Networks",
                 initials: "RE"
             },
             {
                 text: "CrossTech Solutions has delivered software on time, with the correct specifications, and with minimal post-release bugs. The team conducts regular sprint reviews and asks the right questions. They offer smart ways of achieving business goals and demonstrate a strong commitment to achieving them.",
                 author: "Michael Landless",
-                role: "Head of Product | Quarnex",
+                role: "Product Lead | Enterprise SaaS",
                 initials: "ML"
             }
         ];
@@ -1405,3 +1340,4 @@
 </body>
 
 </html>
+

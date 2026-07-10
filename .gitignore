@@ -26,3 +26,10 @@ yarn-error.log
 
 .vercel
 .env*
+
+# ─── Admin Next ──────────────────────────────────────────────────────────────
+democrm/admin-next/.next/
+democrm/admin-next/node_modules/
+democrm/admin-next/prisma/dev.db
+democrm/admin-next/tsconfig.tsbuildinfo
+democrm/*.log

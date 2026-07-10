@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Terms of Service | CrossTechSolutions</title>
+    <meta name="description" content="Terms of Service and Conditions of CrossTechSolutions. Understand our rules, user licenses, and agreement terms for custom software and services." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0d0e0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #444748;
+        }
+
+        .luminous-border {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03) 42%, rgba(255, 255, 255, 0.08)) padding-box,
+                linear-gradient(145deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.04) 42%, rgba(255, 255, 255, 0.22)) border-box !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -22px 48px rgba(255, 255, 255, 0.035), 0 18px 55px rgba(0, 0, 0, 0.38);
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
+        }
+
+        .luminous-border::before,
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.22), transparent 26%),
+                linear-gradient(120deg, transparent 16%, rgba(255, 255, 255, 0.16) 32%, transparent 48%);
+            opacity: 0.55;
+            mix-blend-mode: screen;
+        }
+
+        .liquid-glass {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.045) 48%, rgba(255, 255, 255, 0.1)) !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -18px 38px rgba(255, 255, 255, 0.035), 0 18px 60px rgba(0, 0, 0, 0.34);
+            backdrop-filter: blur(24px) saturate(155%);
+            -webkit-backdrop-filter: blur(24px) saturate(155%);
+        }
+
+        .liquid-nav {
+            width: min(calc(100% - 32px), 980px);
+            margin: 16px auto 0;
+            border-radius: 999px;
+        }
+
+        .nav-link {
+            border-radius: 999px;
+            padding: 10px 16px;
+            color: #c4c7c8;
+            transition: color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-link.active {
+            color: #0e0e0e;
+            background: rgba(255, 255, 255, 0.88);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 8px 24px rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .liquid-nav {
+                width: calc(100% - 20px);
+                padding: 10px 14px !important;
+            }
+
+            .liquid-nav>a {
+                font-size: 16px;
+            }
+        }
+
+        .text-reveal-gradient {
+            background: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0.1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* -- Bidirectional Scroll Reveal -- */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-element.exit-up {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-36px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-left.revealed  { opacity: 1; transform: translateX(0); }
+        .reveal-left.exit-up   { opacity: 0; transform: translateX(-20px); }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(36px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-right.revealed  { opacity: 1; transform: translateX(0); }
+        .reveal-right.exit-up   { opacity: 0; transform: translateX(20px); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-element, .reveal-left, .reveal-right {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+
+        .tech-grid {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        .glow-blob {
+            position: absolute;
+            width: min(45vw, 600px);
+            height: min(45vw, 600px);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 0;
+            will-change: transform, opacity;
+        }
+
+        .glow-blue {
+            background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+        }
+
+        .glow-purple {
+            background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+        }
+
+        .glow-green {
+            background: radial-gradient(circle, #10b981 0%, transparent 70%);
+        }
+
+        @media (max-width: 640px) {
+            .reveal-element, .reveal-left, .reveal-right {
+                transition-duration: 0.55s;
+            }
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8e9192",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-container": "#e4e2e1",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error": "#690005",
+                        "surface-container": "#201f1f",
+                        "surface": "#131313",
+                        "on-secondary": "#313030",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-variant": "#353534",
+                        "inverse-on-surface": "#313030",
+                        "tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-surface-variant": "#c4c7c8",
+                        "tertiary-fixed": "#e4e2e1",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-container-highest": "#353534",
+                        "inverse-primary": "#5d5f5f",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface-dim": "#131313",
+                        "on-primary-container": "#636565",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-container": "#b7b5b4",
+                        "surface-bright": "#3a3939",
+                        "primary": "#ffffff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary": "#2f3131",
+                        "secondary-container": "#474746",
+                        "primary-container": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "on-tertiary-container": "#656464",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-tint": "#c6c6c7",
+                        "on-background": "#e5e2e1",
+                        "background": "#131313",
+                        "primary-fixed": "#e2e2e2",
+                        "outline-variant": "#444748",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary": "#c8c6c5",
+                        "on-tertiary": "#303030",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Quicksand"],
+                        "headline-lg-mobile": ["Quicksand"],
+                        "label-md": ["Quicksand"],
+                        "headline-xl": ["Quicksand"],
+                        "body-md": ["Quicksand"],
+                        "headline-lg": ["Quicksand"],
+                        "headline-xl-mobile": ["Quicksand"],
+                        "body-lg": ["Quicksand"],
+                        "headline-md": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-background overflow-x-clip">
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4">
+        <div class="liquid-glass liquid-nav flex justify-between items-center px-5 md:px-8 py-3 relative">
+            <a class="text-headline-md font-headline-md font-bold tracking-tighter text-primary" href="index.html">CROSSTECH SOLUTIONS</a>
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-1 md:gap-2 font-label-md text-label-md">
+                <a class="nav-link active:scale-95" href="index.html">Home</a>
+                <a class="nav-link active:scale-95" href="solutions.html">Solutions</a>
+                <a class="nav-link active:scale-95" href="about.html">About Us</a>
+                <a class="nav-link active:scale-95" href="blog.html">Blog</a>
+                <a class="nav-link active:scale-95" href="careers.html">Careers</a>
+                <a class="nav-link active:scale-95" href="contactus.html">Contact Us</a>
+            </div>
+            <!-- Mobile Hamburger Toggle Button -->
+            <button id="mobile-menu-toggle"
+                class="md:hidden text-primary hover:text-white transition-colors duration-200 flex items-center justify-center p-2">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu"
+                class="mobile-menu-panel hidden absolute top-full left-0 w-full mt-2 bg-[#0d0e0f]/98 border border-white/10 backdrop-blur-xl rounded-2xl p-0 shadow-[0_24px_50px_rgba(0,0,0,0.6)] z-50 origin-top transition-all duration-300">
+                <a class="nav-link text-center py-3 border-b border-white/5" href="index.html">Home</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="solutions.html">Solutions</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="about.html">About Us</a>
+                <a class="nav-link text-center py-3 border-b border-white/5" href="blog.html">Blog</a>
+                <a class="nav-link text-center py-3" href="careers.html">Careers</a>
+                <a class="nav-link text-center py-3" href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative tech-grid overflow-hidden pt-28">
+        <!-- Background Glowing Accent Blobs -->
+        <div class="glow-blob glow-blue -top-40 -left-40"></div>
+        <div class="glow-blob glow-purple top-1/4 -right-40"></div>
+        <div class="glow-blob glow-green bottom-1/4 -left-40"></div>
+        <div class="glow-blob glow-blue bottom-10 right-10"></div>
+
+        <!-- Hero / Header Section -->
+        <section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10">
+            <div class="text-center reveal-element">
+                <h1 class="font-headline-xl text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none tracking-tighter text-reveal-gradient mb-6">
+                    Terms of <span class="text-sky-400">Service</span>
+                </h1>
+                <p class="text-outline text-lg max-w-2xl mx-auto font-body-md">
+                    Effective Date: July 10, 2026. Welcome to CrossTechSolutions. Please read these terms carefully before deploying or utilizing our platforms, software systems, and engineering deliverables.
+                </p>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="pb-24 px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto relative z-10">
+            <div class="space-y-12">
+                <!-- Card 1: Acceptance of Terms -->
+                <div class="luminous-border p-6 md:p-8 rounded-2xl reveal-element">
+                    <h2 class="text-headline-md font-headline-md font-bold text-primary mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sky-400">handshake</span>
+                        1. Acceptance of Terms
+                    </h2>
+                    <p class="text-on-surface-variant leading-relaxed font-body-md">
+                        By accessing this website, purchasing or requesting deployment of our custom web systems, CRM dashboards, and integrated AI tools, you represent that you have read, understood, and agreed to be bound by these Terms of Service, along with our Privacy Policy.
+                    </p>
+                    <p class="text-on-surface-variant leading-relaxed mt-4 font-body-md">
+                        If you represent an enterprise client, corporation, or other legal entity, you assert that you have the legal authority to bind that entity to these Terms. If you do not agree to these terms, you are prohibited from utilizing our software suites or site resources.
+                    </p>
+                </div>
+
+                <!-- Card 2: License and Use of Services -->
+                <div class="luminous-border p-6 md:p-8 rounded-2xl reveal-element" style="transition-delay: 50ms">
+                    <h2 class="text-headline-md font-headline-md font-bold text-primary mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sky-400">terminal</span>
+                        2. Scope of Services & Custom Software License
+                    </h2>
+                    <p class="text-on-surface-variant leading-relaxed mb-4 font-body-md">
+                        CrossTechSolutions provides custom web development, backend automation, client portals, and AI systems. Any software products deployed on your infrastructure are subject to the following rules:
+                    </p>
+                    <ul class="list-disc pl-6 text-on-surface-variant space-y-2 leading-relaxed font-body-md">
+                        <li><strong>License:</strong> Unless otherwise specified in a custom Master Services Agreement (MSA), you are granted a non-exclusive, non-transferable, revocable license to run the software only for your internal business operations.</li>
+                        <li><strong>Restrictions:</strong> You may not sell, lease, redistribute, or reverse-engineer the proprietary code segments of our software, or use them to construct competitive service offerings.</li>
+                        <li><strong>AI Conversational Bots:</strong> Custom chatbots are intended for automated client communication. You retain responsibility for checking bot outputs and configuring safety thresholds.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: User Accounts & Client Systems -->
+                <div class="luminous-border p-6 md:p-8 rounded-2xl reveal-element" style="transition-delay: 100ms">
+                    <h2 class="text-headline-md font-headline-md font-bold text-primary mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sky-400">account_circle</span>
+                        3. Accounts, Safety and Responsibilities
+                    </h2>
+                    <p class="text-on-surface-variant leading-relaxed mb-4 font-body-md">
+                        For any secure client dashboard, CRM or code repository hosted by CrossTechSolutions, you are responsible for:
+                    </p>
+                    <ul class="list-disc pl-6 text-on-surface-variant space-y-2 leading-relaxed font-body-md">
+                        <li>Safeguarding login credentials, usernames, API tokens, and access keys.</li>
+                        <li>All user actions and operations performed under your tenant environment or API keys.</li>
+                        <li>Ensuring your team does not exploit, disrupt or load-test our endpoints without prior written consent.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 4: Intellectual Property -->
+                <div class="luminous-border p-6 md:p-8 rounded-2xl reveal-element" style="transition-delay: 150ms">
+                    <h2 class="text-headline-md font-headline-md font-bold text-primary mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sky-400">copyright</span>
+                        4. Intellectual Property Rights
+                    </h2>
+                    <p class="text-on-surface-variant leading-relaxed mb-4 font-body-md">
+                        The trademarks, service marks, logo designs, custom CSS layouts, tech-grid systems, and website assets featured on this website are the sole property of CrossTechSolutions. All rights are reserved.
+                    </p>
+                    <p class="text-on-surface-variant leading-relaxed font-body-md">
+                        Deliverables built explicitly under a customized, fully-paid contract are transferred in ownership in accordance with the specific terms outlined in your project statement of work.
+                    </p>
+                </div>
+
+                <!-- Card 5: Limitation of Liability -->
+                <div class="luminous-border p-6 md:p-8 rounded-2xl reveal-element" style="transition-delay: 200ms">
+                    <h2 class="text-headline-md font-headline-md font-bold text-primary mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sky-400">warning</span>
+                        5. Disclaimer & Limitation of Liability
+                    </h2>
+                    <p class="text-on-surface-variant leading-relaxed mb-4 font-body-md">
+                        OUR SYSTEMS AND SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+                    </p>
+                    <p class="text-on-surface-variant leading-relaxed mb-4 font-body-md">
+                        In no event shall CrossTechSolutions, its directors, employees, or partners be liable for any indirect, incidental, special, consequential, or punitive damages (including loss of profits, data, use, goodwill, or other intangible losses) resulting from:
+                    </p>
+                    <ul class="list-disc pl-6 text-on-surface-variant space-y-2 leading-relaxed font-body-md">
+                        <li>Your access to or inability to access or use the systems.</li>
+                        <li>Any unauthorized access to our servers and/or personal data stored therein.</li>
+                        <li>Errors, downtime, or service disruptions in third-party integrations (e.g. Google APIs, OpenAI endpoints, or cloud providers).</li>
+                    </ul>
+                </div>
+
+                <!-- Card 6: Governing Law and Contact -->
+                <div class="luminous-border p-6 md:p-8 rounded-2xl reveal-element" style="transition-delay: 250ms">
+                    <h2 class="text-headline-md font-headline-md font-bold text-primary mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sky-400">gavel</span>
+                        6. Governing Law & Contact Us
+                    </h2>
+                    <p class="text-on-surface-variant leading-relaxed mb-4 font-body-md">
+                        These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which CrossTechSolutions operates, without regard to conflict of law rules.
+                    </p>
+                    <p class="text-on-surface-variant leading-relaxed mb-4 font-body-md">
+                        We reserve the right to modify or replace these terms at any time. When updates occur, the revised "Effective Date" at the top of this page will be updated.
+                    </p>
+                    <p class="text-outline font-body-md">
+                        For any inquiries regarding these terms, please contact: legal@crosstechsolutions.com or submit a request on our <a href="contactus.html" class="text-sky-400 hover:underline">Contact Page</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-12 md:py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-t border-white/5 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-container-max mx-auto">
+            <div>
+                <span class="text-headline-md font-headline-md font-bold text-primary">CROSSTECH SOLUTIONS</span>
+                <p class="font-label-sm text-label-sm text-outline mt-4 font-body-md">© 2026 CrossTechSolutions. Tailored Software Engineering.</p>
+            </div>
+            <div class="flex flex-wrap md:justify-end gap-x-8 gap-y-4">
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="privacy.html">Privacy Policy</a>
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="terms.html">Terms of Service</a>
+                <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100"
+                    href="#">Security</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle logic
+            const toggleBtn = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (toggleBtn && mobileMenu) {
+                toggleBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    if (isHidden) {
+                        mobileMenu.classList.remove('hidden');
+                        requestAnimationFrame(() => {
+                            mobileMenu.classList.remove('scale-95', 'opacity-0');
+                            mobileMenu.classList.add('scale-100', 'opacity-100');
+                        });
+                        const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                        if (iconSpan) iconSpan.textContent = 'close';
+                    } else {
+                        mobileMenu.classList.remove('scale-100', 'opacity-100');
+                        mobileMenu.classList.add('scale-95', 'opacity-0');
+                        const transitionEndHandler = () => {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenu.removeEventListener('transitionend', transitionEndHandler);
+                        };
+                        mobileMenu.addEventListener('transitionend', transitionEndHandler);
+                        const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                        if (iconSpan) iconSpan.textContent = 'menu';
+                    }
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.remove('scale-100', 'opacity-100');
+                            mobileMenu.classList.add('scale-95', 'opacity-0');
+                            const transitionEndHandler = () => {
+                                mobileMenu.classList.add('hidden');
+                                mobileMenu.removeEventListener('transitionend', transitionEndHandler);
+                            };
+                            mobileMenu.addEventListener('transitionend', transitionEndHandler);
+                            const iconSpan = toggleBtn.querySelector('.material-symbols-outlined');
+                            if (iconSpan) iconSpan.textContent = 'menu';
+                        }
+                    }
+                });
+            }
+
+            // -- Bidirectional Scroll Reveal --
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const el = entry.target;
+                    if (entry.isIntersecting) {
+                        el.classList.remove('exit-up');
+                        el.classList.add('revealed');
+                    } else {
+                        if (entry.boundingClientRect.top < 0) {
+                            el.classList.add('exit-up');
+                            el.classList.remove('revealed');
+                        } else {
+                            el.classList.remove('revealed', 'exit-up');
+                        }
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+            const allRevealEls = document.querySelectorAll(
+                '.reveal-element, .reveal-left, .reveal-right'
+            );
+            allRevealEls.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+
+</html>

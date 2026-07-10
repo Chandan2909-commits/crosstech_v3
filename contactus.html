@@ -311,28 +311,32 @@
 <div class="liquid-glass p-8 md:p-12 relative overflow-hidden">
 <!-- Subtle aesthetic background texture -->
 <div class="absolute inset-0 opacity-[0.02] pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 24px 24px;"></div>
-<form class="relative z-10 space-y-12">
+<form id="contact-form" class="relative z-10 space-y-12">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
 <div class="space-y-2">
 <label class="font-label-sm text-label-sm text-outline uppercase tracking-wider block">Full Name</label>
-<input class="w-full bg-transparent py-4 text-primary font-body-md gradient-border-bottom transition-all duration-300" placeholder="John Doe" type="text"/>
+<input id="contact-name" name="name" class="w-full bg-transparent py-4 text-primary font-body-md gradient-border-bottom transition-all duration-300" placeholder="John Doe" type="text" required />
 </div>
 <div class="space-y-2">
 <label class="font-label-sm text-label-sm text-outline uppercase tracking-wider block">Corporate Email</label>
-<input class="w-full bg-transparent py-4 text-primary font-body-md gradient-border-bottom transition-all duration-300" placeholder="name@company.com" type="email"/>
+<input id="contact-email" name="email" class="w-full bg-transparent py-4 text-primary font-body-md gradient-border-bottom transition-all duration-300" placeholder="name@company.com" type="email" required />
 </div>
 </div>
 <div class="space-y-2">
 <label class="font-label-sm text-label-sm text-outline uppercase tracking-wider block">Subject of Inquiry</label>
-<input class="w-full bg-transparent py-4 text-primary font-body-md gradient-border-bottom transition-all duration-300" placeholder="Web App / CRM / AI Chatbot Development" type="text"/>
+<input id="contact-subject" name="subject" class="w-full bg-transparent py-4 text-primary font-body-md gradient-border-bottom transition-all duration-300" placeholder="Web App / CRM / AI Chatbot Development" type="text" required />
 </div>
 <div class="space-y-2">
 <label class="font-label-sm text-label-sm text-outline uppercase tracking-wider block">Project Details / Message</label>
-<textarea class="w-full bg-transparent py-4 text-primary font-body-md gradient-border-bottom transition-all duration-300 resize-none" placeholder="Briefly describe your project requirements and goals..." rows="4"></textarea>
+<textarea id="contact-message" name="message" class="w-full bg-transparent py-4 text-primary font-body-md gradient-border-bottom transition-all duration-300 resize-none" placeholder="Briefly describe your project requirements and goals..." rows="4" required></textarea>
 </div>
+
+<!-- Alert Box -->
+<div id="contact-alert" class="hidden p-4 rounded-xl text-sm text-center"></div>
+
 <div class="pt-8">
-<button class="group relative w-full bg-primary text-on-primary py-6 font-headline-md font-bold tracking-tight transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] active:scale-[0.98] overflow-hidden" type="submit">
-<span class="relative z-10">SEND MESSAGE</span>
+<button id="contact-submit-btn" class="group relative w-full bg-primary text-on-primary py-6 font-headline-md font-bold tracking-tight transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] active:scale-[0.98] overflow-hidden" type="submit">
+<span class="relative z-10" id="contact-submit-text">SEND MESSAGE</span>
 <div class="absolute inset-0 bg-neutral-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
 </button>
 </div>
@@ -385,11 +389,9 @@
             </p>
 </div>
 <div class="flex flex-wrap gap-6 md:justify-end">
-<a class="font-label-sm text-label-sm text-outline dark:text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
-<a class="font-label-sm text-label-sm text-outline dark:text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-outline dark:text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100 transition-opacity" href="privacy.html">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-outline dark:text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100 transition-opacity" href="terms.html">Terms of Service</a>
 <a class="font-label-sm text-label-sm text-outline dark:text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100 transition-opacity" href="#">Security</a>
-<a class="font-label-sm text-label-sm text-outline dark:text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100 transition-opacity" href="#">GitHub</a>
-<a class="font-label-sm text-label-sm text-outline dark:text-outline hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100 transition-opacity" href="#">LinkedIn</a>
 </div>
 </div>
 </footer>
@@ -476,28 +478,99 @@
             });
         });
 
+        // Google Sheets Integration Config
+        // REPLACE THIS URL WITH YOUR DEPLOYED APPS SCRIPT WEB APP URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwPz26k8-YOUR-WEB-APP-ID/exec';
+
         // Form submission handling
-        const form = document.querySelector('form');
+        const form = document.getElementById('contact-form');
         if (form) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const btn = e.target.querySelector('button');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span>';
-                btn.classList.add('opacity-80');
+                const btn = document.getElementById('contact-submit-btn');
+                const submitText = document.getElementById('contact-submit-text');
+                const alertBox = document.getElementById('contact-alert');
                 
-                setTimeout(() => {
-                    btn.innerHTML = 'TRANSMISSION RECEIVED';
-                    btn.classList.remove('bg-primary');
-                    btn.classList.add('bg-on-tertiary-container', 'text-primary');
-                    
-                    setTimeout(() => {
-                        btn.innerHTML = originalText;
-                        btn.classList.add('bg-primary');
-                        btn.classList.remove('bg-on-tertiary-container', 'text-primary', 'opacity-80');
-                        e.target.reset();
-                    }, 3000);
-                }, 1500);
+                // Clear alerts
+                alertBox.classList.add('hidden');
+                alertBox.textContent = '';
+                alertBox.className = 'p-4 rounded-xl text-sm text-center hidden';
+
+                const name = document.getElementById('contact-name').value.trim();
+                const email = document.getElementById('contact-email').value.trim();
+                const subject = document.getElementById('contact-subject').value.trim();
+                const message = document.getElementById('contact-message').value.trim();
+
+                if (!name || !email || !subject || !message) {
+                    showAlert('Please fill in all fields.', 'error');
+                    return;
+                }
+
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    showAlert('Please enter a valid email address.', 'error');
+                    return;
+                }
+
+                // Show spinner & disable button
+                btn.disabled = true;
+                btn.classList.add('opacity-70', 'cursor-not-allowed');
+                const originalContent = btn.innerHTML;
+                btn.innerHTML = '<span class="relative z-10 flex items-center justify-center gap-2"><span class="material-symbols-outlined animate-spin text-base">progress_activity</span><span>SENDING...</span></span>';
+
+                const data = {
+                    form_type: 'contact',
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message
+                };
+
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.status === 'success') {
+                        showAlert('TRANSMISSION RECEIVED. We will reach out shortly.', 'success');
+                        form.reset();
+                        // Reset inputs labels
+                        document.querySelectorAll('.gradient-border-bottom').forEach(input => {
+                            const label = input.parentElement.querySelector('label');
+                            if(label) label.classList.replace('text-primary', 'text-outline');
+                        });
+                        resetButton();
+                    } else {
+                        showAlert('Error sending inquiry: ' + (result.message || 'Unknown error'), 'error');
+                        resetButton();
+                    }
+                })
+                .catch(err => {
+                    console.error('Submission error:', err);
+                    showAlert('Unable to connect to submission service. Please check your network and try again.', 'error');
+                    resetButton();
+                });
+
+                function showAlert(msg, type) {
+                    alertBox.textContent = msg;
+                    alertBox.classList.remove('hidden');
+                    if (type === 'success') {
+                        alertBox.classList.add('bg-green-500/10', 'border', 'border-green-500/20', 'text-green-400');
+                    } else {
+                        alertBox.classList.add('bg-red-500/10', 'border', 'border-red-500/20', 'text-red-400');
+                    }
+                    alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+
+                function resetButton() {
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                    btn.innerHTML = originalContent;
+                }
             });
         }
     });
@@ -625,3 +698,4 @@
 })();
 </script>
 </body></html>
+
